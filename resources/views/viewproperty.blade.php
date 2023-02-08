@@ -38,6 +38,7 @@
         <link rel="stylesheet" href="assets/css/responsive.css">
     </head>
     <body>
+        <!-- -->
 
         <div id="preloader">
             <div id="status">&nbsp;</div>
