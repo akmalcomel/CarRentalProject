@@ -12,9 +12,16 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <style>
+        body {
+        background-image: url("uitmpic.jpeg");
+        }
+        </style>
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
+        
+
+    <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
     </body>
