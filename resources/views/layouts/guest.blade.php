@@ -15,6 +15,8 @@
         <style>
         body {
         background-image: url("uitmpic.jpeg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
         }
         </style>
     </head>
