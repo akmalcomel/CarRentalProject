@@ -4,7 +4,7 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-              <!-- Settings Dropdown -->
+              <!-- Settings Dropdown 
               <div class="ml-3 relative">
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
@@ -26,7 +26,7 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <!-- Account Management -->
+                            <!-- Account Management 
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Manage Account') }}
                             </div>
@@ -43,7 +43,7 @@
 
                             <div class="border-t border-gray-100"></div>
 
-                            <!-- Authentication -->
+                            <!-- Authentication 
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
 
@@ -55,7 +55,7 @@
                         </x-slot>
                     </x-jet-dropdown>
                 </div>
-            </div>
+            </div>-->
 
                 <!-- Navigation Links -->
                
