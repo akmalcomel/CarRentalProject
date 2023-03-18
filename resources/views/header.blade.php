@@ -42,6 +42,8 @@
                                     <li> <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
                                     @endif
                                 @endauth
+                                <li><button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submitp')" data-wow-delay="0.5s">Submit</button></li>
+                    
                             </div>
                         @endif 
                         </li>

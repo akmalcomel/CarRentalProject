@@ -15,12 +15,20 @@ use App\Http\Controllers\homeControl;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('firstpage');
 });
 
 Route::get("/home",[homeControl::class,"index"]);
 Route::get("/viewprop",[homeControl::class,"viewprop"]);
 Route::get("/listprop",[homeControl::class,"listprop"]);
+Route::get("/test",[homeControl::class,"first"]);
+Route::get("/sdlogin",[homeControl::class,"sdlogin"]);
+Route::post("/sdlogin1",[homeControl::class,"sdlogin1"]);
+Route::get("/submitp",[homeControl::class,"submitprop"]);
+Route::get("/submit",[homeControl::class,"testsubmit"]);
+
+Route::POST("/add",[homeControl::class,"addproj"]);
+
 
 Route::middleware([
     'auth:sanctum',
