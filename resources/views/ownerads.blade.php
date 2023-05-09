@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>UiTM|Property</title>
+        <title>GARO ESTATE | Properties  page</title>
         <meta name="description" content="GARO is a real-estate template">
         <meta name="author" content="Kimarotec">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -35,20 +35,6 @@
         <link rel="stylesheet" href="assets/css/owl.transitions.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
-
-        <style>
-
-.btn-lg-sheach {
-    bottom: -46px;
-    border-radius: 50%;
-    width: 60px;
-    border: 2px solid #FFF;
-    background-image: url("../../assets/img/icon-shearch.png");
-    position: relative;
-    background-position: 2px -1px;
-    height: 60px;
-}
-            </style>
     </head>
     <body>
 
@@ -73,170 +59,7 @@
         <div class="properties-area recent-property" style="background-color: #FFF;">
             <div class="container"> 
                 <div class="row  pr0 padding-top-40 properties-page">
-                    <div class="col-md-12 padding-bottom-40 large-search"> 
-                        <div class="search-form wow pulse">
-                            <form action="" class=" form-inline">
-                                <div class="col-md-12">
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control" placeholder="Key word">
-                                    </div>
-                                    <div class="col-md-4">                                   
-                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your city">
-                                            <option>New york, CA</option>
-                                            <option>Paris</option>
-                                            <option>Casablanca</option>
-                                            <option>Tokyo</option>
-                                            <option>Marraekch</option>
-                                            <option>kyoto , shibua</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">                                     
-                                        <select id="basic" class="selectpicker show-tick form-control">
-                                            <option> -Status- </option>
-                                            <option>Rent </option>
-                                            <option>Boy</option>
-                                            <option>used</option>  
-
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 ">
-                                    <div class="search-row">   
-
-                                        <div class="col-sm-3">
-                                            <label for="price-range">Price range ($):</label>
-                                            <input type="text" class="span2" value="" data-slider-min="0" 
-                                                   data-slider-max="600" data-slider-step="5" 
-                                                   data-slider-value="[0,450]" id="price-range" ><br />
-                                            <b class="pull-left color">2000$</b> 
-                                            <b class="pull-right color">100000$</b>
-                                        </div>
-                                        <!-- End of  -->  
-
-                                        <div class="col-sm-3">
-                                            <label for="property-geo">Property geo (m2) :</label>
-                                            <input type="text" class="span2" value="" data-slider-min="0" 
-                                                   data-slider-max="600" data-slider-step="5" 
-                                                   data-slider-value="[50,450]" id="property-geo" ><br />
-                                            <b class="pull-left color">40m</b> 
-                                            <b class="pull-right color">12000m</b>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <label for="price-range">Min baths :</label>
-                                            <input type="text" class="span2" value="" data-slider-min="0" 
-                                                   data-slider-max="600" data-slider-step="5" 
-                                                   data-slider-value="[250,450]" id="min-baths" ><br />
-                                            <b class="pull-left color">1</b> 
-                                            <b class="pull-right color">120</b>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <label for="property-geo">Min bed :</label>
-                                            <input type="text" class="span2" value="" data-slider-min="0" 
-                                                   data-slider-max="600" data-slider-step="5" 
-                                                   data-slider-value="[250,450]" id="min-bed" ><br />
-                                            <b class="pull-left color">1</b> 
-                                            <b class="pull-right color">120</b>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                    </div>
-
-                                    <div class="search-row">  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Fire Place(3100)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Dual Sinks(500)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Hurricane Shutters(99)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Swimming Pool(1190)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> 2 Stories(4600)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Emergency Exit(200)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Laundry Room(10073)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Jog Path(1503)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> 26' Ceilings(1200)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-                                        
-                                    </div>   
-                                    <div class="center">
-                                <input type="submit" value="Search" class=" btn-lg-sheach">
-                            </div>
-                                </div>                     
-                            </form>
-                        </div>
-                    </div>
-
+                   
                     <div class="col-md-12  clear"> 
                         <div class="col-xs-10 page-subheader sorting pl0">
                             <ul class="sort-by-list">
@@ -276,6 +99,7 @@
                         <div id="list-type" class="proerty-th-list">
                         @php($count=0)
                             @foreach($output as $x)
+                            @if($x['owner']==$username)
                             @php($count++)
 
                                 <div class="col-sm-6 col-md-3 p0">
@@ -300,9 +124,8 @@
 
                                     </div>
                                 </div> 
-                                @endforeach
-
-                            
+                                @endif
+                            @endforeach
 
                            
                         </div>
@@ -478,4 +301,3 @@
         <script src="assets/js/main.js"></script>
     </body>
 </html>
-

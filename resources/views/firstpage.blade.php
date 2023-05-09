@@ -52,7 +52,7 @@
         <h3><b>Welcome to UiTM Off-Campus Placement Portal</b></h3>
            
     <div class="d-grid gap-2">
-        <a class="btn btn-primary jauhskit" href="/login2" role="button">UITM STUDENT</a>
+        <a class="btn btn-primary jauhskit" id="custom-login-button" href="{{ route('custom-login') }}" role="button">UITM STUDENT</a>
         <a class="btn btn-primary jauhskit" href="/login" role="button">OWNER</a>
   
     </div>

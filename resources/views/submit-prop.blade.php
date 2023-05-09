@@ -118,16 +118,16 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>Property name <small>(required)</small></label>
-                                                    <input name="propertyname" type="text" class="form-control" placeholder="Super villa ...">
+                                                    <input name="propertyname" type="text" class="form-control" placeholder="Super villa ..." required>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label>Property price <small>(required)</small></label>
-                                                    <input name="propertyprice" type="text" class="form-control" placeholder="3330000">
+                                                    <input name="propertyprice" type="text" class="form-control" placeholder="3330000" required>
                                                 </div> 
                                                 <div class="form-group">
                                                     <label>Property Type <small>Apartment/Terrace/Bungalow</small></label>
-                                                    <input name="propertytype" type="text" class="form-control" placeholder="">
+                                                    <input name="propertytype" type="text" class="form-control" placeholder="" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -141,7 +141,7 @@
                                                 <div class="col-sm-12"> 
                                                 <div class="form-group">
                                                     <label>Ad Title<small>(required)</small></label>
-                                                    <input name="title" type="text" class="form-control" placeholder="TITLE">
+                                                    <input name="title" type="text" class="form-control" placeholder="TITLE" required>
                                                 </div> 
                                                 </div> 
                                             </div>
@@ -150,7 +150,7 @@
                                                 <div class="col-sm-12"> 
                                                     <div class="form-group">
                                                         <label>Property Description :</label>
-                                                        <textarea name="description" class="form-control" ></textarea>
+                                                        <textarea name="description" class="form-control" required></textarea>
                                                     </div> 
                                                 </div> 
                                             </div>
@@ -160,7 +160,7 @@
                                                     <div class="form-group">
                                                         <label>Furnished:</label>
                                                         <!--<select id="furnished" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Furnished type">-->
-                                                        <select name= "furnished" id="furnished" class="selectpicker" title="Furnished type">
+                                                        <select name= "furnished" id="furnished" class="selectpicker" title="Furnished type" required>
                                                             <option>Fully Furnished</option>
                                                             <option>Partially FUrnished</option>
                                                             <option>Not Furnished</option>
@@ -171,7 +171,7 @@
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Bathroom :</label>
-                                                        <select name="bathroom" id="bathroom" class="selectpicker" title="Bathroom">
+                                                        <select name="bathroom" id="bathroom" class="selectpicker" title="Bathroom" required>
                                                             <option>1</option>
                                                             <option>2</option>
                                                             <option>3</option>
@@ -184,7 +184,7 @@
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Bedroom :</label>
-                                                        <select name="bedroom" id="bedroom" class="selectpicker" title="Bedroom">
+                                                        <select name="bedroom" id="bedroom" class="selectpicker" title="Bedroom" required>
                                                             <option>1</option>
                                                             <option>2</option>
                                                             <option>3</option>
@@ -197,7 +197,7 @@
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Property Size :</label>
-                                                        <input name="size" type="text" class="form-control" placeholder="sq.ft.">
+                                                        <input name="size" type="text" class="form-control" placeholder="sq.ft." required>
                                                        
                                                 
                                                     </div>
@@ -205,7 +205,7 @@
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Parking :</label>
-                                                        <select name="parking" id="parking" class="selectpicker show-tick form-control">
+                                                        <select name="parking" id="parking" class="selectpicker show-tick form-control" required>
                                                             <option>None </option>
                                                             <option>1</option>
                                                             <option>2</option>
@@ -219,12 +219,26 @@
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Rental Deposit (RM) :</label>
-                                                        <input name="rental" type="text" class="form-control" placeholder="sq.ft.">
+                                                        <input name="rental" type="text" class="form-control" placeholder="RM" required>
                                                        
                                                 
                                                     </div>
                                                 </div>
+
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label>Campus :</label>
+                                                        <select name="campus" id="campus" class="selectpicker show-tick form-control" title="UiTM Branch" required>
+                                    
+                                                            <option>UiTM Shah Alam</option>
+                                                            <option>UiTM Puncak Alam</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
+
+                                            
                                             <!--<div class="col-sm-12 padding-top-15">                                                   
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
@@ -361,25 +375,19 @@
                                     <div class="tab-pane" id="step3">                                        
                                         <h4 class="info-text">Give us somme images and videos ? </h4>
                                         <div class="row">  
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="property-images">Chose Images :</label>
-                                                    <input class="form-control" type="file" id="property-images">
-                                                    <p class="help-block">Select multipel images for your property .</p>
-                                                </div>
-                                            </div>
+    
                                             <div class="col-sm-6"> 
                                                 <div class="form-group">
-                                                    <label for="property-video">Property video :</label>
-                                                    <input class="form-control" value="" placeholder="http://www.youtube.com, http://vimeo.com" name="property_video" type="text">
+                                                    <label for="property-video">Additional image :</label>
+                                                    <input class="form-control" type="file" id="property-images" name="image2">
                                                 </div> 
 
                                                 <div class="form-group">
-                                                    <input class="form-control" value="" placeholder="http://www.youtube.com, http://vimeo.com" name="property_video" type="text">
+                                                <input class="form-control" type="file" id="property-images" name="image3">
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <input class="form-control" value="" placeholder="http://www.youtube.com, http://vimeo.com" name="property_video" type="text">
+                                                <input class="form-control" type="file" id="property-images" name="image4">
                                                 </div>
                                             </div>
                                         </div>
@@ -403,7 +411,7 @@
 
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox" /> <strong>Accept termes and conditions.</strong>
+                                                            <input type="checkbox" required /> <strong>Accept termes and conditions.</strong>
                                                         </label>
                                                     </div> 
 

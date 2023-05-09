@@ -41,7 +41,7 @@
             <div id="status">&nbsp;</div>
         </div>
 
-@include('header')
+@include('sdheader')
 
         <div class="slider-area">
             <div class="slider">
@@ -57,6 +57,7 @@
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
                         <h2><strong>UITM Off-Campus Placement Portal</strong></h2>
                         <p></p>
+                        <p><a href="/stdlistprop" class="btn btn-primary btn-lg">Search House</a></p>
 
                     </div>
                 </div>

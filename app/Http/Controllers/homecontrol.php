@@ -22,12 +22,19 @@ class homecontrol extends Controller
     
     }
 
-    function viewprop(){
-        return view('viewproperty');
+    function viewprop($id){
+        $output=house::find($id);
+        $owner=User::all();
+     
+        return view ('viewproperty',compact('output','owner'));
     }
 
     function listprop(){
-        return view('listproperty');
+
+        $output=house::all();
+        $output2=house::all();
+     
+        return view ('listproperty',compact('output','output2'));
     }
 
     function first(){
@@ -57,19 +64,40 @@ class homecontrol extends Controller
         $prop->type=$req->propertytype;
         //$prop->image="testing value";
         $prop->description=$req->description;
-        $prop->facilities="testing value";
-        $prop->owner=$username=Auth::user()->name;
+        //$prop->facilities=$req->input('facility');
+        $prop->facilities=$req->input('facility');
+        $prop->owner=Auth::user()->name;
+        $prop->ownerID=Auth::user()->id;
         $prop->bathroom=$req->bathroom;
         $prop->bedroom=$req->bedroom;
         $prop->size=$req->size;
         $prop->deposit=$req->rental;
         $prop->parking=$req->parking;
+        $prop->campus=$req->campus;
 
         if($req->file('image1')){
             $file= $req->file('image1');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('public/Image'), $filename);
             $prop['image']= $filename;
+        }
+        if($req->file('image2')){
+            $file= $req->file('image2');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/Image'), $filename);
+            $prop['image2']= $filename;
+        }
+        if($req->file('image3')){
+            $file= $req->file('image3');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/Image'), $filename);
+            $prop['image3']= $filename;
+        }
+        if($req->file('image4')){
+            $file= $req->file('image4');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/Image'), $filename);
+            $prop['image4']= $filename;
         }
         $prop->save();
 
@@ -93,14 +121,15 @@ class homecontrol extends Controller
 
     }
 
-    function sdlogin1(Request $req){
+   
 
-        $user= Student::where('email',$req->input('email'))->get();
-        if (Crypt::decrypt($user->password)==$req->input('password'))
-        {
-            $req->session()->put('Student',$user[0]->name);
-            return redirect('/home');
-        }
+    function viewownerads(){
+
+        $output=house::all();
+        $output2=house::all();
+        $username=Auth::user()->name;
+     
+        return view ('ownerads',compact('output','output2','username'));
     }
 
     

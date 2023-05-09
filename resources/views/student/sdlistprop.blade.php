@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>UiTM|Property</title>
+        <title>GARO ESTATE | Properties  page</title>
         <meta name="description" content="GARO is a real-estate template">
         <meta name="author" content="Kimarotec">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -56,7 +56,7 @@
             <div id="status">&nbsp;</div>
         </div>
         <!-- Body content -->
-    @include('header')
+    @include('sdheader')
 
         <div class="page-head"> 
             <div class="container">

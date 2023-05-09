@@ -25,12 +25,12 @@
                     </div>-->
                     <ul class="main-nav nav navbar-nav navbar-right">
 
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/home">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="listprop">Properties</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/myads">My Ads</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/stdhome">Home</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="stdlistprop">Properties</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/myads">My Favourite</a></li>
                         
 
-                        <li class="wow fadeInDown" data-wow-delay="0.4s"><a href="contact.html">Contact</a></li>
+                    
                         <li class="wow fadeInDown" data-wow-delay="0.1s"> @if (Route::has('login'))
                             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                                 @auth
@@ -42,7 +42,6 @@
                                     <li> <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
                                     @endif
                                 @endauth
-                                <li><button class="navbar-btn nav-button wow fadeInRight" onclick="window.location.href = 'submitp';" data-wow-delay="0.5s">Submit</button></li>
                     
                             </div>
                         @endif 

@@ -1089,23 +1089,22 @@ font-weight: 500;
 page-header
 ======================================================*/
 .page-head{
-    background: #494C53 url("../../assets/img/page-header.jpg") 
-        no-repeat scroll center top / cover;
     color:#FFF;
     position: relative;
-    min-height: 140px;
+    min-height: 60px;
 }
 .page-head-content {
-    padding-top: 52px;
-    padding-bottom: 52px;
+    padding-top: 20px;
+    
 }
 .page-head-content .page-title {
     margin: 0px;
-    padding: 10px 16px;
+    padding: 10px 10px;
     font-size: 30px;
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 2px;
+    color:black;
 }
 .content-area{
     background-color: #FCFCFC; padding-bottom: 55px;
@@ -1998,7 +1997,7 @@ single property page
     margin-top: -35px;
 }
 .prp-style-1 .single-property-wrapper{
-    margin-top: -35px;
+    margin-top: 35px;
 }
 .single-property-header {
     padding-bottom: 25px;
@@ -2218,6 +2217,193 @@ single property page
 .register-area{
     padding: 40px;
 }
+
+/* ==== Slider Style === */
+.Modern-Slider .item .img-fill{
+    height:100%;
+    max-height: 700px;
+    background:#000;
+  }
+  
+  .Modern-Slider .item .info > div{
+    display:inline-block!important;
+    vertical-align:middle;
+  }
+  
+  .Modern-Slider .NextArrow {
+    position:absolute;
+    top:50%;
+    transform: translateY(-25px);
+    right:30px;
+    width: 50px;
+    height: 50px;
+    background-color: #d90101f7;
+    border:0 none;
+    line-height: 44px;
+    border-radius: 50%;
+    text-align:center;
+    font-size: 36px;
+    font-family: 'FontAwesome';
+    color:#FFF;
+    z-index:5;
+    outline: none;
+    opacity: 0.3;
+    transition: all .3s;
+  }
+  
+  .Modern-Slider .NextArrow:hover {
+    opacity: 1;
+  }
+  
+  .Modern-Slider .NextArrow:before{
+    content:'\f105';
+  }
+  
+  .Modern-Slider .PrevArrow {
+    position:absolute;
+    top:50%;
+    transform: translateY(-25px);
+    left:30px;
+    width: 50px;
+    height: 50px;
+    background-color: #d90101f7;
+    border:0 none;
+    line-height: 44px;
+    border-radius: 50%;
+    text-align:center;
+    font-size: 36px;
+    font-family: 'FontAwesome';
+    color:#FFF;
+    z-index:5;
+    outline: none;
+    opacity: 0.3;
+    transition: all .3s;
+  }
+  
+  .Modern-Slider .PrevArrow:hover {
+    opacity: 1;
+  }
+  
+  .Modern-Slider .PrevArrow:before{
+    content:'\f104';
+  }
+  
+  ul.slick-dots {
+    display: none!important;
+  }
+  
+  .Modern-Slider .item.slick-active{
+    animation:Slick-FastSwipeIn 1s both;
+  }
+  
+  .Modern-Slider .buttons {
+    position: relative;
+  }
+  
+  .Modern-Slider {background:#000;}
+
+  .img-fill{
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    text-align: center
+  }
+  
+  .img-fill img {
+    min-height: 100%;
+    min-width: 100%;
+    position: relative;
+    display: inline-block;
+    max-width: none;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Position the image container (needed to position the left and right arrows) */
+  .containers {
+    position: relative;
+  }
+  
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+  
+  /* Add a pointer when hovering over the thumbnail images */
+  .cursor {
+    cursor: pointer;
+  }
+  
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  /* Container for image text */
+  .caption-container {
+    text-align: center;
+    background-color: #222;
+    padding: 2px 16px;
+    color: white;
+  }
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Six columns side by side */
+  .columns {
+    float: left;
+    width: 16.66%;
+  }
+  
+  /* Add a transparency effect for thumnbail images */
+  .demo {
+    opacity: 0.6;
+  }
+  
+  .active,
+  .demo:hover {
+    opacity: 1;
+  }
 
 /*=====================================
 Welcom 
