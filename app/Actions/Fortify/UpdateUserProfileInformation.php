@@ -20,24 +20,27 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'phone' => ['nullable', 'string', 'max:20'],
+            'wslink' => ['nullable', 'string', 'max:255'], // Add the validation rules for the phone number field
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
-
+    
         if (isset($input['photo'])) {
             $user->updateProfilePhoto($input['photo']);
         }
-
-        if ($input['email'] !== $user->email &&
-            $user instanceof MustVerifyEmail) {
+    
+        if ($input['email'] !== $user->email && $user instanceof MustVerifyEmail) {
             $this->updateVerifiedUser($user, $input);
         } else {
             $user->forceFill([
                 'name' => $input['name'],
                 'email' => $input['email'],
+                'phone' => $input['phone'], 
+                'wslink' => $input['wslink'],
             ])->save();
         }
     }
-
+    
     /**
      * Update the given verified user's profile information.
      *
@@ -48,9 +51,12 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         $user->forceFill([
             'name' => $input['name'],
             'email' => $input['email'],
+            'phone' => $input['phone'],
+            'wslink' => $input['wslink'], // Add the phone number field here
             'email_verified_at' => null,
         ])->save();
-
+    
         $user->sendEmailVerificationNotification();
     }
+    
 }

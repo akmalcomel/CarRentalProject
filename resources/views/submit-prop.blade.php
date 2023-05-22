@@ -56,6 +56,34 @@
 <link rel="stylesheet" href="assets/css/wizard.css"> 
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
+
+<style>
+     #mapid {
+            height: 400px;
+            width: 100%;
+            z-index: 9995;
+        }
+        #go-button {
+        position: absolute;
+        top: 80px;
+        left: 49%;
+        transform: translateX(-50%);
+        z-index: 9999;
+        }
+        .address-input
+        {
+            z-index: 9998;
+        }
+        .distance-input {
+            z-index: 9000;
+        }
+        
+</style>
+
     </head>
     <body>
 
@@ -107,14 +135,6 @@
                                     <div class="tab-pane" id="step1">
                                         <div class="row p-b-15  ">
                                             <h4 class="info-text"> Let's start with the basic information (with validation)</h4>
-                                            <div class="col-sm-4 col-sm-offset-1">
-                                                <div class="picture-container">
-                                                    <div class="picture">
-                                                        <img src="assets/img/default-property.jpg" class="picture-src" id="wizardPicturePreview" title=""/>
-                                                        <input type="file" name="image1" id="wizard-picture">
-                                                    </div> 
-                                                </div>
-                                            </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>Property name <small>(required)</small></label>
@@ -125,10 +145,37 @@
                                                     <label>Property price <small>(required)</small></label>
                                                     <input name="propertyprice" type="text" class="form-control" placeholder="3330000" required>
                                                 </div> 
+                                               
                                                 <div class="form-group">
-                                                    <label>Property Type <small>Apartment/Terrace/Bungalow</small></label>
-                                                    <input name="propertytype" type="text" class="form-control" placeholder="" required>
+                                                        <label>Property Type:</label>
+                                                        <!--<select id="furnished" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Furnished type">-->
+                                                        <select name= "propertytype"  class="selectpicker" title="Property type" required>
+                                                        <option>Apartment</option>
+                                                        <option>Bungalow</option>
+                                                        <option>Room</option>
+                                                        <option>Terrace</option>
+                                                        <option>Semi-D</option>
+                                                        <option>Studio</option>
+                                                        <option>ShopLot</option>
+                                                            
+                                                        </select>
+                                                    </div>
+                                                <div class="form-group">
+                                                    <label>Address <small>Roadname,area</small></label>
+                                                    <input name="address" type="text" class="form-control" placeholder="" required>
                                                 </div>
+                                            </div>
+
+                                            <!--<div class="col-sm-4 col-sm-offset-1">-->
+                                            <div class="col-lg-6">
+                                                
+                                                    <div id="mapid"></div>
+                                                    <button id="go-button" type="button">Go</button>
+                                                    <input type="hidden" name="distance"  id="distance-input-hidden">
+                                                    <input type="hidden" name="latitude" id="latitude-input-hidden">
+                                                    <input type="hidden" name="longitude" id="longitude-input-hidden">
+                                                    <!--<input type="submit" value="Submit" onclick="setHiddenInputs()">-->
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -162,7 +209,7 @@
                                                         <!--<select id="furnished" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Furnished type">-->
                                                         <select name= "furnished" id="furnished" class="selectpicker" title="Furnished type" required>
                                                             <option>Fully Furnished</option>
-                                                            <option>Partially FUrnished</option>
+                                                            <option>Partially Furnished</option>
                                                             <option>Not Furnished</option>
                                                             
                                                         </select>
@@ -210,8 +257,19 @@
                                                             <option>1</option>
                                                             <option>2</option>
                                                             <option>3</option>
-                                                            <option>More than 3</option>
+                                                            <option>4</option>
 
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label>Floor :</label>
+                                                        <select name="floor" id="floor" class="selectpicker" title="Floor" required>
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -225,17 +283,15 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <label>Campus :</label>
-                                                        <select name="campus" id="campus" class="selectpicker show-tick form-control" title="UiTM Branch" required>
-                                    
-                                                            <option>UiTM Shah Alam</option>
-                                                            <option>UiTM Puncak Alam</option>
+                                            </div>
 
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                            <div class="col-sm-12"> 
+                                                <div class="col-sm-12"> 
+                                                    <div class="form-group">
+                                                        <label>Nearby Highlights :</label>
+                                                        <textarea name="highlight" class="form-control" placeholder="MRT, KFC, Easy to find food" required></textarea>
+                                                    </div> 
+                                                </div> 
                                             </div>
 
                                             
@@ -287,7 +343,7 @@
                                             </div>
                                             
                                         
-                                            <div class="col-sm-12 padding-top-15">
+                                            <div class="col-sm-12 padding-top-10">
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <div class="checkbox">
@@ -365,7 +421,7 @@
                                                 </div>
                                             </div>
                                             <fieldset>
-                                <button type="submit" id="form-submit" class="main-button-icon">Create Project</button>
+                                <button type="submit" id="form-submit" class="main-button-icon" onclick="setHiddenInputs()">Create Project</button>
                               </fieldset>
                                             <br>
                                         </div>
@@ -379,8 +435,12 @@
                                             <div class="col-sm-6"> 
                                                 <div class="form-group">
                                                     <label for="property-video">Additional image :</label>
-                                                    <input class="form-control" type="file" id="property-images" name="image2">
+                                                    <input class="form-control" type="file" id="property-images" name="image">
                                                 </div> 
+
+                                                <div class="form-group">
+                                                <input class="form-control" type="file" id="property-images" name="image2">
+                                                </div>
 
                                                 <div class="form-group">
                                                 <input class="form-control" type="file" id="property-images" name="image3">
@@ -389,6 +449,7 @@
                                                 <div class="form-group">
                                                 <input class="form-control" type="file" id="property-images" name="image4">
                                                 </div>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -419,7 +480,7 @@
                                             </div>
                                         </div>
                                         <fieldset>
-                                <button type="submit" id="form-submit" class="main-button-icon">Create Project</button>
+                                <button type="submit" id="form-submit" class="main-button-icon" onclick="setHiddenInputs()">Create Project</button>
                               </fieldset>
                                     </div>
                                     <!--  End step 4 -->
@@ -447,142 +508,7 @@
         </div>
 
           <!-- Footer area-->
-        <div class="footer-area">
-
-            <div class=" footer">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>About us </h4>
-                                <div class="footer-title-line"></div>
-
-                                <img src="assets/img/footer-logo.png" alt="" class="wow pulse" data-wow-delay="1s">
-                                <p>Lorem ipsum dolor cum necessitatibus su quisquam molestias. Vel unde, blanditiis.</p>
-                                <ul class="footer-adress">
-                                    <li><i class="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
-                                    <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
-                                    <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>Quick links </h4>
-                                <div class="footer-title-line"></div>
-                                <ul class="footer-menu">
-                                    <li><a href="properties.html">Properties</a>  </li> 
-                                    <li><a href="#">Services</a>  </li> 
-                                    <li><a href="submit-property.html">Submit property </a></li> 
-                                    <li><a href="contact.html">Contact us</a></li> 
-                                    <li><a href="faq.html">fqa</a>  </li> 
-                                    <li><a href="faq.html">Terms </a>  </li> 
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>Last News</h4>
-                                <div class="footer-title-line"></div>
-                                <ul class="footer-blog">
-                                    <li>
-                                        <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                            <a href="single.html">
-                                                <img src="assets/img/demo/small-proerty-2.jpg">
-                                            </a>
-                                            <span class="blg-date">12-12-2016</span>
-
-                                        </div>
-                                        <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                            <h6> <a href="single.html">Add news functions </a></h6> 
-                                            <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>
-                                        </div>
-                                    </li> 
-
-                                    <li>
-                                        <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                            <a href="single.html">
-                                                <img src="assets/img/demo/small-proerty-2.jpg">
-                                            </a>
-                                            <span class="blg-date">12-12-2016</span>
-
-                                        </div>
-                                        <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                            <h6> <a href="single.html">Add news functions </a></h6> 
-                                            <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>
-                                        </div>
-                                    </li> 
-
-                                    <li>
-                                        <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                            <a href="single.html">
-                                                <img src="assets/img/demo/small-proerty-2.jpg">
-                                            </a>
-                                            <span class="blg-date">12-12-2016</span>
-
-                                        </div>
-                                        <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                            <h6> <a href="single.html">Add news functions </a></h6> 
-                                            <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>
-                                        </div>
-                                    </li> 
-
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer news-letter">
-                                <h4>Stay in touch</h4>
-                                <div class="footer-title-line"></div>
-                                <p>Lorem ipsum dolor sit amet, nulla  suscipit similique quisquam molestias. Vel unde, blanditiis.</p>
-
-                                <form>
-                                    <div class="input-group">
-                                        <input class="form-control" type="text" placeholder="E-mail ... ">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-primary subscribe" type="button"><i class="pe-7s-paper-plane pe-2x"></i></button>
-                                        </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </form> 
-
-                                <div class="social pull-right"> 
-                                    <ul>
-                                        <li><a class="wow fadeInUp animated" href="https://twitter.com/kimarotec"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://www.facebook.com/kimarotec" data-wow-delay="0.2s"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://plus.google.com/kimarotec" data-wow-delay="0.3s"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://instagram.com/kimarotec" data-wow-delay="0.4s"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://instagram.com/kimarotec" data-wow-delay="0.6s"><i class="fa fa-dribbble"></i></a></li>
-                                    </ul> 
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-copy text-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="pull-left">
-                            <span> (C) <a href="http://www.KimaroTec.com">KimaroTheme</a> , All rights reserved 2016  </span> 
-                        </div> 
-                        <div class="bottom-menu pull-right"> 
-                            <ul> 
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.2s">Home</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.3s">Property</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.4s">Faq</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.6s">Contact</a></li>
-                            </ul> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+          @include('footer')
 
         <script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="assets/js//jquery-1.10.2.min.js"></script>
@@ -602,6 +528,124 @@
 
         <script src="assets/js/main.js"></script>
 
+       
+        <!-- to initialize mape -->
+        <script>
+
+            var marker;
+                window.onload = function() {
+            var map = L.map('mapid').setView([3.06818,101.499], 13); // Set the initial map center and zoom level
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { // Add the OpenStreetMap tile layer
+                attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                maxZoom: 18,
+            }).addTo(map);
+
+            // Add a marker to the map when the user clicks on it
+
+           // var campusMarker = L.marker([3.07434693819793,101.50592519956311]).bindPopup("UiTM").addTo(map);
+           var campusMarker = L.marker([3.06818,101.499])
+    .bindPopup("UiTM")
+    .addTo(map)
+    .openPopup();
+
+
+            var redIcon = L.icon({
+                iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            });
+
+            var distanceInput = L.DomUtil.create('input', 'distance-input');
+                        distanceInput.type = 'text';
+                        distanceInput.id = 'distance-input';
+                        distanceInput.placeholder = 'Distance to campus (km)';
+                        distanceInput.style.position = 'absolute';
+                        distanceInput.style.top = '10px';
+                        distanceInput.style.left = '50%';
+                        distanceInput.style.transform = 'translateX(-50%)';
+                        distanceInput.style.backgroundColor = 'lightblue';
+                        distanceInput.style.height = '30px';
+                        distanceInput.style.width = '200px';
+                        distanceInput.style.marginBottom = '80px';
+                        distanceInput.style.fontFamily = 'Arial';
+                        distanceInput.style.fontSize = '12px';
+                        //distanceInput.style.borderBottom = '20px solid transparent';
+
+
+
+
+                        map.getContainer().appendChild(distanceInput);
+
+
+            var addressInput = L.DomUtil.create('input', 'address-input');
+            addressInput.type = 'text';
+            addressInput.id = 'address-input';
+            addressInput.placeholder = 'Enter an address';
+            addressInput.style.position = 'absolute';
+            addressInput.style.top = '40px';
+            addressInput.style.left = '50%';
+            addressInput.style.transform = 'translateX(-50%)';
+            addressInput.style.zIndex = '1000';
+            addressInput.style.height = '30px';
+            addressInput.style.width = '200px';
+            addressInput.style.marginTop = '7px';
+            
+            addressInput.style.fontFamily = 'Arial';
+            addressInput.style.fontSize = '12px';
+            
+            map.getContainer().appendChild(addressInput);
+
+            var goButton = document.getElementById('go-button');
+            goButton.addEventListener('click', function() {
+                var address = addressInput.value;
+                if (address) {
+                var geocodeUrl = 'https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(address);
+                fetch(geocodeUrl)
+                    .then(function(response) {
+                    return response.json();
+                    })
+                    .then(function(json) {
+                    if (json && json.length > 0) {
+                        var latlng = L.latLng(json[0].lat, json[0].lon);
+                        moveMarker(latlng);
+                    } else {
+                        alert('Address not found');
+                    }
+                    });
+                }
+            });
+                        // Update the distance input field whenever the user moves the pin on the map
+                                    function moveMarker(latlng) {
+                            if (marker) {
+                                map.removeLayer(marker);
+                            }
+                            marker = L.marker(latlng, {icon: redIcon}).addTo(map);
+                            var distance = marker.getLatLng().distanceTo(campusMarker.getLatLng()) / 1000;
+                            document.getElementById('distance-input').value = distance.toFixed(1) + ' km from UiTM';
+                        }
+
+                        map.on('click', function(e) {
+                            moveMarker(e.latlng);
+                        }); 
+                    }
+
+                        function setHiddenInputs() {
+                    var distanceInput = document.getElementById('distance-input');
+                    var hiddenDistanceInput = document.getElementById('distance-input-hidden');
+                    var latitudeInput = document.getElementById('latitude-input-hidden');
+                    var longitudeInput = document.getElementById('longitude-input-hidden');
+                    var distance = distanceInput.value.split(" ")[0];
+                    var latitude = marker.getLatLng().lat;
+                    var longitude = marker.getLatLng().lng;
+                    hiddenDistanceInput.value = distance;
+                    latitudeInput.value = latitude;
+                    longitudeInput.value = longitude;
+                }
+
+            </script>
 
     </body>
 </html>

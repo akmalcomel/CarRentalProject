@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>GARO ESTATE | Properties  page</title>
+        <title>UiTM|Property</title>
         <meta name="description" content="GARO is a real-estate template">
         <meta name="author" content="Kimarotec">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -19,7 +19,9 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
-
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <link rel="stylesheet" href="assets/css/normalize.css">
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/css/fontello.css">
@@ -75,163 +77,76 @@
                 <div class="row  pr0 padding-top-40 properties-page">
                     <div class="col-md-12 padding-bottom-40 large-search"> 
                         <div class="search-form wow pulse">
-                            <form action="" class=" form-inline">
+                            <form action="{{ route('listprop') }}" method="GET" class=" form-inline">
                                 <div class="col-md-12">
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control" placeholder="Key word">
+                                        <input type="text" class="form-control" name="keyword" placeholder="Key word">
                                     </div>
                                     <div class="col-md-4">                                   
-                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your city">
-                                            <option>New york, CA</option>
-                                            <option>Paris</option>
-                                            <option>Casablanca</option>
-                                            <option>Tokyo</option>
-                                            <option>Marraekch</option>
-                                            <option>kyoto , shibua</option>
+                                        <select id="lunchBegins" class="selectpicker" name="propertyType" title="Property Type">
+                                            <option>Apartment</option>
+                                            <option>Bungalow</option>
+                                            <option>Room</option>
+                                            <option>Terrace</option>
+                                            <option>Semi-D</option>
+                                            <option>Studio</option>
+                                            <option>ShopLot</option>
+
                                         </select>
                                     </div>
                                     <div class="col-md-4">                                     
-                                        <select id="basic" class="selectpicker show-tick form-control">
-                                            <option> -Status- </option>
-                                            <option>Rent </option>
-                                            <option>Boy</option>
-                                            <option>used</option>  
+                                        <select id="basic" class="selectpicker show-tick form-control" name="furnishedType" title="Furnished type">
+                                           
+                                            <option>Fully Furnished </option>
+                                            <option>Partially Furnished</option>
+                                            <option>Not Furnished</option>  
 
                                         </select>
                                     </div>
+
+                                    
                                 </div>
-                                <div class="col-md-12 ">
-                                    <div class="search-row">   
+                                    <div class="col-md-12 " style="margin-top: 20px;">
+                                   
+
+                                        <div class="col-md-3" style='z-index: 90;'>       
+                                            <label for="property-geo">Number of bedroom :</label>                                 
+                                            <select id="basic" class="selectpicker show-tick form-control" name="bedrooms" title="bedroom">
+                                               
+                                                <option>1 </option>
+                                                <option>2</option>
+                                                <option>3</option>  
+                                                <option>4</option> 
+                                                <option>5</option> 
+
+                                            </select>
+                                        </div>
 
                                         <div class="col-sm-3">
-                                            <label for="price-range">Price range ($):</label>
-                                            <input type="text" class="span2" value="" data-slider-min="0" 
-                                                   data-slider-max="600" data-slider-step="5" 
-                                                   data-slider-value="[0,450]" id="price-range" ><br />
-                                            <b class="pull-left color">2000$</b> 
-                                            <b class="pull-right color">100000$</b>
+                                            <label for="price-range">Price range (RM):</label>
+                                            <input type="text" class="span2" name="pricerange" value="" data-slider-min="200" 
+                                                   data-slider-max="3000" data-slider-step="100" 
+                                                   data-slider-value="[200,2500]" id="price-range" ><br />
+                                            <b class="pull-left color">RM200</b> 
+                                            <b class="pull-right color">RM3000</b>
                                         </div>
                                         <!-- End of  -->  
 
                                         <div class="col-sm-3">
-                                            <label for="property-geo">Property geo (m2) :</label>
-                                            <input type="text" class="span2" value="" data-slider-min="0" 
-                                                   data-slider-max="600" data-slider-step="5" 
-                                                   data-slider-value="[50,450]" id="property-geo" ><br />
-                                            <b class="pull-left color">40m</b> 
-                                            <b class="pull-right color">12000m</b>
+                                            <label for="property-geo">Max distance from campus(KM) :</label>
+                                            <input type="text" class="span2" name="dist" value="" data-slider-min="0" 
+                                                   data-slider-max="20" data-slider-step="1" 
+                                                   data-slider-value="[0,15]" id="property-geo" ><br />
+                                            <b class="pull-left color">0</b> 
+                                            <b class="pull-right color">20km</b>
                                         </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <label for="price-range">Min baths :</label>
-                                            <input type="text" class="span2" value="" data-slider-min="0" 
-                                                   data-slider-max="600" data-slider-step="5" 
-                                                   data-slider-value="[250,450]" id="min-baths" ><br />
-                                            <b class="pull-left color">1</b> 
-                                            <b class="pull-right color">120</b>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <label for="property-geo">Min bed :</label>
-                                            <input type="text" class="span2" value="" data-slider-min="0" 
-                                                   data-slider-max="600" data-slider-step="5" 
-                                                   data-slider-value="[250,450]" id="min-bed" ><br />
-                                            <b class="pull-left color">1</b> 
-                                            <b class="pull-right color">120</b>
-                                        </div>
-                                        <!-- End of  --> 
-
+                  
                                     </div>
 
-                                    <div class="search-row">  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Fire Place(3100)
-                                                </label>
+                                    
+                                            <div class="center">
+                                        <input type="submit" value="Search" class=" btn-lg-sheach">
                                             </div>
-                                        </div>
-                                        <!-- End of  -->  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Dual Sinks(500)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Hurricane Shutters(99)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Swimming Pool(1190)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> 2 Stories(4600)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Emergency Exit(200)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Laundry Room(10073)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Jog Path(1503)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> 26' Ceilings(1200)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-                                        
-                                    </div>   
-                                    <div class="center">
-                                <input type="submit" value="Search" class=" btn-lg-sheach">
-                            </div>
                                 </div>                     
                             </form>
                         </div>
@@ -240,33 +155,22 @@
                     <div class="col-md-12  clear"> 
                         <div class="col-xs-10 page-subheader sorting pl0">
                             <ul class="sort-by-list">
-                                <li class="active">
-                                    <a href="javascript:void(0);" class="order_by_date" data-orderby="property_date" data-order="ASC">
-                                        Property Date <i class="fa fa-sort-amount-asc"></i>					
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="javascript:void(0);" class="order_by_price" data-orderby="property_price" data-order="DESC">
-                                        Property Price <i class="fa fa-sort-numeric-desc"></i>						
-                                    </a>
-                                </li>
+                            <li class="active">
+                            <a href="javascript:void(0);" class="order_by_date" data-orderby="created_at" data-order="DESC">
+                                Property Date <i class="fa fa-sort-amount-desc"></i>
+                            </a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:void(0);" class="order_by_price" data-orderby="price" data-order="ASC">
+                                    Property Price <i class="fa fa-sort-numeric-asc"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('listprop') }}" class="btn ">Reset Filters</a>
+                            </li>
                             </ul><!--/ .sort-by-list-->
 
-                            <div class="items-per-page">
-                                <label for="items_per_page"><b>Property per page :</b></label>
-                                <div class="sel">
-                                    <select id="items_per_page" name="per_page">
-                                        <option value="3">3</option>
-                                        <option value="6">6</option>
-                                        <option value="9">9</option>
-                                        <option selected="selected" value="12">12</option>
-                                        <option value="15">15</option>
-                                        <option value="30">30</option>
-                                        <option value="45">45</option>
-                                        <option value="60">60</option>
-                                    </select>
-                                </div><!--/ .sel-->
-                            </div><!--/ .items-per-page-->
+                           
                         </div>
 
                        
@@ -281,11 +185,11 @@
                                 <div class="col-sm-6 col-md-3 p0">
                                     <div class="box-two proerty-item">
                                         <div class="item-thumb">
-                                            <a href={{"vw/".$x['id']}} ><img src="{{ url('public/Image/'.$x->image) }}" ></a>
+                                            <a href={{"sdvw/".$x['id']}} ><img src="{{ url('public/Image/'.$x->image) }}" ></a>
                                         </div>
 
                                         <div class="item-entry overflow">
-                                            <h5><a href={{"vw/".$x['id']}}>{{$x['title']}}</a></h5>
+                                            <h5><a href={{"sdvw/".$x['id']}}>{{$x['title']}}</a></h5>
                                             <div class="dot-hr"></div>
                                             <span class="pull-left"><b> Property Name: </b>{{$x['propname']}} </span>
                                             <span class="proerty-price pull-right">RM{{$x['price']}}</span>
@@ -311,14 +215,7 @@
                     <div class="col-md-12 clear"> 
                         <div class="pull-right">
                             <div class="pagination">
-                                <ul>
-                                    <li><a href="#">Prev</a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">Next</a></li>
-                                </ul>
+                            {{ $output->links() }}
                             </div>
                         </div>                
                     </div>
@@ -327,142 +224,29 @@
         </div>
 
           <!-- Footer area-->
-        <div class="footer-area">
+       @include('sdfooter')
 
-            <div class=" footer">
-                <div class="container">
-                    <div class="row">
+       <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const orderByDateLink = document.querySelector('.order_by_date');
+                const orderByPriceLink = document.querySelector('.order_by_price');
 
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>About us </h4>
-                                <div class="footer-title-line"></div>
+                orderByDateLink.addEventListener('click', function() {
+                    sortItems('created_at', 'DESC');
+                });
 
-                                <img src="assets/img/footer-logo.png" alt="" class="wow pulse" data-wow-delay="1s">
-                                <p>Lorem ipsum dolor cum necessitatibus su quisquam molestias. Vel unde, blanditiis.</p>
-                                <ul class="footer-adress">
-                                    <li><i class="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
-                                    <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
-                                    <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>Quick links </h4>
-                                <div class="footer-title-line"></div>
-                                <ul class="footer-menu">
-                                    <li><a href="properties.html">Properties</a>  </li> 
-                                    <li><a href="#">Services</a>  </li> 
-                                    <li><a href="submit-property.html">Submit property </a></li> 
-                                    <li><a href="contact.html">Contact us</a></li> 
-                                    <li><a href="faq.html">fqa</a>  </li> 
-                                    <li><a href="faq.html">Terms </a>  </li> 
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>Last News</h4>
-                                <div class="footer-title-line"></div>
-                                <ul class="footer-blog">
-                                    <li>
-                                        <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                            <a href="single.html">
-                                                <img src="assets/img/demo/small-proerty-2.jpg">
-                                            </a>
-                                            <span class="blg-date">12-12-2016</span>
+                orderByPriceLink.addEventListener('click', function() {
+                    sortItems('price', 'ASC');
+                });
 
-                                        </div>
-                                        <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                            <h6> <a href="single.html">Add news functions </a></h6> 
-                                            <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>
-                                        </div>
-                                    </li> 
-
-                                    <li>
-                                        <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                            <a href="single.html">
-                                                <img src="assets/img/demo/small-proerty-2.jpg">
-                                            </a>
-                                            <span class="blg-date">12-12-2016</span>
-
-                                        </div>
-                                        <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                            <h6> <a href="single.html">Add news functions </a></h6> 
-                                            <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>
-                                        </div>
-                                    </li> 
-
-                                    <li>
-                                        <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                            <a href="single.html">
-                                                <img src="assets/img/demo/small-proerty-2.jpg">
-                                            </a>
-                                            <span class="blg-date">12-12-2016</span>
-
-                                        </div>
-                                        <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                            <h6> <a href="single.html">Add news functions </a></h6> 
-                                            <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>
-                                        </div>
-                                    </li> 
-
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer news-letter">
-                                <h4>Stay in touch</h4>
-                                <div class="footer-title-line"></div>
-                                <p>Lorem ipsum dolor sit amet, nulla  suscipit similique quisquam molestias. Vel unde, blanditiis.</p>
-
-                                <form>
-                                    <div class="input-group">
-                                        <input class="form-control" type="text" placeholder="E-mail ... ">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-primary subscribe" type="button"><i class="pe-7s-paper-plane pe-2x"></i></button>
-                                        </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </form> 
-
-                                <div class="social pull-right"> 
-                                    <ul>
-                                        <li><a class="wow fadeInUp animated" href="https://twitter.com/kimarotec"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://www.facebook.com/kimarotec" data-wow-delay="0.2s"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://plus.google.com/kimarotec" data-wow-delay="0.3s"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://instagram.com/kimarotec" data-wow-delay="0.4s"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://instagram.com/kimarotec" data-wow-delay="0.6s"><i class="fa fa-dribbble"></i></a></li>
-                                    </ul> 
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-copy text-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="pull-left">
-                            <span> (C) <a href="http://www.KimaroTec.com">KimaroTheme</a> , All rights reserved 2016  </span> 
-                        </div> 
-                        <div class="bottom-menu pull-right"> 
-                            <ul> 
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.2s">Home</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.3s">Property</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.4s">Faq</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.6s">Contact</a></li>
-                            </ul> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+                function sortItems(orderBy, order) {
+                    const currentUrl = new URL(window.location.href);
+                    currentUrl.searchParams.set('orderBy', orderBy);
+                    currentUrl.searchParams.set('order', order);
+                    window.location.href = currentUrl.toString();
+                }
+            });
+        </script>
 
        <script src="assets/js/modernizr-2.6.2.min.js"></script>
         <script src="assets/js/jquery-1.10.2.min.js"></script>

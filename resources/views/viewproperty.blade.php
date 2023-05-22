@@ -36,6 +36,17 @@
         <link rel="stylesheet" href="{{URL::asset('assets/css/lightslider.min.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/style.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/responsive.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
+
+        <style>
+            #mapid {
+            height: 400px;
+            width: 100%;
+        }
+        .distance-input {
+            z-index: 9997;
+        }
+        </style>
     </head>
     <body>
         <!-- -->
@@ -126,22 +137,22 @@
 
                                 <!-- Full-width images with number text -->
                                 <div class="mySlides">
-                                <div class="numbertext">1 / 6</div>
+                                <div class="numbertext">1 / 4</div>
                                     <img src="{{ url('public/Image/'.$output->image) }}" style="width:100%">
                                 </div>
 
                                 <div class="mySlides">
-                                <div class="numbertext">2 / 6</div>
+                                <div class="numbertext">2 / 4</div>
                                     <img src="{{ url('public/Image/'.$output->image2) }}" style="width:100%">
                                 </div>
 
                                 <div class="mySlides">
-                                <div class="numbertext">3 / 6</div>
+                                <div class="numbertext">3 / 4</div>
                                     <img src="{{ url('public/Image/'.$output->image3) }}" style="width:100%">
                                 </div>
 
                                 <div class="mySlides">
-                                <div class="numbertext">4 / 6</div>
+                                <div class="numbertext">4 / 4</div>
                                     <img src="{{ url('public/Image/'.$output->image4) }}" style="width:100%">
                                 </div>
 
@@ -333,12 +344,12 @@
 
                                     <li>
                                         <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Number of floor</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">2</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['floor']}}</span>
                                     </li>
 
                                     <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">View</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal View,Direct ew</span>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Nearby Highlights</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['highlights']}}</span>
                                     </li>
 
                                     <li>
@@ -354,18 +365,17 @@
 
                                 <h4 class="s-property-title">Features</h4>                            
                                 <ul>
-                                    <li><a href="properties.html">Swimming Pool</a></li>   
-                                    <li><a href="properties.html">3 Stories</a></li>
-                                    <li><a href="properties.html">Central Cooling</a></li>
-                                    <li><a href="properties.html">Jog Path 2</a></li>
-                                    <li><a href="properties.html">2 Lawn</a></li>
-                                    <li><a href="properties.html">Bike Path</a></li>
+                                    @foreach (explode(',', $output->facilities) as $facility)
+                                        <li><a href="">{{ $facility }}</a></li>
+                                    @endforeach
                                 </ul>
+
+                                <div id="mapid"></div>
 
                             </div>
                             <!-- End features area  -->
                             
-                            
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
 
         
                             <!-- End video area  -->
@@ -388,7 +398,7 @@
                                             </div>-->
                                             <div class="col-xs-8 col-sm-8 ">
                                                 <h3 class="dealer-name">
-                                                    <a href="">MR {{$output['owner']}}</a>
+                                                    <a href="">{{$owner['name']}}</a>
                                                     <span></span>        
                                                 </h3>
                                                 
@@ -398,10 +408,13 @@
 
                                         <div class="clear">
                                             <ul class="dealer-contacts">                                       
-                                                <li><i class="pe-7s-mail strong"> </i> {{$output['owner']}}@gmail.com</li>
-                                                <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
+                                                <li><i class="pe-7s-mail strong"> </i> {{$owner['email']}}</li>
+                                                <li><i class="pe-7s-call strong"> </i> {{$owner['phone']}}</li>
+                                                <li><i class="pe-7s-call strong"></i> <a href="{{$owner->wslink}}">{{$owner->wslink}}</a></li>
+
+                                                
                                             </ul>
-                                            <p>Duis mollis  blandit tempus porttitor curabiturDuis mollis  blandit tempus porttitor curabitur , est non…</p>
+                                          
                                         </div>
 
                                     </div>
@@ -409,68 +422,32 @@
                             </div>
 
                             <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Similar Properties</h3>
-                                </div>
-                                <div class="panel-body recent-property-widget">
-                                        <ul>
-                                        <li>
-                                            <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-2.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="col-md-3 col-sm-3  col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-1.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-3.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
+                            <div class="">
+                            @if ($output->ownerID == $username)
+                                <a href={{"http://localhost:8000/editprop/".$output->id}} class="btn btn-primary">Edit Property</a>
 
-                                        <li>
-                                            <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-2.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-
-                                    </ul>
+                                <a href={{"http://localhost:8000/deleteprop/".$output->id}} class="btn btn-primary" onclick="return confirmDelete(event)" >Delete Property</a>
+                            
+                            @endif       
                                 </div>
-                            </div>                          
+
+                                <script>
+                                    function confirmDelete(event) {
+                                        if (!confirm('Are you sure you want to delete this property?')) {
+                                            event.preventDefault(); // Cancel the deletion process
+                                            return false;
+                                        }
+
+                                        // If confirmed, show a pop-up or alert with the success message
+                                        setTimeout(function() {
+                                                    alert('Property deleted successfully.');
+                                                }, 2000); // 2 seconds delay
+
+                                        return true; // Proceed with the deletion
+                                    }
+                                </script>
+
+                                      
 
                             <div class="panel panel-default sidebar-menu wow fadeInRight animated">
                                 <div class="panel-heading">
@@ -525,6 +502,53 @@
                     }
                 });
             });
+        </script>
+        <script>
+            var campusMarker = L.marker([3.06818,101.499]).bindPopup("UiTM Shah Alam");
+         
+
+            var map = L.map('mapid').setView(campusMarker.getLatLng(), 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                maxZoom: 18,
+            }).addTo(map);
+            campusMarker.addTo(map);
+
+            var redIcon = L.icon({
+                iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            });
+
+            var distanceInput = L.DomUtil.create('input', 'distance-input');
+                        distanceInput.type = 'text';
+                        distanceInput.id = 'distance-input';
+                        distanceInput.value = "{{$output->address}}";
+                        distanceInput.style.position = 'absolute';
+                        distanceInput.style.top = '10px';
+                        distanceInput.style.left = '50%';
+                        distanceInput.style.transform = 'translateX(-50%)';
+                        distanceInput.style.height = '30px';
+                        distanceInput.style.width = '200px';
+                        distanceInput.style.marginBottom = '80px';
+                        distanceInput.style.fontFamily = 'Arial';
+                        distanceInput.style.fontSize = '12px';
+                        //distanceInput.style.borderBottom = '20px solid transparent';
+
+
+
+
+                        map.getContainer().appendChild(distanceInput);
+
+            var latitude = {{$output['latitude']}};
+            var longitude = {{$output['longitude']}};
+            var locationMarker = L.marker([latitude, longitude],{icon: redIcon}).addTo(map);
+            var distance = "{{$output['distance']}} km away";
+            locationMarker.bindPopup(distance).openPopup();
+
         </script>
 
     </body>

@@ -14,7 +14,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="home"><img src="assets/LogoUiTM.png" alt=""></a>
+                    <a class="navbar-brand" href="/stdhome"><img src="assets/LogoUiTM.png" alt=""></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling

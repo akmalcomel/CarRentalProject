@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use Geocoder\Geocoder;
+use Geocoder\Model\Coordinates;
 
 return [
 
@@ -155,6 +157,7 @@ return [
     */
 
     'providers' => [
+
 
         /*
          * Laravel Framework Service Providers...

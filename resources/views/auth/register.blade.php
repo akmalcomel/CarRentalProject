@@ -29,6 +29,24 @@
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
+            <div class="mt-4">
+                <x-jet-label for="phone" value="{{ __('Phone Number') }}" />
+                <x-jet-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required />
+            </div>
+
+
+            <div class="mt-4">
+                <div class="flex items-center">
+                    <x-jet-label for="wslink" value="{{ __('WhatsApp Link') }}" class="mr-2 text-sm" />
+                    <a href="https://faq.whatsapp.com/5913398998672934" target="_blank" class="underline text-xs text-blue-600 hover:text-blue-800">
+                        {{ __('How to create?') }}
+                    </a>
+                </div>
+                <x-jet-input id="wslink" class="block mt-1 w-full" type="text" name="wslink" :value="old('wslink','https://wa.me/60XXXXXXXXX')" required />
+            </div>
+
+   
+
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-jet-label for="terms">

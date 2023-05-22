@@ -52,7 +52,7 @@
 
                 </div>
             </div>
-            <div class="container slider-content">
+            <div class="container slider-content" >
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
                         <h2><strong>UITM Off-Campus Placement Portal</strong></h2>
@@ -75,34 +75,7 @@
                         <div class="col-md-12 "> 
                             <div class="col-xs-10 page-subheader sorting pl0">
 
-                                <ul class="sort-by-list">
-                                    <li class="active">
-                                        <a href="javascript:void(0);" class="order_by_date" data-orderby="property_date" data-order="ASC">
-                                            Property Date <i class="fa fa-sort-amount-asc"></i>					
-                                        </a>
-                                    </li>
-                                    <li class="">
-                                        <a href="javascript:void(0);" class="order_by_price" data-orderby="property_price" data-order="DESC">
-                                            Property Price <i class="fa fa-sort-numeric-desc"></i>						
-                                        </a>
-                                    </li>
-                                </ul><!--/ .sort-by-list-->
-
-                                <div class="items-per-page">
-                                    <label for="items_per_page"><b>Property per page :</b></label>
-                                    <div class="sel">
-                                        <select id="items_per_page" name="per_page">
-                                            <option value="3">3</option>
-                                            <option value="6">6</option>
-                                            <option value="9">9</option>
-                                            <option selected="selected" value="12">12</option>
-                                            <option value="15">15</option>
-                                            <option value="30">30</option>
-                                            <option value="45">45</option>
-                                            <option value="60">60</option>
-                                        </select>
-                                    </div><!--/ .sel-->
-                                </div><!--/ .items-per-page-->
+                               <H3> Recent Properties</h3>
                             </div>
 
                 
@@ -115,15 +88,18 @@
                                 @php($count=0)
                             @foreach($output as $x)
                             @php($count++)
+                            @if($count > 5)
+                                @break
+                            @endif
 
                                 <div class="col-sm-6 col-md-3 p0">
                                     <div class="box-two proerty-item">
                                         <div class="item-thumb">
-                                            <a href={{"vw/".$x['id']}} ><img src="{{ url('public/Image/'.$x->image) }}" ></a>
+                                            <a href={{"sdvw/".$x['id']}} ><img src="{{ url('public/Image/'.$x->image) }}" ></a>
                                         </div>
 
                                         <div class="item-entry overflow">
-                                            <h5><a href={{"vw/".$x['id']}}>{{$x['title']}}</a></h5>
+                                            <h5><a href={{"sdvw/".$x['id']}}>{{$x['title']}}</a></h5>
                                             <div class="dot-hr"></div>
                                             <span class="pull-left"><b> Name :</b>{{$x['propname']}} </span>
                                             <span class="proerty-price pull-right">RM{{$x['price']}}</span></br>
@@ -149,27 +125,14 @@
                                 </div> 
                             </div>
                         </div>
-                        <div class="col-md-12"> 
-                            <div class="pull-right">
-                                <div class="pagination">
-                                    <ul>
-                                        <li><a href="#">Prev</a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">Next</a></li>
-                                    </ul>
-                                </div>
-                            </div>                
-                        </div>
+                        
                     </div>  
                 </div>
             </div>
         </div>
 
 
-         @include('footer')
+         @include('sdfooter')
 
          <script src="assets/js/modernizr-2.6.2.min.js"></script>
 
