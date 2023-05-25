@@ -52,5 +52,16 @@ class CustomLoginController2 extends Controller
 
         
     }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('user2')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
    
 }

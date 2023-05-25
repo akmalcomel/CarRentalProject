@@ -57,6 +57,7 @@
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
                         <h2><strong>UITM Off-Campus Placement Portal</strong></h2>
                         <p></p>
+                        <p><a href="/submitp" class="btn btn-primary btn-lg">Upload House</a></p>
 
                     </div>
                 </div>
@@ -101,11 +102,14 @@
                                         <div class="item-entry overflow">
                                             <h5><a href={{"vw/".$x['id']}}>{{$x['title']}}</a></h5>
                                             <div class="dot-hr"></div>
-                                            <span class="pull-left"><b> Name :</b>{{$x['propname']}} </span>
+                                            <span class="pull-left"><b> Name : </b>{{$x['propname']}} </span>
                                             <span class="proerty-price pull-right">RM{{$x['price']}}</span></br>
                                             <!--<span class="pull-left"><b> Area :</b>{{$x['size']}}sq.ft. </span>-->
                                             
-                                            <p style="display: none;">{{$x['description']}}</p>
+                                            <p style="display: none;"><b>Property Type : </b>{{$x['type']}}<br>
+                                            <b>Furnished Type : </b>{{$x['furnish']}}<br>
+                                            <b>Distance to campus : </b>{{$x['distance']}} KM 
+                                            <small class="pull-right"><b>Date posted: {{ date('d/m H:i', strtotime($x['created_at'])) }}</b></small> </p>
                                             <div class="property-icon">
                                                 <img src="assets/img/icon/bed.png"> {{$x['bedroom']}} Bedroom|
                                                 <img src="assets/img/icon/shawer.png"> {{$x['bathroom']}} Bathroom|

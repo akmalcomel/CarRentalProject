@@ -7,7 +7,7 @@
 <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>UiTM | Home page</title>
+        <title>UiTM | Submission page</title>
         <meta name="description" content="GARO is a real-estate template">
         <meta name="author" content="Kimarotec">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -69,7 +69,7 @@
         }
         #go-button {
         position: absolute;
-        top: 80px;
+        top: 120px;
         left: 49%;
         transform: translateX(-50%);
         z-index: 9999;
@@ -118,7 +118,7 @@
                                 <div class="wizard-header">
                                     <h3>
                                         <b>Submit</b> YOUR PROPERTY <br>
-                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing.</small>
+                                        <small>Renting Property will become much easier</small>
                                     </h3>
                                 </div>
 
@@ -138,12 +138,12 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>Property name <small>(required)</small></label>
-                                                    <input name="propertyname" type="text" class="form-control" placeholder="Super villa ..." required>
+                                                    <input name="propertyname" type="text" class="form-control" placeholder="Taman Bangi Villa" required>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label>Property price <small>(required)</small></label>
-                                                    <input name="propertyprice" type="text" class="form-control" placeholder="3330000" required>
+                                                    <label>Property price (RM) <small>(required)</small></label>
+                                                    <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="propertyprice" type="text" class="form-control" placeholder="2400" required>
                                                 </div> 
                                                
                                                 <div class="form-group">
@@ -161,14 +161,14 @@
                                                         </select>
                                                     </div>
                                                 <div class="form-group">
-                                                    <label>Address <small>Roadname,area</small></label>
-                                                    <input name="address" type="text" class="form-control" placeholder="" required>
+                                                    <label>Address <small>Property Area</small></label>
+                                                    <input name="address" type="text" class="form-control" placeholder="Seksyen 9, Shah Alam" required>
                                                 </div>
                                             </div>
 
                                             <!--<div class="col-sm-4 col-sm-offset-1">-->
                                             <div class="col-lg-6">
-                                                
+                                                    <h5>Pin Your Property Location</h5>
                                                     <div id="mapid"></div>
                                                     <button id="go-button" type="button">Go</button>
                                                     <input type="hidden" name="distance"  id="distance-input-hidden">
@@ -182,13 +182,13 @@
                                     <!--  End step 1 -->
 
                                     <div class="tab-pane" id="step2">
-                                        <h4 class="info-text"> How much your Property is Beautiful ? </h4>
+                                        <h4 class="info-text"> Make your property ads as detail as possible!! </h4>
                                         <div class="row">
                                         <div class="col-sm-12"> 
                                                 <div class="col-sm-12"> 
                                                 <div class="form-group">
-                                                    <label>Ad Title<small>(required)</small></label>
-                                                    <input name="title" type="text" class="form-control" placeholder="TITLE" required>
+                                                    <label>Ad Title<small> Make it interesting!!</small></label>
+                                                    <input name="title" type="text" class="form-control" placeholder="TITLE" maxlength="58" required>
                                                 </div> 
                                                 </div> 
                                             </div>
@@ -224,7 +224,7 @@
                                                             <option>3</option>
                                                             <option>4</option>
                                                             <option>5</option>
-                                                            <option>More than 5</option>
+                                                         
                                                         </select>
                                                     </div>
                                                 </div>
@@ -237,14 +237,15 @@
                                                             <option>3</option>
                                                             <option>4</option>
                                                             <option>5</option>
-                                                            <option>More than 5</option>
+                                                            <option>6</option>
+                                                            
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Property Size :</label>
-                                                        <input name="size" type="text" class="form-control" placeholder="sq.ft." required>
+                                                        <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="size" type="text" class="form-control" placeholder="sq.ft." required>
                                                        
                                                 
                                                     </div>
@@ -253,7 +254,7 @@
                                                     <div class="form-group">
                                                         <label>Parking :</label>
                                                         <select name="parking" id="parking" class="selectpicker show-tick form-control" required>
-                                                            <option>None </option>
+                                                            <option>0 </option>
                                                             <option>1</option>
                                                             <option>2</option>
                                                             <option>3</option>
@@ -277,7 +278,7 @@
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Rental Deposit (RM) :</label>
-                                                        <input name="rental" type="text" class="form-control" placeholder="RM" required>
+                                                        <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="rental" type="text" class="form-control" placeholder="RM" required>
                                                        
                                                 
                                                     </div>
@@ -421,7 +422,7 @@
                                                 </div>
                                             </div>
                                             <fieldset>
-                                <button type="submit" id="form-submit" class="main-button-icon" onclick="setHiddenInputs()">Create Project</button>
+                              
                               </fieldset>
                                             <br>
                                         </div>
@@ -429,25 +430,25 @@
                                     <!-- End step 2 -->
 
                                     <div class="tab-pane" id="step3">                                        
-                                        <h4 class="info-text">Give us somme images and videos ? </h4>
+                                        <h4 class="info-text">Add images of your beautiful property </h4>
                                         <div class="row">  
     
                                             <div class="col-sm-6"> 
                                                 <div class="form-group">
                                                     <label for="property-video">Additional image :</label>
-                                                    <input class="form-control" type="file" id="property-images" name="image">
+                                                    <input class="form-control" type="file" id="property-images" name="image" required>
                                                 </div> 
 
                                                 <div class="form-group">
-                                                <input class="form-control" type="file" id="property-images" name="image2">
+                                                <input class="form-control" type="file" id="property-images" name="image2" required>
                                                 </div>
 
                                                 <div class="form-group">
-                                                <input class="form-control" type="file" id="property-images" name="image3">
+                                                <input class="form-control" type="file" id="property-images" name="image3" required>
                                                 </div>
 
                                                 <div class="form-group">
-                                                <input class="form-control" type="file" id="property-images" name="image4">
+                                                <input class="form-control" type="file" id="property-images" name="image4" required>
                                                 </div>
                                                
                                             </div>
@@ -463,7 +464,7 @@
                                                 <div class="">
                                                     <p>
                                                         <label><strong>Terms and Conditions</strong></label>
-                                                        By accessing or using  GARO ESTATE services, such as 
+                                                        By accessing or using  our services, such as 
                                                         posting your property advertisement with your personal 
                                                         information on our website you agree to the
                                                         collection, use and disclosure of your personal information 
@@ -472,7 +473,7 @@
 
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox" required /> <strong>Accept termes and conditions.</strong>
+                                                            <input type="checkbox" required /> <strong>Accept terms and conditions.</strong>
                                                         </label>
                                                     </div> 
 
@@ -480,7 +481,7 @@
                                             </div>
                                         </div>
                                         <fieldset>
-                                <button type="submit" id="form-submit" class="main-button-icon" onclick="setHiddenInputs()">Create Project</button>
+                                <button type="submit" id="form-submit" class="btn btn-primary" onclick="setHiddenInputs()">PUBLISH</button>
                               </fieldset>
                                     </div>
                                     <!--  End step 4 -->
@@ -534,7 +535,7 @@
 
             var marker;
                 window.onload = function() {
-            var map = L.map('mapid').setView([3.06818,101.499], 13); // Set the initial map center and zoom level
+            var map = L.map('mapid').setView([3.06818,101.499], 11); // Set the initial map center and zoom level
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { // Add the OpenStreetMap tile layer
                 attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
                 maxZoom: 18,
@@ -583,7 +584,7 @@
             var addressInput = L.DomUtil.create('input', 'address-input');
             addressInput.type = 'text';
             addressInput.id = 'address-input';
-            addressInput.placeholder = 'Enter an address';
+            addressInput.placeholder = 'Search Property Area (if needed)';
             addressInput.style.position = 'absolute';
             addressInput.style.top = '40px';
             addressInput.style.left = '50%';

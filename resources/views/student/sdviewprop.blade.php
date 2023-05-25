@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>GARO ESTATE | Property  page</title>
+        <title>UiTM Property| View</title>
         <meta name="description" content="company is a real-estate template">
         <meta name="author" content="Kimarotec">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -46,6 +46,16 @@
         .distance-input {
             z-index: 9997;
         }
+
+        .report-button {
+        display: inline-block;
+        padding: 6px 10px;
+        background-color: #e74c3c;
+        color: #fff;
+        font-size: 10px;
+        text-decoration: none;
+        border-radius: 4px;
+    }
         </style>
     </head>
     <body>
@@ -72,27 +82,35 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
 
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/stdhome">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="listprop">Properties</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/viewprop">favourite</a></li>
-                        
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/stdlistprop">Properties</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/myfav">My Favourite</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s">
+                        @auth('user2')
+                        <li class="dropdown ymm-sw " data-wow-delay="0.1s">
+                            <a href=""  data-toggle="dropdown" data-hover="dropdown" data-delay="200">Dashboard <b class="caret"></b></a>
+                            <ul class="dropdown-menu navbar-nav">
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" style="margin-left: 40px;">Log out</button>
+                                </form>
+                            </li>
+                            @else
+                                 @if (Route::has('login'))
+                                 <li>
+                                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                                </li>
+                                @if (Route::has('register'))
+                                    <li>
+                                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                                    </li>
+                                @endif
+                                @endif
+                            @endauth
 
-                        <li class="wow fadeInDown" data-wow-delay="0.4s"><a href="contact.html">Contact</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"> @if (Route::has('login'))
-                            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                                @auth
-                                   <li><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a></li>
-                                @else
-                                <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
-
-                                    @if (Route::has('register'))
-                                    <li> <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
-                                    @endif
-                                @endauth
-                                <li><button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submitp')" data-wow-delay="0.5s">Submit</button></li>
-                    
-                            </div>
-                        @endif 
+                            </ul>
                         </li>
+ 
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -125,9 +143,7 @@
                             <div class="light-slide-item">            
                                 <div class="clearfix">
                                     <div class="favorite-and-print">
-                                        <a class="add-to-fav" href="#login-modal" data-toggle="modal">
-                                            <i class="fa fa-star-o"></i>
-                                        </a>
+                                      
                                         <a class="printer-icon " href="javascript:window.print()">
                                             <i class="fa fa-print"></i> 
                                         </a>
@@ -241,9 +257,9 @@
 
                             <div class="property-meta entry-meta clearfix ">   
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
                                     <span class="property-info-icon icon-tag">                                        
-                                        <img src="{{URL::asset('assets/img/icon/sale-orange.png')}}">
+                                        <img src="{{URL::asset('assets/img/icon/os.png')}}">
                                     </span>
                                     <span class="property-info-entry">
                                         <span class="property-info-label">Type</span>
@@ -251,19 +267,19 @@
                                     </span>
                                 </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
                                     <span class="property-info icon-area">
-                                        <img src="{{URL::asset('assets/img/icon/room-orange.png')}}">
+                                        <img src="{{URL::asset('assets/img/icon/room.png')}}">
                                     </span>
                                     <span class="property-info-entry">
                                         <span class="property-info-label">Area</span>
-                                        <span class="property-info-value">{{$output['size']}}<b class="property-info-unit">Sq Ft</b></span>
+                                        <span class="property-info-value">{{$output['size']}}<b class="property-info-unit"> Sq Ft</b></span>
                                     </span>
                                 </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
                                     <span class="property-info-icon icon-bed">
-                                        <img src="{{URL::asset('assets/img/icon/bed-orange.png')}}">
+                                        <img src="{{URL::asset('assets/img/icon/bed.png')}}">
                                     </span>
                                     <span class="property-info-entry">
                                         <span class="property-info-label">Bedrooms</span>
@@ -271,9 +287,9 @@
                                     </span>
                                 </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
                                     <span class="property-info-icon icon-bed">
-                                        <img src="{{URL::asset('assets/img/icon/cars-orange.png')}}">
+                                        <img src="{{URL::asset('assets/img/icon/cars.png')}}">
                                     </span>
                                     <span class="property-info-entry">
                                         <span class="property-info-label">Car garages</span>
@@ -281,9 +297,9 @@
                                     </span>
                                 </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
                                     <span class="property-info-icon icon-bath">
-                                        <img src="{{URL::asset('assets/img/icon/os-orange.png')}}">
+                                        <img src="{{URL::asset('assets/img/icon/shawer.png')}}">
                                     </span>
                                     <span class="property-info-entry">
                                         <span class="property-info-label">Bathrooms</span>
@@ -291,28 +307,10 @@
                                     </span>
                                 </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                                    <span class="property-info-icon icon-garage">
-                                        <img src="{{URL::asset('assets/img/icon/room-orange.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Garages</span>
-                                        <span class="property-info-value">2</span>
-                                    </span>
-                                </div>
-                                
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                                    <span class="property-info-icon icon-garage">
-                                        <img src="{{URL::asset('assets/img/icon/shawer-orange.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Garages</span>
-                                        <span class="property-info-value">2</span>
-                                    </span>
-                                </div>
 
 
-                            </div>
+
+                                </div>
                             <!-- .property-meta -->
 
                             <div class="section">
@@ -353,8 +351,8 @@
                                     </li>
 
                                     <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront Description:</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal Front,Ocean Access</span>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Distance from UiTM Campus: </span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output->distance}} KM</span>
                                     </li> 
 
                                 </ul>
@@ -369,8 +367,13 @@
                                         <li><a href="">{{ $facility }}</a></li>
                                     @endforeach
                                 </ul>
+                                <h4 class="s-property-title"> Property Location </h4>
 
-                                <div id="mapid"></div>
+                                <div id="mapid"></div><br>
+                                <div class="pull-right">
+                                <small>For any suspicious or malicious activity, do report to us.</small><br>
+                                <div class="pull-right"> <a class="report-button" href="mailto:akmalarifarifin@gmail.com?subject=Reported Ad&body=Ad ID - {{ $output->id }}, User ID - {{ $user->id }}">Report</a></div>
+                                    </div>
 
                             </div>
                             <!-- End features area  -->
@@ -424,28 +427,30 @@
                             <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
                             <div class="">
                                  <div>
-                                        @auth
-                                            @if(auth()->user()->favorites->contains($output->id))
-                                                <form action="{{ route('favorites.remove', $output->id) }}" method="POST">
-                                                    @csrf
-                                                    <button class="btn btn-primary" type="submit">Remove from Favorites</button>
-                                                </form>
-                                            @else
-                                                <form action="{{ route('favorites.add', $output->id) }}" method="POST">
-                                                    @csrf
-                                                    <button class="btn btn-primary" type="submit">Add to Favorites</button>
-                                                </form>
-                                            @endif
-                                        @endauth
+                                                                @auth('user2')
+                                    @if(Auth::guard('user2')->user()->favorites->contains($output->id))
+                                        <form action="{{ route('favorites.remove', $output->id) }}" method="POST">
+                                            @csrf
+                                            <button class="btn btn-primary" type="submit">Remove from Favorites</button>
+                                        </form>
+                                    @else
+                                        <form action="{{ route('favorites.add', $output->id) }}" method="POST">
+                                            @csrf
+                                            <button class="btn btn-primary" type="submit">Add to Favorites</button>
+                                        </form>
+                                    @endif
+                                @endauth
+
                                  </div>
                                       
 
                             <div class="panel panel-default sidebar-menu wow fadeInRight animated">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Ads her  </h3>
+                                    <h3 class="panel-title"></h3>
                                 </div>
                                 <div class="panel-body recent-property-widget">
-                                    <img src="assets/img/ads.jpg">
+                               
+
                                 </div>
                             </div>
 
@@ -460,7 +465,79 @@
 
 
           <!-- Footer area-->
-          @include('footer')
+          <!-- Footer area-->
+        <div class="footer-area">
+
+        <div class=" footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-6 wow fadeInRight animated">
+                        <div class="single-footer">
+                            <h4>About us </h4>
+                            <div class="footer-title-line"></div>
+
+                            <img src="assets/LogoUiTM.png" alt="" class="wow pulse" data-wow-delay="1s">
+                            <p>The MARA Technological University is a public university based primarily in Shah Alam, Selangor. It was established to help rural Malays in 1956 as the RIDA Training Centre.</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 wow fadeInRight animated">
+                        <div class="single-footer">
+                            <h4>Quick links </h4>
+                            <div class="footer-title-line"></div>
+                            <ul class="footer-menu">
+                                <li><a href="http://localhost:8000/stdhome">Home</a>  </li> 
+                                <li><a href="http://localhost:8000/stdlistprop">Properties</a>  </li> 
+                                <li><a href="http://localhost:8000/myfav">Favourite</a>  </li> 
+                            
+                            
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3 col-sm-6 wow fadeInRight animated">
+                        <div class="single-footer">
+                            <h4>Contact us </h4>
+                            <div class="footer-title-line"></div>
+
+                            <ul class="footer-adress">
+                                    <li><i class="pe-7s-map-marker strong"> </i> 
+Universiti Teknologi MARA (UiTM)
+40450 Shah Alam, Selangor Darul Ehsan
+Malaysia</li>
+                                    <li><i class="pe-7s-mail strong"> </i> HRTeam@UiTM.edu.my</li>
+                                    <li><i class="pe-7s-call strong"> </i>+603-5544 2000 </li>
+                                </ul>
+                        </div>
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copy text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="pull-left">
+                        <span> (C) <a href="">UiTM Off-Campus Placement Portal</a> , All rights reserved 2022  </span> 
+                    </div> 
+                    <div class="bottom-menu pull-right"> 
+                        <ul> 
+                            <li><a class="wow fadeInUp animated" href="http://localhost:8000/stdhome" data-wow-delay="0.2s">Home</a></li>
+                            <li><a class="wow fadeInUp animated" href="http://localhost:8000/stdlistprop" data-wow-delay="0.3s">Property</a></li>
+                            <li><a class="wow fadeInUp animated" href="http://localhost:8000/myfav" data-wow-delay="0.4s">Favourite</a></li>
+                        
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+
        
         
         <script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
@@ -498,7 +575,7 @@
             var campusMarker = L.marker([3.06818,101.499]).bindPopup("UiTM Shah Alam");
          
 
-            var map = L.map('mapid').setView(campusMarker.getLatLng(), 13);
+            var map = L.map('mapid').setView(campusMarker.getLatLng(), 12);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
                 maxZoom: 18,

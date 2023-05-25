@@ -77,7 +77,7 @@
                 <div class="row  pr0 padding-top-40 properties-page">
                     <div class="col-md-12 padding-bottom-40 large-search"> 
                         <div class="search-form wow pulse">
-                            <form action="{{ route('listprop') }}" method="GET" class=" form-inline">
+                            <form action="{{ route('sdlistprop') }}" method="GET" class=" form-inline">
                                 <div class="col-md-12">
                                     <div class="col-md-4">
                                         <input type="text" class="form-control" name="keyword" placeholder="Key word">
@@ -166,7 +166,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('listprop') }}" class="btn ">Reset Filters</a>
+                                <a href="{{ route('sdlistprop') }}" class="btn ">Reset Filters</a>
                             </li>
                             </ul><!--/ .sort-by-list-->
 
@@ -193,7 +193,11 @@
                                             <div class="dot-hr"></div>
                                             <span class="pull-left"><b> Property Name: </b>{{$x['propname']}} </span>
                                             <span class="proerty-price pull-right">RM{{$x['price']}}</span>
-                                            <p style="display: none;">{{$x['description']}}</p>
+
+                                            <p style="display: none;"><b>Property Type : </b>{{$x['type']}}<br>
+                                            <b>Furnished Type : </b>{{$x['furnish']}}<br>
+                                            <b>Distance to campus : </b>{{$x['distance']}} KM 
+                                            <small class="pull-right"><b>Date posted: {{ date('d/m H:i', strtotime($x['created_at'])) }}</b></small> </p>
                                             <div class="property-icon">
                                                 <img src="assets/img/icon/bed.png"> {{$x['bedroom']}} Bedroom|
                                                 <img src="assets/img/icon/shawer.png"> {{$x['bathroom']}} Bathroom|

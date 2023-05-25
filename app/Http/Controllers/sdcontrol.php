@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Student;
 use App\Models\house;
+use App\Models\User2;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class sdcontrol extends Controller
@@ -88,8 +91,8 @@ function sdlistprop(Request $request){
 
     public function fav()
 {
-    $userID = auth()->user()->id;
-    $userFavorites = User::find($userID)->favorites()->pluck('house_id')->toArray();
+    $userID = Auth::guard('user2')->user()->id;
+    $userFavorites = User2::find($userID)->favorites()->pluck('house_id')->toArray();
     $favprop = house::whereIn('id', $userFavorites)->get();
 
     $output2 = house::all();
@@ -101,26 +104,44 @@ function sdlistprop(Request $request){
     function sdviewprops($id){
         $output=house::find($id);
         $owner=User::find($output->ownerID);
+        $user = Auth::guard('user2')->user();
      
-        return view ('student.sdviewprop',compact('output','owner'));
+        return view ('student.sdviewprop',compact('output','owner','user'));
     }
 
 
-    public function addFavorite($houseId)
-        {
-            $user = auth()->user();
-            $user->favorites()->attach($houseId);
+    public function addFavorite(Request $request, $houseId)
+{
+    $user = Auth::guard('user2')->user();
+    
+    // Check if the user already has the house in favorites
+    if (!$user->favorites()->where('house_id', $houseId)->exists()) {
+        $user->favorites()->attach($houseId);
+    }
 
-            return redirect()->back()->with('success', 'Property added to favorites');
+    return redirect()->back()->with('success', 'Property added to favorites');
+}
 
-        }
+// Remove favorite
+public function removeFavorite(Request $request, $houseId)
+{
+    $user = Auth::guard('user2')->user();
+    
+    // Check if the user has the house in favorites
+    if ($user->favorites()->where('house_id', $houseId)->exists()) {
+        $user->favorites()->detach($houseId);
+    }
 
-        public function removeFavorite($houseId)
-        {
-            $user = auth()->user();
-            $user->favorites()->detach($houseId);
+    return redirect()->back()->with('success', 'Property removed from favorites');
+}
 
-            return redirect()->back()->with('success', 'Property removed from favorites');
+public function logout()
+{
+    Auth::guard('user2')->logout();
 
-        }
+    return redirect('/'); // Redirect to your desired page after logout
+}
+
+
+
 }

@@ -15,6 +15,19 @@ use Geocoder\Model\Coordinates;
 
 class homecontrol extends Controller
 {
+
+    function redirectFunct(){
+        $typeuser=Auth::user()->usertype;
+        if($typeuser==1)
+        {
+            return redirect()->action([admincontrol::class, 'adminhome']);
+        }
+
+        else{
+            return redirect()->action([homecontrol::class, 'index']);
+        }
+    }
+
     function index(){
     
 

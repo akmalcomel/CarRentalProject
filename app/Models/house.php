@@ -13,7 +13,7 @@ class house extends Model
 
     public function users()
 {
-    return $this->belongsToMany(User::class, 'favorites', 'house_id', 'user_id')->withTimestamps();
+    return $this->belongsToMany(User2::class, 'favorites', 'house_id', 'user_id')->withTimestamps();
 }
 
 }

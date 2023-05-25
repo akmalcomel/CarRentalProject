@@ -68,4 +68,10 @@ class User extends Authenticatable
             return $this->belongsToMany(house::class, 'favorites', 'user_id', 'house_id')->withTimestamps();
         }
 
+        public function houses()
+        {
+            return $this->hasMany(house::class, 'ownerID');
+        }
+
+
 }

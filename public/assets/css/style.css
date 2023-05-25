@@ -1018,7 +1018,7 @@ label small{
 
 .slider-content{
     position: absolute;
-    top: 20%;
+    top: 5%;
     text-align: center;
     color: #FFF;
     width: 100%;
@@ -1546,7 +1546,7 @@ Asside widgets CSS
 }
 .testimonial .item .client-face {
     position: absolute;
-    top: 112px;
+    top: 230px;
     right: 146px;
     text-align: center;
 }

@@ -64,7 +64,7 @@
             <div class="container">
                 <div class="row">
                     <div class="page-head-content">
-                        <h1 class="page-title">List Layout With Sidebar</h1>               
+                        <h1 class="page-title">Search Properties</h1>               
                     </div>
                 </div>
             </div>
@@ -193,7 +193,10 @@
                                             <div class="dot-hr"></div>
                                             <span class="pull-left"><b> Property Name: </b>{{$x['propname']}} </span>
                                             <span class="proerty-price pull-right">RM{{$x['price']}}</span>
-                                            <p style="display: none;">{{$x['description']}}</p>
+                                            <p style="display: none;"><b>Property Type : </b>{{$x['type']}}<br>
+                                            <b>Furnished Type : </b>{{$x['furnish']}}<br>
+                                            <b>Distance to campus : </b>{{$x['distance']}} KM <small class="pull-right"><b>Date posted: {{ date('d/m H:i', strtotime($x['created_at'])) }}</b></small> </p>
+                                            
                                             <div class="property-icon">
                                                 <img src="assets/img/icon/bed.png"> {{$x['bedroom']}} Bedroom|
                                                 <img src="assets/img/icon/shawer.png"> {{$x['bathroom']}} Bathroom|

@@ -44,6 +44,7 @@
   padding: 20px;
   width: 300px;
   margin: auto;
+  margin-top:150px;
 }
 
 .login-form h2 {
@@ -88,13 +89,13 @@
 
 
 <div class="login-form">
-<h2>Login</h2>
+<h2>Student Login</h2>
 <form method="POST"  action="{{ route('custom-login2.post') }}">
     @csrf
 
     <!-- Email Address -->
     <div>
-        <label for="email">Email</label>
+        <label for="email">UiTM Student Email</label>
 
         <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus />
 

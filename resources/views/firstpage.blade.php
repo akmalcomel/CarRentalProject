@@ -34,6 +34,13 @@
         <link rel="stylesheet" href="assets/css/owl.transitions.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
+
+        <style>
+            .special {
+                margin-top: 10px;
+            }
+
+        </style>
     </head>
     <body>
 
@@ -64,12 +71,12 @@
                     
                     <ul class="main-nav nav navbar-nav navbar-right">
 
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.html">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="#about1">About</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="property.html">Property</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/">Home</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="#about1">About us</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="#ourteam">Our Team</a></li>
+                        
                     
 
-                        <li class="wow fadeInDown" data-wow-delay="0.4s"><a href="contact.html">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -88,9 +95,9 @@
             <div class="container slider-content">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-                        <h2><strong style="color: #9C3AE4 ;text-shadow: 1px 1px #9C3AE4; ; opacity: 1; font-weight:900">Welcome to UiTM Off-Campus Placement Portal</strong></h2>
+                        <h2><strong class="special" style="color: #9C3AE4 ;text-shadow: 1px 1px #9C3AE4; ; opacity: 1; font-weight:900">Welcome to UiTM Off-Campus Placement Portal</strong></h2>
                         <p><br/></p>
-                        <p><a  id="custom-login-button" href="{{ route('custom-login') }}" class="btn btn-primary btn-lg">Search/Rent House</a>
+                        <p><a  id="custom-login-button" href="/custom-login2" class="btn btn-primary btn-lg">Search/Rent House</a><small>&emsp;&emsp;</small>
                         <a style="background-color: #007bff; color: #fff; border-color:#007bff ;" class="btn btn-primary btn-lg" href="/login" role="button">Submit Property</a></p>
                     </div>
                 </div>
@@ -101,7 +108,7 @@
                 document.getElementById("custom-login-button").addEventListener("click", function(event) {
                     event.preventDefault(); // prevent the default link behavior
                     setTimeout(function() {
-                    window.location.href = "{{ route('custom-login') }}"; // redirect after 3 seconds
+                    window.location.href = "{{ route('custom-login2') }}"; // redirect after 3 seconds
                     }, 100); // 3 second delay
                 });
                 </script>
@@ -191,12 +198,12 @@
         </div>
 
         <!--TESTIMONIALS -->
-        <div class="testimonial-area recent-property" style="background-color: #FCFCFC; padding-bottom: 15px;">
+        <div class="testimonial-area recent-property" style="background-color: #FCFCFC; padding-bottom: 15px;" id="ourteam">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
                         <!-- /.feature title -->
-                        <h2>Our Customers Said  </h2> 
+                        <h2>Student Development Team </h2> 
                     </div>
                 </div>
 
@@ -206,40 +213,33 @@
                             <div id="testimonial-slider">
                                 <div class="item">
                                     <div class="client-text">                                
-                                        <p>Nulla quis dapibus nisl. Suspendisse llam sed arcu ultried arcu ultricies !</p>
-                                        <h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
+                                        <p>
+As the web project leader, our dedicated team introduces an exclusive house rental app for UiTM Shah Alam students. Experience hassle-free housing search near campus, revolutionizing your university life. Discover convenience, reliability, and a vibrant community in just a few taps.</p>
+                                        <h4><strong>Akmal Arif, </strong><i>(UiTM V.President) Web Project Leader</i></h4>
                                     </div>
-                                    <div class="client-face wow fadeInRight" data-wow-delay=".9s"> 
+                                    <div class="client-face wow fadeInRight" > 
+                                        <img src="assets/img/IMG_5503.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="client-text">                                
+                                        <p>Hey there! I'm the frontend designer, a fellow UiTM Shah Alam student. I get the struggle of finding suitable housing near campus. That's why I'm here to create a seamless user experience, revolutionizing the way you discover your perfect home. Hope you'll like it</p>
+                                        <h4><strong>Aisyah Nabilah, </strong><i>Lead UI/UX Designer</i></h4>
+                                    </div>
+                                    <div class="client-face">
+                                        <img src="assets/img/IMG_0014.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="client-text">                                
+                                   <p> I'm the lead software tester and a UiTM Shah Alam student. Together, let's simplify your housing search near campus with a seamless user experience. I'm passionate about ensuring a smooth and reliable housing search experience for UiTM students.</p>
+                                        <h4><strong>Afif Sulaim, </strong><i>Head Software Tester</i></h4>
+                                    </div>
+                                    <div class="client-face">
                                         <img src="assets/img/client-face1.png" alt="">
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <div class="client-text">                                
-                                        <p>Nulla quis dapibus nisl. Suspendisse llam sed arcu ultried arcu ultricies !</p>
-                                        <h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
-                                    </div>
-                                    <div class="client-face">
-                                        <img src="assets/img/client-face2.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="client-text">                                
-                                        <p>Nulla quis dapibus nisl. Suspendisse llam sed arcu ultried arcu ultricies !</p>
-                                        <h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
-                                    </div>
-                                    <div class="client-face">
-                                        <img src="assets/img/client-face1.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="client-text">                                
-                                        <p>Nulla quis dapibus nisl. Suspendisse llam sed arcu ultried arcu ultricies !</p>
-                                        <h4><strong>Ohidul Islam, </strong><i>Web Designer</i></h4>
-                                    </div>
-                                    <div class="client-face">
-                                        <img src="assets/img/client-face2.png" alt="">
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -263,10 +263,10 @@
                             </div>
                             <div class="asks-first-info">
                                 <h2>ARE YOU LOOKING FOR A Property?</h2>
-                                <p> varius od lio eget conseq uat blandit, lorem auglue comm lodo nisl no us nibh mas lsa</p>                                        
+                                                                      
                             </div>
                             <div class="asks-first-arrow">
-                                <a href="properties.html"><span class="fa fa-angle-right"></span></a>
+                                <a href="/custom-login2"><span class="fa fa-angle-right"></span></a>
                             </div>
                         </div>
                     </div>
@@ -276,16 +276,16 @@
                                 <span class="fa fa-usd"></span>
                             </div>
                             <div class="asks-first-info">
-                                <h2>DO YOU WANT TO SELL A Property?</h2>
-                                <p> varius od lio eget conseq uat blandit, lorem auglue comm lodo nisl no us nibh mas lsa</p>
+                                <h2>DO YOU WANT TO RENT YOUR Property?</h2>
+                             
                             </div>
                             <div class="asks-first-arrow">
-                                <a href="properties.html"><span class="fa fa-angle-right"></span></a>
+                                <a href="/login"><span class="fa fa-angle-right"></span></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-xs-12">
-                        <p  class="asks-call">QUESTIONS? CALL US  : <span class="strong"> + 3-123- 424-5700</span></p>
+                        <p  class="asks-call">QUESTIONS? CALL US  : <span class="strong">+603-5544 2000</span></p>
                     </div>
                 </div>
             </div>
@@ -304,13 +304,9 @@
                                 <h4>About us </h4>
                                 <div class="footer-title-line"></div>
 
-                                <img src="assets/img/footer-logo.png" alt="" class="wow pulse" data-wow-delay="1s">
-                                <p>Lorem ipsum dolor cum necessitatibus su quisquam molestias. Vel unde, blanditiis.</p>
-                                <ul class="footer-adress">
-                                    <li><i class="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
-                                    <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
-                                    <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
-                                </ul>
+                                <img src="assets/LogoUiTM.png" alt="" class="wow pulse" data-wow-delay="1s">
+                                <p>The MARA Technological University is a public university based primarily in Shah Alam, Selangor. It was established to help rural Malays in 1956 as the RIDA Training Centre.</p>
+                                
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6 wow fadeInRight animated">
@@ -318,41 +314,28 @@
                                 <h4>Quick links </h4>
                                 <div class="footer-title-line"></div>
                                 <ul class="footer-menu">
-                                    <li><a href="properties.html">Properties</a>  </li> 
-                                    <li><a href="#">Services</a>  </li> 
-                                    <li><a href="submit-property.html">Submit property </a></li> 
-                                    <li><a href="contact.html">Contact us</a></li> 
-                                    <li><a href="faq.html">fqa</a>  </li> 
-                                    <li><a href="faq.html">Terms </a>  </li> 
+                                    <li><a href="/">Home</a>  </li> 
+                                    <li><a href="https://www.uitm.edu.my/index.php/en/">UiTM Official Website</a>  </li> 
+                                    <li><a href="/login">Owner Log In </a></li> 
+                                    <li><a href="custom-login2">Student Log In</a></li> 
+                                  
                                 </ul>
                             </div>
                         </div>
                      
                         <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer news-letter">
-                                <h4>Stay in touch</h4>
+                            <div class="single-footer">
+                                <h4>Contact Us </h4>
                                 <div class="footer-title-line"></div>
-                                <p>Lorem ipsum dolor sit amet, nulla  suscipit similique quisquam molestias. Vel unde, blanditiis.</p>
 
-                                <form>
-                                    <div class="input-group">
-                                        <input class="form-control" type="text" placeholder="E-mail ... ">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-primary subscribe" type="button"><i class="pe-7s-paper-plane pe-2x"></i></button>
-                                        </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </form> 
-
-                                <div class="social pull-right"> 
-                                    <ul>
-                                        <li><a class="wow fadeInUp animated" href="https://twitter.com/kimarotec"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://www.facebook.com/kimarotec" data-wow-delay="0.2s"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://plus.google.com/kimarotec" data-wow-delay="0.3s"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://instagram.com/kimarotec" data-wow-delay="0.4s"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://instagram.com/kimarotec" data-wow-delay="0.6s"><i class="fa fa-dribbble"></i></a></li>
-                                    </ul> 
-                                </div>
+                                <ul class="footer-adress">
+                                    <li><i class="pe-7s-map-marker strong"> </i> 
+Universiti Teknologi MARA (UiTM)
+40450 Shah Alam, Selangor Darul Ehsan
+Malaysia</li>
+                                    <li><i class="pe-7s-mail strong"> </i> HRTeam@UiTM.edu.my</li>
+                                    <li><i class="pe-7s-call strong"> </i>+603-5544 2000 </li>
+                                </ul>
                             </div>
                         </div>
 
@@ -364,16 +347,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="pull-left">
-                            <span> (C) <a href="http://www.KimaroTec.com">KimaroTheme</a> , All rights reserved 2016  </span> 
+                            <span> (C) <a href="">UiTM Off-Campus Placement Portal</a> , All rights reserved 2022  </span> 
                         </div> 
-                        <div class="bottom-menu pull-right"> 
-                            <ul> 
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.2s">Home</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.3s">Property</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.4s">Faq</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.6s">Contact</a></li>
-                            </ul> 
-                        </div>
+                        
                     </div>
                 </div>
             </div>

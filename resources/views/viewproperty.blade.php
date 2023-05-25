@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>GARO ESTATE | Property  page</title>
+        <title>UiTM Property | View</title>
         <meta name="description" content="company is a real-estate template">
         <meta name="author" content="Kimarotec">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -72,15 +72,15 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
 
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/home">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="listprop">Properties</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/viewprop">Property</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/listprop">Properties</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/myads">My Property</a></li>
                         
 
-                        <li class="wow fadeInDown" data-wow-delay="0.4s"><a href="contact.html">Contact</a></li>
+                       
                         <li class="wow fadeInDown" data-wow-delay="0.1s"> @if (Route::has('login'))
                             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                                 @auth
-                                   <li><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a></li>
+                                   <li><a href="{{ url('/user/profile') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Profile</a></li>
                                 @else
                                 <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
 
@@ -88,7 +88,7 @@
                                     <li> <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
                                     @endif
                                 @endauth
-                                <li><button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submitp')" data-wow-delay="0.5s">Submit</button></li>
+                                <li><button class="navbar-btn nav-button wow fadeInRight" onclick="window.location.href = 'http://localhost:8000/submitp';" data-wow-delay="0.5s">Submit</button></li>
                     
                             </div>
                         @endif 
@@ -125,9 +125,7 @@
                             <div class="light-slide-item">            
                                 <div class="clearfix">
                                     <div class="favorite-and-print">
-                                        <a class="add-to-fav" href="#login-modal" data-toggle="modal">
-                                            <i class="fa fa-star-o"></i>
-                                        </a>
+                                       
                                         <a class="printer-icon " href="javascript:window.print()">
                                             <i class="fa fa-print"></i> 
                                         </a>
@@ -235,15 +233,15 @@
 
                         <div class="single-property-wrapper">
                             <div class="single-property-header">                                          
-                                <h1 class="property-title pull-left">{{$output['propname']}}</h1>
+                                <h1 class="property-title pull-left"><strong>{{$output['propname']}}</strong></h1>
                                 <span class="property-price pull-right"><strong>RM{{$output['price']}}</strong></span>
                             </div>
 
                             <div class="property-meta entry-meta clearfix ">   
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
                                     <span class="property-info-icon icon-tag">                                        
-                                        <img src="{{URL::asset('assets/img/icon/sale-orange.png')}}">
+                                        <img src="{{URL::asset('assets/img/icon/os.png')}}">
                                     </span>
                                     <span class="property-info-entry">
                                         <span class="property-info-label">Type</span>
@@ -251,19 +249,19 @@
                                     </span>
                                 </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
                                     <span class="property-info icon-area">
-                                        <img src="{{URL::asset('assets/img/icon/room-orange.png')}}">
+                                        <img src="{{URL::asset('assets/img/icon/room.png')}}">
                                     </span>
                                     <span class="property-info-entry">
                                         <span class="property-info-label">Area</span>
-                                        <span class="property-info-value">{{$output['size']}}<b class="property-info-unit">Sq Ft</b></span>
+                                        <span class="property-info-value">{{$output['size']}}<b class="property-info-unit"> Sq Ft</b></span>
                                     </span>
                                 </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
                                     <span class="property-info-icon icon-bed">
-                                        <img src="{{URL::asset('assets/img/icon/bed-orange.png')}}">
+                                        <img src="{{URL::asset('assets/img/icon/bed.png')}}">
                                     </span>
                                     <span class="property-info-entry">
                                         <span class="property-info-label">Bedrooms</span>
@@ -271,9 +269,9 @@
                                     </span>
                                 </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
                                     <span class="property-info-icon icon-bed">
-                                        <img src="{{URL::asset('assets/img/icon/cars-orange.png')}}">
+                                        <img src="{{URL::asset('assets/img/icon/cars.png')}}">
                                     </span>
                                     <span class="property-info-entry">
                                         <span class="property-info-label">Car garages</span>
@@ -281,9 +279,9 @@
                                     </span>
                                 </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
                                     <span class="property-info-icon icon-bath">
-                                        <img src="{{URL::asset('assets/img/icon/os-orange.png')}}">
+                                        <img src="{{URL::asset('assets/img/icon/shawer.png')}}">
                                     </span>
                                     <span class="property-info-entry">
                                         <span class="property-info-label">Bathrooms</span>
@@ -291,25 +289,7 @@
                                     </span>
                                 </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                                    <span class="property-info-icon icon-garage">
-                                        <img src="{{URL::asset('assets/img/icon/room-orange.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Garages</span>
-                                        <span class="property-info-value">2</span>
-                                    </span>
-                                </div>
                                 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                                    <span class="property-info-icon icon-garage">
-                                        <img src="{{URL::asset('assets/img/icon/shawer-orange.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Garages</span>
-                                        <span class="property-info-value">2</span>
-                                    </span>
-                                </div>
 
 
                             </div>
@@ -353,8 +333,8 @@
                                     </li>
 
                                     <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront Description:</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal Front,Ocean Access</span>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Distance from UiTM Campus:</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['distance']}} KM</span>
                                     </li> 
 
                                 </ul>
@@ -369,7 +349,7 @@
                                         <li><a href="">{{ $facility }}</a></li>
                                     @endforeach
                                 </ul>
-
+                                <h4 class="s-property-title"> Property Location </h4>
                                 <div id="mapid"></div>
 
                             </div>
@@ -449,14 +429,7 @@
 
                                       
 
-                            <div class="panel panel-default sidebar-menu wow fadeInRight animated">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Ads her  </h3>
-                                </div>
-                                <div class="panel-body recent-property-widget">
-                                    <img src="assets/img/ads.jpg">
-                                </div>
-                            </div>
+                           
 
                            
 
@@ -507,7 +480,7 @@
             var campusMarker = L.marker([3.06818,101.499]).bindPopup("UiTM Shah Alam");
          
 
-            var map = L.map('mapid').setView(campusMarker.getLatLng(), 13);
+            var map = L.map('mapid').setView(campusMarker.getLatLng(), 12);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
                 maxZoom: 18,

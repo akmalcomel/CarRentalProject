@@ -22,4 +22,9 @@ class User2 extends Model implements Authenticatable
         'email',
         'password',
     ];
+
+    public function favorites()
+    {
+        return $this->belongsToMany(house::class, 'favorites', 'user_id', 'house_id')->withTimestamps();
+    }
 }

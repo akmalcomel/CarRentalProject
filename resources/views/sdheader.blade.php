@@ -27,27 +27,38 @@
 
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/stdhome">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="stdlistprop">Properties</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/myads">My Favourite</a></li>
-                        
-
-                    
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"> @if (Route::has('login'))
-                            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                                @auth
-                                   <li><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/myfav">My Favourite</a></li>
+                        <li class="dropdown ymm-sw " data-wow-delay="0.1s">
+                            <a href="index.html"  data-toggle="dropdown" data-hover="dropdown" data-delay="200">Dashboard <b class="caret"></b></a>
+                            @auth('user2')
+                            <ul class="dropdown-menu navbar-nav">
+                                <li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" style="margin-left: 40px;"class="dropdown-item">Log out</button>
+                                </form>
+                                </li>
                                 @else
-                                <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
 
-                                    @if (Route::has('register'))
-                                    <li> <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
-                                    @endif
-                                @endauth
-                    
-                            </div>
-                        @endif 
+                                @if (Route::has('login'))
+                                <li>
+                                    <a href="/" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                                </li>
+                                @if (Route::has('register'))
+                                <li>
+                                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                                </li>
+                                @endif
+                                @endif
+
+                            </ul>
+                            @endauth
                         </li>
+                        
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
         <!-- End of nav bar -->
+
+       
