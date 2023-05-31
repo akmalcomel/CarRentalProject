@@ -85,10 +85,10 @@
 
         <div class="slider-area">
             <div class="slider">
-                <div id="bg-slider" class="owl-carousel owl-theme">
+                <div class="bg-slider" class="owl-carousel owl-theme">
  
                     <div class="item"><img src="assets/img/slide1/uitm4.jpeg" alt="The Last of us"></div>
-                    <div class="item"><img src="assets/img/slide1/slider-image-1.jpg" alt="GTA V"></div>
+                   
 
                 </div>
             </div>
@@ -262,7 +262,7 @@ As the web project leader, our dedicated team introduces an exclusive house rent
                                 <span class="fa fa-search"></span>
                             </div>
                             <div class="asks-first-info">
-                                <h2>ARE YOU LOOKING FOR A Property?</h2>
+                                <h2>ARE YOU LOOKING FOR A Property nearby campus?</h2>
                                                                       
                             </div>
                             <div class="asks-first-arrow">

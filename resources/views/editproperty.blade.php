@@ -159,14 +159,14 @@
                                             <h4 class="info-text"> Let's start with the basic information (with validation)</h4>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label>Property name <small>(required)</small></label>
+                                                    <label>Property name <small>(Residential Name)</small></label>
                                                     <input name="propertyname" value="{{$output->propname}}" type="text" class="form-control" placeholder="Super villa ..." required>
                                                 </div>
                                                 <input type="hidden" name="id" id="record-id" value="{{$output->id}}">
 
 
                                                 <div class="form-group">
-                                                    <label>Property price <small>(required)</small></label>
+                                                    <label>Property price <small></small></label>
                                                     <input oninput="this.value = this.value.replace(/[^0-9]/g, '')"  name="propertyprice" value="{{$output->price}}" type="text" class="form-control" placeholder="3330000" required>
                                                 </div> 
                                                 <div class="form-group">
@@ -183,7 +183,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label>Address <small>Roadname,area</small></label>
+                                                    <label>Address <small>(Roadname)</small></label>
                                                     <input name="address" type="text" value="{{$output->address}}" class="form-control" placeholder="" required>
                                                 </div>
                                             </div>
@@ -209,7 +209,7 @@
                                         <div class="col-sm-12"> 
                                                 <div class="col-sm-12"> 
                                                 <div class="form-group">
-                                                    <label>Ad Title<small>(required)</small></label>
+                                                    <label>Ad Title<small></small></label>
                                                     <input name="title" value="{{$output->title}}" type="text" class="form-control" placeholder="TITLE" maxlength="58" required>
                                                 </div> 
                                                 </div> 

@@ -64,7 +64,7 @@
             <div class="container">
                 <div class="row">
                     <div class="page-head-content">
-                        <h1 class="page-title">Search Properties</h1>               
+                        <h1 class="page-title">Search Properties for Comparison</h1>               
                     </div>
                 </div>
             </div>
@@ -178,6 +178,11 @@
 
                     <div class="col-md-12 clear "> 
                         <div id="list-type" class="proerty-th-list">
+
+                        @if ($output->isEmpty())
+                            <p>No matching property found.</p>
+                        @else
+
                         @php($count=0)
                             @foreach($output as $x)
                             @php($count++)
@@ -210,7 +215,7 @@
                                 @endforeach
 
                             
-
+                                @endif
                            
                         </div>
                     </div>
@@ -222,6 +227,7 @@
                             </div>
                         </div>                
                     </div>
+                    
                 </div>                
             </div>
         </div>

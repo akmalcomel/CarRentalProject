@@ -45,17 +45,17 @@
 
         <div class="slider-area">
             <div class="slider">
-                <div id="bg-slider" class="owl-carousel owl-theme">
+                <div class="bg-slider" class="owl-carousel owl-theme">
  
-                    <div class="item"><img src="assets/img/slide1/slider-image-2.jpg" alt="The Last of us"></div>
-                    <div class="item"><img src="assets/img/slide1/slider-image-1.jpg" alt="GTA V"></div>
+                    <div class="item"><img src="assets/img/slide1/uitm4.jpeg" alt="The Last of us"></div>
+                
 
                 </div>
             </div>
             <div class="container slider-content">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-                        <h2><strong>UITM Off-Campus Placement Portal</strong></h2>
+                        <h2><strong style="color: #9C3AE4 ;text-shadow: 1px 1px #9C3AE4; ; opacity: 1; font-weight:900">UITM Off-Campus Placement Portal</strong></h2>
                         <p></p>
                         <p><a href="/submitp" class="btn btn-primary btn-lg">Upload House</a></p>
 

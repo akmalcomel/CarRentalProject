@@ -137,12 +137,12 @@
                                             <h4 class="info-text"> Let's start with the basic information (with validation)</h4>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label>Property name <small>(required)</small></label>
+                                                    <label>Property name <small>(Residential Name)</small></label>
                                                     <input name="propertyname" type="text" class="form-control" placeholder="Taman Bangi Villa" required>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label>Property price (RM) <small>(required)</small></label>
+                                                    <label>Property price (RM) <small></small></label>
                                                     <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="propertyprice" type="text" class="form-control" placeholder="2400" required>
                                                 </div> 
                                                

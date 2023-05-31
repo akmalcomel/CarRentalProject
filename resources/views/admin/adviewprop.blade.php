@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>GARO ESTATE | Property  page</title>
+        <title>UITM Property| Property  page</title>
         <meta name="description" content="company is a real-estate template">
         <meta name="author" content="Kimarotec">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -60,7 +60,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="http://localhost:8000/home"><img src="{{ url('assets/LogoUiTM.png')}}" alt=""></a>
+                    <a class="navbar-brand" href="http://localhost:8000/adminh"><img src="{{ url('assets/LogoUiTM.png')}}" alt=""></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling
@@ -237,75 +237,57 @@
 
                             <div class="property-meta entry-meta clearfix ">   
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                                    <span class="property-info-icon icon-tag">                                        
-                                        <img src="{{URL::asset('assets/img/icon/sale-orange.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Type</span>
-                                        <span class="property-info-value">{{$output['type']}}</span>
-                                    </span>
-                                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
+                                <span class="property-info-icon icon-tag">                                        
+                                    <img src="{{URL::asset('assets/img/icon/os.png')}}">
+                                </span>
+                                <span class="property-info-entry">
+                                    <span class="property-info-label">Type</span>
+                                    <span class="property-info-value">{{$output['type']}}</span>
+                                </span>
+                            </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                                    <span class="property-info icon-area">
-                                        <img src="{{URL::asset('assets/img/icon/room-orange.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Area</span>
-                                        <span class="property-info-value">{{$output['size']}}<b class="property-info-unit">Sq Ft</b></span>
-                                    </span>
-                                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
+                                <span class="property-info icon-area">
+                                    <img src="{{URL::asset('assets/img/icon/room.png')}}">
+                                </span>
+                                <span class="property-info-entry">
+                                    <span class="property-info-label">Area</span>
+                                    <span class="property-info-value">{{$output['size']}}<b class="property-info-unit"> Sq Ft</b></span>
+                                </span>
+                            </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                                    <span class="property-info-icon icon-bed">
-                                        <img src="{{URL::asset('assets/img/icon/bed-orange.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Bedrooms</span>
-                                        <span class="property-info-value">{{$output['bedroom']}}</span>
-                                    </span>
-                                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
+                                <span class="property-info-icon icon-bed">
+                                    <img src="{{URL::asset('assets/img/icon/bed.png')}}">
+                                </span>
+                                <span class="property-info-entry">
+                                    <span class="property-info-label">Bedrooms</span>
+                                    <span class="property-info-value">{{$output['bedroom']}}</span>
+                                </span>
+                            </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                                    <span class="property-info-icon icon-bed">
-                                        <img src="{{URL::asset('assets/img/icon/cars-orange.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Car garages</span>
-                                        <span class="property-info-value">{{$output['parking']}}</span>
-                                    </span>
-                                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
+                                <span class="property-info-icon icon-bed">
+                                    <img src="{{URL::asset('assets/img/icon/cars.png')}}">
+                                </span>
+                                <span class="property-info-entry">
+                                    <span class="property-info-label">Car garages</span>
+                                    <span class="property-info-value">{{$output['parking']}}</span>
+                                </span>
+                            </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                                    <span class="property-info-icon icon-bath">
-                                        <img src="{{URL::asset('assets/img/icon/os-orange.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Bathrooms</span>
-                                        <span class="property-info-value">{{$output['bathroom']}}</span>
-                                    </span>
-                                </div>
+                            <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
+                                <span class="property-info-icon icon-bath">
+                                    <img src="{{URL::asset('assets/img/icon/shawer.png')}}">
+                                </span>
+                                <span class="property-info-entry">
+                                    <span class="property-info-label">Bathrooms</span>
+                                    <span class="property-info-value">{{$output['bathroom']}}</span>
+                                </span>
+                            </div>
 
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                                    <span class="property-info-icon icon-garage">
-                                        <img src="{{URL::asset('assets/img/icon/room-orange.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Garages</span>
-                                        <span class="property-info-value">2</span>
-                                    </span>
-                                </div>
-                                
-                                <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
-                                    <span class="property-info-icon icon-garage">
-                                        <img src="{{URL::asset('assets/img/icon/shawer-orange.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Garages</span>
-                                        <span class="property-info-value">2</span>
-                                    </span>
-                                </div>
+
 
 
                             </div>
@@ -331,7 +313,7 @@
 
                                     <li>
                                         <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Location</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Seksyen 19</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['address']}}</span>
                                     </li>
                                     <li>
                                         <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Furnished</span>
@@ -349,8 +331,8 @@
                                     </li>
 
                                     <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront Description:</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal Front,Ocean Access</span>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Distance from UiTM Campus:</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['distance']}} KM</span>
                                     </li> 
 
                                 </ul>
@@ -444,14 +426,7 @@
 
                                       
 
-                            <div class="panel panel-default sidebar-menu wow fadeInRight animated">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Ads her  </h3>
-                                </div>
-                                <div class="panel-body recent-property-widget">
-                                    <img src="assets/img/ads.jpg">
-                                </div>
-                            </div>
+                
 
                            
 
@@ -464,8 +439,7 @@
 
 
           <!-- Footer area-->
-          @include('footer')
-       
+    
         
         <script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="assets/js/jquery-1.10.2.min.js"></script>
