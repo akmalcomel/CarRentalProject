@@ -133,7 +133,7 @@
                     <div class="wizard-container"> 
 
                         <div class="wizard-card ct-wizard-orange" id="wizardProperty">
-                        <form id="contact" action="/edit" method="post" enctype="multipart/form-data">
+                        <form id="contact" action="/adedit" method="post" enctype="multipart/form-data">
                             @csrf                       
                                 <div class="wizard-header">
                                     <h3>

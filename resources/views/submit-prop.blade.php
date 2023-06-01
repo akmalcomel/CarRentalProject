@@ -471,11 +471,7 @@
                                                         in the legal proper manner
                                                     </p>
 
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" required /> <strong>Accept terms and conditions.</strong>
-                                                        </label>
-                                                    </div> 
+                                                   
 
                                                 </div> 
                                             </div>
@@ -533,6 +529,7 @@
         <!-- to initialize mape -->
         <script>
 
+            
             var marker;
                 window.onload = function() {
             var map = L.map('mapid').setView([3.06818,101.499], 11); // Set the initial map center and zoom level

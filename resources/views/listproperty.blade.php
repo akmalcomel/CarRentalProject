@@ -135,10 +135,10 @@
                                         <div class="col-sm-3">
                                             <label for="property-geo">Max distance from campus(KM) :</label>
                                             <input type="text" class="span2" name="dist" value="" data-slider-min="0" 
-                                                   data-slider-max="20" data-slider-step="1" 
-                                                   data-slider-value="[0,15]" id="property-geo" ><br />
+                                                   data-slider-max="30" data-slider-step="1" 
+                                                   data-slider-value="[0,25]" id="property-geo" ><br />
                                             <b class="pull-left color">0</b> 
-                                            <b class="pull-right color">20km</b>
+                                            <b class="pull-right color">30km</b>
                                         </div>
                   
                                     </div>

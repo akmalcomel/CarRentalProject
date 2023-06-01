@@ -97,4 +97,4 @@ Route::get("/advw/{id}",[admincontrol::class,"detailprop"]);
 Route::get("/addeleteprop/{id}",[admincontrol::class,"deleteads"]);
 Route::get("/adeditprop/{id}",[admincontrol::class,"editads"]);
 Route::POST("/adedit",[admincontrol::class,"update"]);
-Route::get("/deluser/{id}",[admincontrol::class,"deleteuser"]);
+Route::get("/deluser/{id}",[admincontrol::class,"deleteUser"]);

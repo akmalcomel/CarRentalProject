@@ -191,10 +191,7 @@
                                       @endphp
                                       {{ $houseCount }}
                                 </td>
-                                <td><a href={{"deluser/".$user['id']}}  onclick="event.preventDefault();
-                if (confirm('Are you sure you want to delete this user?')) {
-                    document.getElementById('delete-form-{{ $user['id'] }}').submit();
-                }">Delete User</a></td>
+                                <td><a href={{"deluser/".$user['id']}} onclick="return confirm('Are you sure you want to delete this user?')" >Delete User</a></td>
                             </tr>
                         @endforeach
                     </tbody>
