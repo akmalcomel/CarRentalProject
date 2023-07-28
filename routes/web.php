@@ -50,6 +50,11 @@ Route::POST("/edit",[homecontrol::class,"update"]);
 Route::POST("/submit2",[homecontrol::class,"testsubmit2"]);
 Route::get("/editprop/{id}",[homecontrol::class,"editads"]);
 Route::get("/deleteprop/{id}",[homecontrol::class,"deleteads"]);
+Route::post('/property/{id}/add_discount', [homecontrol::class,"addDiscount"])->name('property.add_discount');
+Route::put('/property/{id}/update_discount', [homecontrol::class,"updateDiscount"])->name('property.update_discount');
+Route::put('/property/{id}/update-status', [homecontrol::class,"updateStatus"])->name('property.update_status');
+
+
 
 
 

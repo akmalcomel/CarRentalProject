@@ -127,6 +127,57 @@ class homecontrol extends Controller
         return redirect()->action([homecontrol::class, 'index']);
     }
 
+    public function addDiscount(Request $request, $id)
+    {
+        $property = house::findOrFail($id);
+
+        // Validate the discount input
+        $request->validate([
+            'discount' => 'required|numeric|min:0|max:100',
+        ]);
+
+        // Save the discount to the property
+        $property->floor = $request->input('discount');
+        $property->save();
+
+        return redirect()->back()->with('success', 'Discount added successfully.');
+    }
+
+    public function updateDiscount(Request $request, $id)
+    {
+        $property = house::findOrFail($id);
+
+        // Validate the discount input
+        $request->validate([
+            'discount' => 'required|numeric|min:0|max:100',
+        ]);
+
+        // Update the discount for the property
+        $property->floor = $request->input('discount');
+        $property->save();
+
+        return redirect()->back()->with('success', 'Discount updated successfully.');
+    }
+
+
+    public function updateStatus(Request $request, $id)
+    {
+        // Validate the input
+        $request->validate([
+            'car_status' => 'required|in:available,not_available',
+        ]);
+
+        // Find the property by ID
+        $property = house::findOrFail($id);
+
+        // Update the car status
+        $property->distance = $request->car_status;
+        $property->save();
+
+        // Redirect back to the property detail page
+        return redirect()->back()->with('success', 'Car status updated successfully.');
+    }
+
 
     function listprop(Request $request){
 

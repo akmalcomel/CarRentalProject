@@ -365,7 +365,7 @@
                             </div>
 
                             <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
-                                @if ($output->ownerID == $username)
+                            @if ($output->ownerID == $username)
                             <div class="container">
 
                                 <a href={{"http://localhost:8000/editprop/".$output->id}} class="btn btn-primary">Edit Property</a>
@@ -374,8 +374,56 @@
 
 
                                 </div>
+                                <hr>
                                 <div class="container">
-                                    wefewwefrewf
+                                    @if ($output->floor)
+                                        <form action="{{ route('property.update_discount', $output->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="form-group">
+                                                <div class="container">
+                                                    <div class="row">
+                                                <label class="col" for="discount">Edit Discount (%):</label>
+                                                <input class="col" type="number" name="discount" id="discount" class="form-control" min="0" max="100" step="1" value="{{ $output->floor }}" style="width: 100px;" required>
+                                                <button class="col" type="submit" class="btn btn-outline-dark btn-wrap" style="background-color: #3f7bba; color: white;">Update</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </form>
+                                    @else
+                                        <form action="{{ route('property.add_discount', $output->id) }}" method="POST">
+                                            @csrf
+                                            <div class="container">
+                                                <div class="row">
+                                                <label class="col" for="discount">Add Discount (%):</label>
+                                                <input class="col" type="number" name="discount" id="discount" class="form-control" min="0" max="100" step="1"  style="width: 100px;" required>
+                                                <button class="col" type="submit" class="btn btn-outline-dark btn-wrap" style="background-color: #3f7bba; color: white;">Add</button>
+                                            </div>
+                                            </div>
+
+                                        </form>
+                                    @endif
+
+                                    <form action="{{ route('property.update_status', $output->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="form-group">
+                                            <div class="container">
+                                                <div class="row">
+                                            <label class="col" for="car_status">Car Status:</label>
+                                            <select class="col" name="car_status" id="car_status" class="form-control" style="width: 120px;">
+                                                <option value="available" @if ($output->distance == 'available') selected @endif>Available</option>
+                                                <option value="not_available" @if ($output->distance == 'not_available') selected @endif>Not Available</option>
+                                            </select>
+
+                                                <button class="col" class="col" type="submit" class="btn btn-outline-dark btn-wrap" style="background-color: #3f7bba; color: white;">Save</button>
+
+                                        </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                                 @endif
 
