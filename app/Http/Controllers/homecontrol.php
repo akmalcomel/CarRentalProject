@@ -29,21 +29,21 @@ class homecontrol extends Controller
     }
 
     function index(){
-    
+
 
         $output=house::orderByDesc('created_at')->get();
         $output2=house::all();
-         
+
             return view ('home',compact('output','output2'));
-        
-    
+
+
     }
 
     function viewprop($id){
         $output=house::find($id);
         $owner=User::find($output->ownerID);
         $username=Auth::user()->id;
-     
+
         return view ('viewproperty',compact('output','owner','username'));
     }
 
@@ -60,20 +60,20 @@ class homecontrol extends Controller
 
         $prop->delete();
        session()->flash('success', 'Ad deleted successfully.');
-       
+
 
         return redirect()->action([homecontrol::class, 'index']);
     }
-    
+
     public function update(Request $request)
     {
         $id=$request->id;
         $prop = house::find($id);
 
-        
-        $prop->propname=$request->propertyname;//belah kanan daripada blade file
+
+        $prop->propname=$request->carname;//belah kanan daripada blade file
         $prop->title=$request->title;
-        $prop->price=$request->propertyprice;
+        $prop->price=$request->rentalprice;
         $prop->furnish=$request->furnished;
         $prop->type=$request->propertytype;
         //$prop->image="testing value";
@@ -91,11 +91,11 @@ class homecontrol extends Controller
         $prop->distance=$request->distance;
         $prop->latitude=$request->latitude;
         $prop->longitude=$request->longitude;
-        $prop->floor=$request->floor;
-        $prop->highlights=$request->highlight;
+        //$prop->floor=$request->floor;
+        //$prop->highlights=$request->highlight;
         // Check if a new image was uploaded
         if ($request->hasFile('image')) {
-            $file= $req->file('image');
+            $file= $request->file('image');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('public/Image'), $filename);
             $prop['image']= $filename;
@@ -105,13 +105,13 @@ class homecontrol extends Controller
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('public/Image'), $filename);
             $prop['image2']= $filename;
-        } 
+        }
         if ($request->hasFile('image3')) {
             $file= $request->file('image3');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('public/Image'), $filename);
             $prop['image3']= $filename;
-        } 
+        }
         if ($request->hasFile('image4')) {
             $file= $request->file('image4');
             $filename= date('YmdHi').$file->getClientOriginalName();
@@ -122,11 +122,11 @@ class homecontrol extends Controller
         $selectedFacilities = $request->input('facility', []);
         $prop->facilities = implode(',', $selectedFacilities);
         $prop->save();
-    
+
         // Redirect or perform any other actions
         return redirect()->action([homecontrol::class, 'index']);
     }
-    
+
 
     function listprop(Request $request){
 
@@ -199,7 +199,7 @@ class homecontrol extends Controller
    // dd($query->toSql());
     $output = $query->paginate(10);
         $output2=house::all();
-     
+
         return view ('listproperty',compact('output','output2'));
     }
 
@@ -223,9 +223,9 @@ class homecontrol extends Controller
 
         $prop= new house;
 
-        $prop->propname=$req->propertyname;//belah kanan daripada blade file
+        $prop->propname=$req->carname;//belah kanan daripada blade file
         $prop->title=$req->title;
-        $prop->price=$req->propertyprice;
+        $prop->price=$req->rentalprice;
         $prop->furnish=$req->furnished;
         $prop->type=$req->propertytype;
         //$prop->image="testing value";
@@ -243,8 +243,8 @@ class homecontrol extends Controller
         $prop->distance=$req->distance;
         $prop->latitude=$req->latitude;
         $prop->longitude=$req->longitude;
-        $prop->floor=$req->floor;
-        $prop->highlights=$req->highlight;
+       // $prop->floor=$req->floor;
+        $prop->highlights=$req->location;
         $selectedFacilities = $req->input('facility', []);
          // Convert the array of selected facilities to a string
         $facilityString = implode(',', $selectedFacilities);
@@ -278,8 +278,8 @@ class homecontrol extends Controller
             $prop['image4']= $filename;
         }
 
-     
-        
+
+
         $prop->save();
 
 
@@ -303,14 +303,14 @@ class homecontrol extends Controller
 
     }
 
-   
+
 
     function viewownerads(){
 
         $output=house::all();
         $output2=house::all();
         $username=Auth::user()->name;
-     
+
         return view ('ownerads',compact('output','output2','username'));
     }
 
@@ -323,5 +323,5 @@ class homecontrol extends Controller
         $prop->save();
         return redirect()->action([homeControl::class, 'index']);
     }
-    
+
 }

@@ -10,9 +10,9 @@
                     <h4>About us </h4>
                     <div class="footer-title-line"></div>
 
-                    <img src="assets/LogoUiTM.png" alt="" class="wow pulse" data-wow-delay="1s">
+                    <img src="assets/carlogo.jpg" alt="" class="wow pulse" data-wow-delay="1s">
                     <p>The MARA Technological University is a public university based primarily in Shah Alam, Selangor. It was established to help rural Malays in 1956 as the RIDA Training Centre.</p>
-                    
+
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 wow fadeInRight animated">
@@ -20,22 +20,22 @@
                     <h4>Quick links </h4>
                     <div class="footer-title-line"></div>
                     <ul class="footer-menu">
-                        <li><a href="stdhome">Home</a>  </li> 
-                        <li><a href="stdlistprop">Properties</a>  </li> 
-                        <li><a href="/myfav">Favourite</a>  </li> 
-                       
-                    
+                        <li><a href="stdhome">Home</a>  </li>
+                        <li><a href="stdlistprop">Properties</a>  </li>
+                        <li><a href="/myfav">Favourite</a>  </li>
+
+
                     </ul>
                 </div>
             </div>
-            
+
             <div class="col-md-3 col-sm-6 wow fadeInRight animated">
                             <div class="single-footer">
                                 <h4>Contact Us </h4>
                                 <div class="footer-title-line"></div>
 
                                 <ul class="footer-adress">
-                                    <li><i class="pe-7s-map-marker strong"> </i> 
+                                    <li><i class="pe-7s-map-marker strong"> </i>
 Universiti Teknologi MARA (UiTM)
 40450 Shah Alam, Selangor Darul Ehsan
 Malaysia</li>
@@ -44,7 +44,7 @@ Malaysia</li>
                                 </ul>
                             </div>
                         </div>
-           
+
 
         </div>
     </div>
@@ -54,15 +54,15 @@ Malaysia</li>
     <div class="container">
         <div class="row">
             <div class="pull-left">
-                <span> (C) <a href="">UiTM Off-Campus Placement Portal</a> , All rights reserved 2022  </span> 
-            </div> 
-            <div class="bottom-menu pull-right"> 
-                <ul> 
+                <span> (C) <a href="">UiTM Off-Campus Placement Portal</a> , All rights reserved 2022  </span>
+            </div>
+            <div class="bottom-menu pull-right">
+                <ul>
                     <li><a class="wow fadeInUp animated" href="stdhome" data-wow-delay="0.2s">Home</a></li>
                     <li><a class="wow fadeInUp animated" href="stdlistprop" data-wow-delay="0.3s">Property</a></li>
                     <li><a class="wow fadeInUp animated" href="/myfav" data-wow-delay="0.4s">Favourite</a></li>
-                  
-                </ul> 
+
+                </ul>
             </div>
         </div>
     </div>

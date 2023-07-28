@@ -6,6 +6,7 @@ use App\Http\Controllers\sdcontrol;
 use App\Http\Controllers\admincontrol;
 use App\Http\Controllers\Auth\CustomLoginController;
 use App\Http\Controllers\Auth\CustomLoginController2;
+use App\Http\Controllers\RenterRegistrationController;
 
 
 
@@ -65,6 +66,8 @@ Route::get('/custom-login2', [\App\Http\Controllers\Auth\CustomLoginController2:
 Route::post('/custom-login2', [\App\Http\Controllers\Auth\CustomLoginController2::class, 'login'])->name('custom-login2.post');
 Route::post('/logout', [\App\Http\Controllers\Auth\CustomLoginController2::class, 'logout'])->name('logout');
 
+Route::get('/registerrent', [RenterRegistrationController::class, 'showRegistrationForm'])->name('renter.register.form');
+Route::post('/registerrent', [RenterRegistrationController::class, 'register'])->name('renter.registerrent');
 
 
 Route::middleware(['auth:user2'])->group(function () {

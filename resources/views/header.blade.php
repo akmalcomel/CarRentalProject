@@ -1,7 +1,7 @@
 
         <!-- Body content -->
 
-       
+
         <!--End top header -->
 
         <nav class="navbar navbar-default ">
@@ -14,7 +14,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="home"><img src="assets/LogoUiTM.png" alt=""></a>
+                    <a class="navbar-brand" href="home"><img src="assets/carlogo.jpg" width="200" height="150" alt=""></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling
@@ -28,7 +28,7 @@
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/home">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="listprop">Properties</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/myads">My Property</a></li>
-                        
+
 
                         <li class="wow fadeInDown" data-wow-delay="0.1s"> @if (Route::has('login'))
                             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -42,9 +42,9 @@
                                     @endif
                                 @endauth
                                 <li><button class="navbar-btn nav-button wow fadeInRight" onclick="window.location.href = 'submitp';" data-wow-delay="0.5s">Submit</button></li>
-                    
+
                             </div>
-                        @endif 
+                        @endif
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->

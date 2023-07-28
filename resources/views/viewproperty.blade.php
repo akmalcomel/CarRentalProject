@@ -3,7 +3,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
+<!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
@@ -26,11 +26,11 @@
         <link href="{{URL::asset('assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css')}}" rel="stylesheet">
         <link href="{{URL::asset('assets/fonts/icon-7-stroke/css/helper.css')}}" rel="stylesheet">
         <link href="{{URL::asset('assets/css/animate.css')}}" rel="stylesheet" media="screen">
-        <link rel="stylesheet" href="{{URL::asset('assets/css/bootstrap-select.min.css')}}"> 
+        <link rel="stylesheet" href="{{URL::asset('assets/css/bootstrap-select.min.css')}}">
         <link rel="stylesheet" href="{{URL::asset('bootstrap/css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/icheck.min_all.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/price-range.css')}}">
-        <link rel="stylesheet" href="{{URL::asset('assets/css/owl.carousel.css')}}">  
+        <link rel="stylesheet" href="{{URL::asset('assets/css/owl.carousel.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/owl.theme.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/owl.transitions.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/lightslider.min.css')}}">
@@ -46,6 +46,8 @@
         .distance-input {
             z-index: 9997;
         }
+
+
         </style>
     </head>
     <body>
@@ -60,7 +62,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="http://localhost:8000/home"><img src="{{ url('assets/LogoUiTM.png')}}" alt=""></a>
+                    <a class="navbar-brand" href="http://localhost:8000/home" ><img src="{{ url('assets/LogoUiTM.png')}}" width="200" height="150" alt=""></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling
@@ -74,9 +76,9 @@
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/home">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/listprop">Properties</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/myads">My Property</a></li>
-                        
 
-                       
+
+
                         <li class="wow fadeInDown" data-wow-delay="0.1s"> @if (Route::has('login'))
                             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                                 @auth
@@ -89,25 +91,25 @@
                                     @endif
                                 @endauth
                                 <li><button class="navbar-btn nav-button wow fadeInRight" onclick="window.location.href = 'http://localhost:8000/submitp';" data-wow-delay="0.5s">Submit</button></li>
-                    
+
                             </div>
-                        @endif 
+                        @endif
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-    
-       
+
+
         <!-- Body content -->
 
-      
 
-        <div class="page-head"> 
+
+        <div class="page-head">
             <div class="container">
                 <div class="row">
                     <div class="page-head-content">
-                        <h1 class="page-title"><strong>{{$output['title']}} </strong></h1>               
+                        <h1 class="page-title"><strong>{{$output['title']}} </strong></h1>
                     </div>
                 </div>
             </div>
@@ -116,18 +118,18 @@
 
         <!-- property area -->
         <div class="content-area single-property" style="background-color: #FCFCFC;">&nbsp;
-            <div class="container">   
+            <div class="container">
 
                 <div class="clearfix" >
 
                     <div class="col-md-8 single-property-content prp-style-1 ">
                         <div class="row">
-                            <div class="light-slide-item">            
+                            <div class="light-slide-item">
                                 <div class="clearfix">
                                     <div class="favorite-and-print">
-                                       
+
                                         <a class="printer-icon " href="javascript:window.print()">
-                                            <i class="fa fa-print"></i> 
+                                            <i class="fa fa-print"></i>
                                         </a>
                                     </div>
                                                                     <!-- Container for the image gallery -->
@@ -160,7 +162,7 @@
                                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
                                 <!-- Image text -->
-                        
+
 
                                 <!-- Thumbnail images -->
                                 <div class="row">
@@ -176,7 +178,7 @@
                                 <div class="columns">
                                     <img class="demo cursor" src="{{ url('public/Image/'.$output->image4) }}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
                                 </div>
-                               
+
                                 </div>
                                 </div>
 
@@ -210,90 +212,89 @@
                                         captionText.innerHTML = dots[slideIndex-1].alt;
                                         }
                                 </script>
-                            
+
 
                                    <!-- <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                                        
-                                        <li data-thumb="{{URL::asset('assets/img/property-1/property1.jpg')}}"> 
+
+                                        <li data-thumb="{{URL::asset('assets/img/property-1/property1.jpg')}}">
                                             <img src="{{URL::asset('assets/img/property-1/property1.jpg')}}" />
                                         </li>
-                                        <li data-thumb="{{URL::asset('assets/img/property-1/property2.jpg')}}"> 
+                                        <li data-thumb="{{URL::asset('assets/img/property-1/property2.jpg')}}">
                                             <img src="{{URL::asset('assets/img/property-1/property3.jpg')}}" />
                                         </li>
-                                        <li data-thumb="{{URL::asset('assets/img/property-1/property3.jpg')}}"> 
+                                        <li data-thumb="{{URL::asset('assets/img/property-1/property3.jpg')}}">
                                             <img src="{{URL::asset('assets/img/property-1/property3.jpg')}}" />
                                         </li>
-                                        <li data-thumb="{{URL::asset('assets/img/property-1/property4.jpg')}}"> 
+                                        <li data-thumb="{{URL::asset('assets/img/property-1/property4.jpg')}}">
                                             <img src="{{URL::asset('assets/img/property-1/property4.jpg')}}" />
-                                        </li>                                         
+                                        </li>
                                     </ul>-->
                                 </div>
                             </div>
                         </div>
 
                         <div class="single-property-wrapper">
-                            <div class="single-property-header">                                          
+                            <div class="single-property-header">
                                 <h1 class="property-title pull-left"><strong>{{$output['propname']}}</strong></h1>
-                                <span class="property-price pull-right"><strong>RM{{$output['price']}}</strong></span>
+                                @if ($output['floor'])
+                                    <div class="price-container">
+                                        <span class="original-price pull-right ">Original Price: RM{{$output['price']}}</span><br>
+                                        <span class="property-price pull-right">RM{{ $output['price'] - ($output['price'] * ($output['floor'] / 100)) }} <sub>/day</sub></span>
+                                    </div>
+                                @else
+                                    <span class="property-price pull-right"><strong>RM{{$output['price']}}</strong></span>
+                                @endif
                             </div>
 
-                            <div class="property-meta entry-meta clearfix ">   
-
-                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
-                                    <span class="property-info-icon icon-tag">                                        
-                                        <img src="{{URL::asset('assets/img/icon/os.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Type</span>
-                                        <span class="property-info-value">{{$output['type']}}</span>
-                                    </span>
-                                </div>
-
-                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
-                                    <span class="property-info icon-area">
-                                        <img src="{{URL::asset('assets/img/icon/room.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Area</span>
-                                        <span class="property-info-value">{{$output['size']}}<b class="property-info-unit"> Sq Ft</b></span>
-                                    </span>
-                                </div>
-
-                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
-                                    <span class="property-info-icon icon-bed">
-                                        <img src="{{URL::asset('assets/img/icon/bed.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Bedrooms</span>
-                                        <span class="property-info-value">{{$output['bedroom']}}</span>
-                                    </span>
-                                </div>
-
-                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
-                                    <span class="property-info-icon icon-bed">
-                                        <img src="{{URL::asset('assets/img/icon/cars.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Car garages</span>
-                                        <span class="property-info-value">{{$output['parking']}}</span>
-                                    </span>
-                                </div>
-
-                                <div class="col-xs-6 col-sm-4 col-md-4 p-b-15">
-                                    <span class="property-info-icon icon-bath">
-                                        <img src="{{URL::asset('assets/img/icon/shawer.png')}}">
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label">Bathrooms</span>
-                                        <span class="property-info-value">{{$output['bathroom']}}</span>
-                                    </span>
-                                </div>
-
-                                
 
 
+                            <!-- End description area  -->
+
+                            <div class="section additional-details">
+
+                                <h4 class="s-property-title">Vehicle Details</h4>
+
+                                <ul class="additional-details-list clearfix">
+                                    <li>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Rental Deposit</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">RM{{$output['deposit']}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Car Type</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['furnish']}}</span>
+                                    </li>
+
+                                    <li>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Door</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['bedroom']}}</span>
+                                    </li>
+
+                                    <li>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Fuel Type</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['parking']}}</span>
+                                    </li>
+
+                                    <li>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Seat Capacity</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['bathroom']}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Transmission</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['type']}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Year Built</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['size']}}</span>
+                                    </li>
+
+                                    <li>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Pick Up Area</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['address']}}</span>
+                                    </li>
+
+                                </ul>
                             </div>
-                            <!-- .property-meta -->
+                            <!-- End additional-details area  -->
 
                             <div class="section">
                                 <h4 class="s-property-title">Description</h4>
@@ -301,65 +302,27 @@
                                     <p>{{$output['description']}}</p>
                                 </div>
                             </div>
-                            <!-- End description area  -->
 
-                            <div class="section additional-details">
+                            <div class="section property-features">
 
-                                <h4 class="s-property-title">Additional Details</h4>
-
-                                <ul class="additional-details-list clearfix">
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Rental Deposit</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">RM{{$output['deposit']}}</span>
-                                    </li>
-
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Location</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['address']}}</span>
-                                    </li>
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Furnished</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['furnish']}}</span>
-                                    </li>
-
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Number of floor</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['floor']}}</span>
-                                    </li>
-
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Nearby Highlights</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['highlights']}}</span>
-                                    </li>
-
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Distance from UiTM Campus:</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['distance']}} KM</span>
-                                    </li> 
-
-                                </ul>
-                            </div>  
-                            <!-- End additional-details area  -->
-
-                            <div class="section property-features">      
-
-                                <h4 class="s-property-title">Features</h4>                            
+                                <h4 class="s-property-title">Features</h4>
                                 <ul>
                                     @foreach (explode(',', $output->facilities) as $facility)
                                         <li><a href="">{{ $facility }}</a></li>
                                     @endforeach
                                 </ul>
-                                <h4 class="s-property-title"> Property Location </h4>
+                                <h4 class="s-property-title"> Pickup Location </h4>
+
                                 <div id="mapid"></div>
 
                             </div>
                             <!-- End features area  -->
-                            
+
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
 
-        
+
                             <!-- End video area  -->
-                            
+
                         </div>
                     </div>
 
@@ -379,22 +342,22 @@
                                             <div class="col-xs-8 col-sm-8 ">
                                                 <h3 class="dealer-name">
                                                     <a href="">{{$owner['name']}}</a>
-                                                    <span></span>        
+                                                    <span></span>
                                                 </h3>
-                                                
+
 
                                             </div>
                                         </div>
 
                                         <div class="clear">
-                                            <ul class="dealer-contacts">                                       
+                                            <ul class="dealer-contacts">
                                                 <li><i class="pe-7s-mail strong"> </i> {{$owner['email']}}</li>
                                                 <li><i class="pe-7s-call strong"> </i> {{$owner['phone']}}</li>
                                                 <li><i class="pe-7s-call strong"></i> <a href="{{$owner->wslink}}">{{$owner->wslink}}</a></li>
 
-                                                
+
                                             </ul>
-                                          
+
                                         </div>
 
                                     </div>
@@ -402,14 +365,19 @@
                             </div>
 
                             <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
-                            <div class="">
-                            @if ($output->ownerID == $username)
+                                @if ($output->ownerID == $username)
+                            <div class="container">
+
                                 <a href={{"http://localhost:8000/editprop/".$output->id}} class="btn btn-primary">Edit Property</a>
 
                                 <a href={{"http://localhost:8000/deleteprop/".$output->id}} class="btn btn-primary" onclick="return confirmDelete(event)" >Delete Property</a>
-                            
-                            @endif       
+
+
                                 </div>
+                                <div class="container">
+                                    wefewwefrewf
+                                </div>
+                                @endif
 
                                 <script>
                                     function confirmDelete(event) {
@@ -426,13 +394,6 @@
                                         return true; // Proceed with the deletion
                                     }
                                 </script>
-
-                                      
-
-                           
-
-                           
-
                         </aside>
                     </div>
                 </div>
@@ -443,8 +404,8 @@
 
           <!-- Footer area-->
           @include('footer')
-       
-        
+
+
         <script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="assets/js/jquery-1.10.2.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -476,30 +437,31 @@
                 });
             });
         </script>
-        <script>
-            var campusMarker = L.marker([3.06818,101.499]).bindPopup("UiTM Shah Alam");
-         
+       <script>
+        var latitude = {{$output['latitude']}};
+        var longitude = {{$output['longitude']}};
+        var campusMarker = L.marker([latitude, longitude]).bindPopup("UiTM Shah Alam");
+        var redIcon = L.icon({
+            iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
 
-            var map = L.map('mapid').setView(campusMarker.getLatLng(), 12);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-                maxZoom: 18,
-            }).addTo(map);
-            campusMarker.addTo(map);
+        var map = L.map('mapid').setView(campusMarker.getLatLng(), 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+            maxZoom: 18,
+        }).addTo(map);
+        campusMarker.addTo(map);
 
-            var redIcon = L.icon({
-                iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-                iconSize: [25, 41],
-                iconAnchor: [12, 41],
-                popupAnchor: [1, -34],
-                shadowSize: [41, 41]
-            });
 
-            var distanceInput = L.DomUtil.create('input', 'distance-input');
+        var distanceInput = L.DomUtil.create('input', 'distance-input');
                         distanceInput.type = 'text';
                         distanceInput.id = 'distance-input';
-                        distanceInput.value = "{{$output->address}}";
+                        distanceInput.value = "{{$output->highlights}}";
                         distanceInput.style.position = 'absolute';
                         distanceInput.style.top = '10px';
                         distanceInput.style.left = '50%';
@@ -511,18 +473,10 @@
                         distanceInput.style.fontSize = '12px';
                         //distanceInput.style.borderBottom = '20px solid transparent';
 
-
-
-
                         map.getContainer().appendChild(distanceInput);
 
-            var latitude = {{$output['latitude']}};
-            var longitude = {{$output['longitude']}};
-            var locationMarker = L.marker([latitude, longitude],{icon: redIcon}).addTo(map);
-            var distance = "{{$output['distance']}} km away";
-            locationMarker.bindPopup(distance).openPopup();
 
-        </script>
-
+        addressBoxControl.addTo(map);
+    </script>
     </body>
 </html>

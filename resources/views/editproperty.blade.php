@@ -380,7 +380,7 @@
                                             <div class="col-sm-6"> 
                                             <div class="form-group">
                                                 <label for="property-images">Additional Image 1:</label>
-                                                <input class="form-control" type="file" id="property-images" name="image">
+                                                <input class="form-control" type="file" id="property-images" name="image" value="{{ url('public/Image/'.$output->image) }}" >
                                                 <br>
                                                 <label>Current Image:</label>
                                                 <img src="{{ url('public/Image/'.$output->image) }}" alt="Current Image" width="200px">

@@ -155,7 +155,8 @@
                 <!-- Fetch the table data from the database and display here -->
               <div class="table-container">
               <h2>User Owner Table</h2>
-                <table class="table">
+              <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Owner Name" style="margin-bottom: 10px;width: 200px;"></br>
+                <table class="table" id="myTable">
                     <thead>
                         <tr>
                             <th>ID No</th>
@@ -201,6 +202,31 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+            }
+        }
+ 
+       
+        }
+        </script>
 </body>
 
 

@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
+<!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
 <head>
         <meta charset="utf-8">
@@ -25,11 +25,11 @@
         <link href="assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
         <link href="assets/fonts/icon-7-stroke/css/helper.css" rel="stylesheet">
         <link href="assets/css/animate.css" rel="stylesheet" media="screen">
-        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css"> 
+        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/icheck.min_all.css">
         <link rel="stylesheet" href="assets/css/price-range.css">
-        <link rel="stylesheet" href="assets/css/owl.carousel.css">  
+        <link rel="stylesheet" href="assets/css/owl.carousel.css">
         <link rel="stylesheet" href="assets/css/owl.theme.css">
         <link rel="stylesheet" href="assets/css/owl.transitions.css">
         <link rel="stylesheet" href="assets/css/style.css">
@@ -46,14 +46,14 @@
 <link href="assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
 <link href="assets/fonts/icon-7-stroke/css/helper.css" rel="stylesheet">
 <link href="css/animate.css" rel="stylesheet" media="screen">
-<link rel="stylesheet" href="assets/css/bootstrap-select.min.css"> 
+<link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/icheck.min_all.css">
 <link rel="stylesheet" href="assets/css/price-range.css">
-<link rel="stylesheet" href="assets/css/owl.carousel.css">  
+<link rel="stylesheet" href="assets/css/owl.carousel.css">
 <link rel="stylesheet" href="assets/css/owl.theme.css">
-<link rel="stylesheet" href="assets/css/owl.transitions.css"> 
-<link rel="stylesheet" href="assets/css/wizard.css"> 
+<link rel="stylesheet" href="assets/css/owl.transitions.css">
+<link rel="stylesheet" href="assets/css/wizard.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
@@ -69,7 +69,7 @@
         }
         #go-button {
         position: absolute;
-        top: 120px;
+        top: 100px;
         left: 49%;
         transform: translateX(-50%);
         z-index: 9999;
@@ -81,7 +81,7 @@
         .distance-input {
             z-index: 9000;
         }
-        
+
 </style>
 
     </head>
@@ -95,11 +95,11 @@
         <!-- Body content -->
 
 
-        <div class="page-head"> 
+        <div class="page-head">
             <div class="container">
                 <div class="row">
                     <div class="page-head-content">
-                        <h1 class="page-title">Submit new property</h1>               
+                        <h1 class="page-title">Add your car</h1>
                     </div>
                 </div>
             </div>
@@ -109,16 +109,16 @@
         <!-- property area -->
         <div class="content-area submit-property" style="background-color: #FCFCFC;">&nbsp;
             <div class="container">
-                <div class="clearfix" > 
-                    <div class="wizard-container"> 
+                <div class="clearfix" >
+                    <div class="wizard-container">
 
                         <div class="wizard-card ct-wizard-orange" id="wizardProperty">
                         <form id="contact" action="/add" method="post" enctype="multipart/form-data">
-                            @csrf                       
+                            @csrf
                                 <div class="wizard-header">
                                     <h3>
-                                        <b>Submit</b> YOUR PROPERTY <br>
-                                        <small>Renting Property will become much easier</small>
+                                        <b>Submit</b> YOUR CAR <br>
+                                        <small>Renting Car will become much easier</small>
                                     </h3>
                                 </div>
 
@@ -130,38 +130,33 @@
                                 </ul>
 
                                 <div class="tab-content">
-                                
+
 
                                     <div class="tab-pane" id="step1">
                                         <div class="row p-b-15  ">
                                             <h4 class="info-text"> Let's start with the basic information (with validation)</h4>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label>Property name <small>(Residential Name)</small></label>
-                                                    <input name="propertyname" type="text" class="form-control" placeholder="Taman Bangi Villa" required>
+                                                    <label>Car Model <small>(Brand & Model)</small></label>
+                                                    <input name="carname" type="text" class="form-control" placeholder="Perodua Myvi" required>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label>Property price (RM) <small></small></label>
-                                                    <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="propertyprice" type="text" class="form-control" placeholder="2400" required>
-                                                </div> 
-                                               
+                                                    <label>Rental Price (RM) <small>Per Day</small></label>
+                                                    <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="rentalprice" type="text" class="form-control" placeholder="400" required>
+                                                </div>
+
                                                 <div class="form-group">
-                                                        <label>Property Type:</label>
+                                                        <label>Transmission:</label>
                                                         <!--<select id="furnished" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Furnished type">-->
-                                                        <select name= "propertytype"  class="selectpicker" title="Property type" required>
-                                                        <option>Apartment</option>
-                                                        <option>Bungalow</option>
-                                                        <option>Room</option>
-                                                        <option>Terrace</option>
-                                                        <option>Semi-D</option>
-                                                        <option>Studio</option>
-                                                        <option>ShopLot</option>
-                                                            
+                                                        <select name= "propertytype"  class="selectpicker" title="Choose Transmission" required>
+                                                        <option>Automatic</option>
+                                                        <option>Manual</option>
+
                                                         </select>
                                                     </div>
                                                 <div class="form-group">
-                                                    <label>Address <small>Property Area</small></label>
+                                                    <label>Pickup Area</label>
                                                     <input name="address" type="text" class="form-control" placeholder="Seksyen 9, Shah Alam" required>
                                                 </div>
                                             </div>
@@ -171,99 +166,99 @@
                                                     <h5>Pin Your Property Location</h5>
                                                     <div id="mapid"></div>
                                                     <button id="go-button" type="button">Go</button>
-                                                    <input type="hidden" name="distance"  id="distance-input-hidden">
+                                                    <input type="hidden" name="location" id="location-input-hidden">
                                                     <input type="hidden" name="latitude" id="latitude-input-hidden">
                                                     <input type="hidden" name="longitude" id="longitude-input-hidden">
                                                     <!--<input type="submit" value="Submit" onclick="setHiddenInputs()">-->
-                                                
+
                                             </div>
                                         </div>
                                     </div>
                                     <!--  End step 1 -->
 
                                     <div class="tab-pane" id="step2">
-                                        <h4 class="info-text"> Make your property ads as detail as possible!! </h4>
+                                        <h4 class="info-text">Advertise Your Car </h4>
                                         <div class="row">
-                                        <div class="col-sm-12"> 
-                                                <div class="col-sm-12"> 
+                                        <div class="col-sm-12">
+                                                <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label>Ad Title<small> Make it interesting!!</small></label>
                                                     <input name="title" type="text" class="form-control" placeholder="TITLE" maxlength="58" required>
-                                                </div> 
-                                                </div> 
+                                                </div>
+                                                </div>
                                             </div>
 
-                                            <div class="col-sm-12"> 
-                                                <div class="col-sm-12"> 
-                                                    <div class="form-group">
-                                                        <label>Property Description :</label>
-                                                        <textarea name="description" class="form-control" required></textarea>
-                                                    </div> 
-                                                </div> 
-                                            </div>
+
 
                                             <div class="col-sm-12">
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label>Furnished:</label>
+                                                        <label>Car Type:</label>
                                                         <!--<select id="furnished" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Furnished type">-->
-                                                        <select name= "furnished" id="furnished" class="selectpicker" title="Furnished type" required>
-                                                            <option>Fully Furnished</option>
-                                                            <option>Partially Furnished</option>
-                                                            <option>Not Furnished</option>
-                                                            
+                                                        <select name= "furnished" id="furnished" class="selectpicker" title="Car type" required>
+                                                            <option>Sedan</option>
+                                                            <option>Hatchback</option>
+                                                            <option>SUV</option>
+                                                            <option>Coupe</option>
+                                                            <option>Van</option>
+                                                            <option>Limousine</option>
+
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label>Bathroom :</label>
-                                                        <select name="bathroom" id="bathroom" class="selectpicker" title="Bathroom" required>
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                         
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <label>Bedroom :</label>
-                                                        <select name="bedroom" id="bedroom" class="selectpicker" title="Bedroom" required>
+                                                        <label>Seats :</label>
+                                                        <select name="bathroom" id="bathroom" class="selectpicker" title="Seats" required>
                                                             <option>1</option>
                                                             <option>2</option>
                                                             <option>3</option>
                                                             <option>4</option>
                                                             <option>5</option>
                                                             <option>6</option>
-                                                            
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <label>Property Size :</label>
-                                                        <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="size" type="text" class="form-control" placeholder="sq.ft." required>
-                                                       
-                                                
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <label>Parking :</label>
-                                                        <select name="parking" id="parking" class="selectpicker show-tick form-control" required>
-                                                            <option>0 </option>
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
+                                                            <option>7</option>
+                                                            <option>8</option>
+                                                            <option>9</option>
+                                                            <option>10</option>
 
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label>Door :</label>
+                                                        <select name="bedroom" id="bedroom" class="selectpicker" title="Door" required>
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                            <option>6</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label>Years Built :</label>
+                                                        <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="size" type="text" class="form-control" placeholder="Year" required>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label>Fuel :</label>
+                                                        <select name="parking" id="parking" class="selectpicker show-tick form-control" required>
+                                                            <option>Petrol</option>
+                                                            <option>Diesel</option>
+
+
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!--<div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Floor :</label>
                                                         <select name="floor" id="floor" class="selectpicker" title="Floor" required>
@@ -273,37 +268,46 @@
                                                             <option>4</option>
                                                         </select>
                                                     </div>
-                                                </div>
+                                                </div>-->
 
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Rental Deposit (RM) :</label>
                                                         <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="rental" type="text" class="form-control" placeholder="RM" required>
-                                                       
-                                                
+
+
                                                     </div>
                                                 </div>
 
                                             </div>
 
-                                            <div class="col-sm-12"> 
-                                                <div class="col-sm-12"> 
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Car Description :</label>
+                                                        <textarea name="description" class="form-control" required></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                           <!-- <div class="col-sm-12">
+                                                <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label>Nearby Highlights :</label>
                                                         <textarea name="highlight" class="form-control" placeholder="MRT, KFC, Easy to find food" required></textarea>
-                                                    </div> 
-                                                </div> 
-                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>-->
 
-                                            
-                                            <!--<div class="col-sm-12 padding-top-15">                                                   
+
+                                            <!--<div class="col-sm-12 padding-top-15">
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
                                                         <label for="property-geo">Min bed :</label>
-                                                        <input type="text" class="span2" value="" data-slider-min="0" 
-                                                               data-slider-max="600" data-slider-step="5" 
+                                                        <input type="text" class="span2" value="" data-slider-min="0"
+                                                               data-slider-max="600" data-slider-step="5"
                                                                data-slider-value="[250,450]" id="min-bed" ><br />
-                                                        <b class="pull-left color">1</b> 
+                                                        <b class="pull-left color">1</b>
                                                         <b class="pull-right color">120</b>
                                                     </div>
                                                 </div>
@@ -311,10 +315,10 @@
 
                                                     <div class="form-group">
                                                         <label for="price-range">Min baths :</label>
-                                                        <input type="text" class="span2" value="" data-slider-min="0" 
-                                                               data-slider-max="600" data-slider-step="5" 
+                                                        <input type="text" class="span2" value="" data-slider-min="0"
+                                                               data-slider-max="600" data-slider-step="5"
                                                                data-slider-value="[250,450]" id="min-baths" ><br />
-                                                        <b class="pull-left color">1</b> 
+                                                        <b class="pull-left color">1</b>
                                                         <b class="pull-right color">120</b>
                                                     </div>
                                                 </div>
@@ -322,73 +326,73 @@
 
                                                     <div class="form-group">
                                                         <label for="property-geo">Property geo (m2) :</label>
-                                                        <input type="text" class="span2" value="" data-slider-min="0" 
-                                                               data-slider-max="600" data-slider-step="5" 
+                                                        <input type="text" class="span2" value="" data-slider-min="0"
+                                                               data-slider-max="600" data-slider-step="5"
                                                                data-slider-value="[50,450]" id="property-geo" ><br />
-                                                        <b class="pull-left color">40m</b> 
+                                                        <b class="pull-left color">40m</b>
                                                         <b class="pull-right color">12000m</b>
                                                     </div>
-                                                </div>   
+                                                </div>
                                             </div>-->
 
                                             <div class="col-sm-12 padding-top-6">
                                             <div class="col-sm-3">
                                                     <div class="form-group">
-                                                       
+
                                                             <label>
-                                                               Facilities:
+                                                               Features:
                                                             </label>
-                                                        
+
                                                     </div>
-                                                </div> 
+                                                </div>
                                             </div>
-                                            
-                                        
+
+
                                             <div class="col-sm-12 padding-top-10">
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" name="facility[]" value="swimming pool"> Swimming Pool
+                                                                <input type="checkbox" name="facility[]" value="Air Conditioning"> Air Conditioning
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </div> 
+                                                </div>
                                                 <div class="col-sm-3">
-                                                    
+
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" name="facility[]" value="tennis court"> Tennis court
+                                                                <input type="checkbox" name="facility[]" value="Reverse Camera"> Reverse Camera
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </div>                                                 
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" name="facility[]" value="air cond"> Air Cond
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>                                                 
+                                                </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" name="facility[]" value="24 hours security"> 24 Hours Security
+                                                                <input type="checkbox" name="facility[]" value="Apple CarPlay"> Apple CarPlay
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </div> 
-                                            </div> 
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" name="facility[]" value="Hybrid/Electric"> Hybrid/Electric
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-sm-12 padding-bottom-15">
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" name="facility[]" value="washing machine"> Washing machine
+                                                                <input type="checkbox" name="facility[]" value="Child Safety Seats(Upon Request)"> Child Seats(Upon Request)
                                                             </label>
                                                         </div>
                                                     </div>
@@ -397,7 +401,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" name="facility[]" value="water heater"> Water heater
+                                                                <input type="checkbox" name="facility[]" value="Parking Sensor"> Parking Sensor
                                                             </label>
                                                         </div>
                                                     </div>
@@ -406,7 +410,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" name="facility[]" value="free wifi"> Internet
+                                                                <input type="checkbox" name="facility[]" value="Cruise Control"> Cruise Control
                                                             </label>
                                                         </div>
                                                     </div>
@@ -415,29 +419,29 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" name="facility[]" value="cooking allowed"> cooking allowed
+                                                                <input type="checkbox" name="facility[]" value="Keyless Entry"> Keyless Entry
                                                             </label>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <fieldset>
-                              
+
                               </fieldset>
                                             <br>
                                         </div>
                                     </div>
                                     <!-- End step 2 -->
 
-                                    <div class="tab-pane" id="step3">                                        
-                                        <h4 class="info-text">Add images of your beautiful property </h4>
-                                        <div class="row">  
-    
-                                            <div class="col-sm-6"> 
+                                    <div class="tab-pane" id="step3">
+                                        <h4 class="info-text">Add images of your Car</h4>
+                                        <div class="row">
+
+                                            <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="property-video">Additional image :</label>
                                                     <input class="form-control" type="file" id="property-images" name="image" required>
-                                                </div> 
+                                                </div>
 
                                                 <div class="form-group">
                                                 <input class="form-control" type="file" id="property-images" name="image2" required>
@@ -450,30 +454,30 @@
                                                 <div class="form-group">
                                                 <input class="form-control" type="file" id="property-images" name="image4" required>
                                                 </div>
-                                               
+
                                             </div>
                                         </div>
                                     </div>
                                     <!--  End step 3 -->
 
 
-                                    <div class="tab-pane" id="step4">                                        
+                                    <div class="tab-pane" id="step4">
                                         <h4 class="info-text"> Finished and submit </h4>
-                                        <div class="row">  
+                                        <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="">
                                                     <p>
                                                         <label><strong>Terms and Conditions</strong></label>
-                                                        By accessing or using  our services, such as 
-                                                        posting your property advertisement with your personal 
+                                                        By accessing or using  our services, such as
+                                                        posting your property advertisement with your personal
                                                         information on our website you agree to the
-                                                        collection, use and disclosure of your personal information 
+                                                        collection, use and disclosure of your personal information
                                                         in the legal proper manner
                                                     </p>
 
-                                                   
 
-                                                </div> 
+
+                                                </div>
                                             </div>
                                         </div>
                                         <fieldset>
@@ -488,18 +492,18 @@
                                     <div class="pull-right">
                                         <input type='button' class='btn btn-next btn-primary' name='next' value='Next' />
                                         <!--<input type='button' class='btn btn-finish btn-primary ' name='finish' value='Finish' />-->
-                                        
+
                                     </div>
 
                                     <div class="pull-left">
                                         <input type='button' class='btn btn-previous btn-default' name='previous' value='Previous' />
                                     </div>
-                                    <div class="clearfix"></div>                                            
-                                </div>	
+                                    <div class="clearfix"></div>
+                                </div>
                             </form>
                         </div>
                         <!-- End submit form -->
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -518,132 +522,128 @@
         <script src="assets/js/wow.js"></script>
         <script src="assets/js/icheck.min.js"></script>
 
-        <script src="assets/js/price-range.js"></script> 
+        <script src="assets/js/price-range.js"></script>
         <script src="assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
         <script src="assets/js/jquery.validate.min.js"></script>
         <script src="assets/js/wizard.js"></script>
 
         <script src="assets/js/main.js"></script>
 
-       
+
         <!-- to initialize mape -->
         <script>
-
-            
             var marker;
-                window.onload = function() {
-            var map = L.map('mapid').setView([3.06818,101.499], 11); // Set the initial map center and zoom level
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { // Add the OpenStreetMap tile layer
-                attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-                maxZoom: 18,
-            }).addTo(map);
 
-            // Add a marker to the map when the user clicks on it
+            window.onload = function() {
+                var map = L.map('mapid').setView([3.06818, 101.499], 11); // Set the initial map center and zoom level
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    // Add the OpenStreetMap tile layer
+                    attribution:
+                        '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                    maxZoom: 18,
+                }).addTo(map);
 
-           // var campusMarker = L.marker([3.07434693819793,101.50592519956311]).bindPopup("UiTM").addTo(map);
-           var campusMarker = L.marker([3.06818,101.499])
-    .bindPopup("UiTM")
-    .addTo(map)
-    .openPopup();
+                var redIcon = L.icon({
+                    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41],
+                });
 
+                var addressInput = L.DomUtil.create('input', 'address-input');
+                addressInput.type = 'text';
+                addressInput.id = 'address-input';
+                addressInput.placeholder = 'Search Property Area (if needed)';
+                addressInput.style.position = 'absolute';
+                addressInput.style.top = '20px';
+                addressInput.style.left = '50%';
+                addressInput.style.transform = 'translateX(-50%)';
+                addressInput.style.zIndex = '1000';
+                addressInput.style.height = '30px';
+                addressInput.style.width = '200px';
+                addressInput.style.marginTop = '7px';
 
-            var redIcon = L.icon({
-                iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-                iconSize: [25, 41],
-                iconAnchor: [12, 41],
-                popupAnchor: [1, -34],
-                shadowSize: [41, 41]
-            });
+                addressInput.style.fontFamily = 'Arial';
+                addressInput.style.fontSize = '12px';
 
-            var distanceInput = L.DomUtil.create('input', 'distance-input');
-                        distanceInput.type = 'text';
-                        distanceInput.id = 'distance-input';
-                        distanceInput.placeholder = 'Distance to campus (km)';
-                        distanceInput.style.position = 'absolute';
-                        distanceInput.style.top = '10px';
-                        distanceInput.style.left = '50%';
-                        distanceInput.style.transform = 'translateX(-50%)';
-                        distanceInput.style.backgroundColor = 'lightblue';
-                        distanceInput.style.height = '30px';
-                        distanceInput.style.width = '200px';
-                        distanceInput.style.marginBottom = '80px';
-                        distanceInput.style.fontFamily = 'Arial';
-                        distanceInput.style.fontSize = '12px';
-                        //distanceInput.style.borderBottom = '20px solid transparent';
+                addressInput.addEventListener('click', function(event) {
+                    // Stop propagating the click event to the map to prevent the pin from moving
+                    event.stopPropagation();
+                });
 
+                map.getContainer().appendChild(addressInput);
 
-
-
-                        map.getContainer().appendChild(distanceInput);
-
-
-            var addressInput = L.DomUtil.create('input', 'address-input');
-            addressInput.type = 'text';
-            addressInput.id = 'address-input';
-            addressInput.placeholder = 'Search Property Area (if needed)';
-            addressInput.style.position = 'absolute';
-            addressInput.style.top = '40px';
-            addressInput.style.left = '50%';
-            addressInput.style.transform = 'translateX(-50%)';
-            addressInput.style.zIndex = '1000';
-            addressInput.style.height = '30px';
-            addressInput.style.width = '200px';
-            addressInput.style.marginTop = '7px';
-            
-            addressInput.style.fontFamily = 'Arial';
-            addressInput.style.fontSize = '12px';
-            
-            map.getContainer().appendChild(addressInput);
-
-            var goButton = document.getElementById('go-button');
-            goButton.addEventListener('click', function() {
-                var address = addressInput.value;
-                if (address) {
-                var geocodeUrl = 'https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(address);
-                fetch(geocodeUrl)
-                    .then(function(response) {
-                    return response.json();
-                    })
-                    .then(function(json) {
-                    if (json && json.length > 0) {
-                        var latlng = L.latLng(json[0].lat, json[0].lon);
-                        moveMarker(latlng);
-                    } else {
-                        alert('Address not found');
+                document.getElementById('go-button').addEventListener('click', function() {
+                    var address = document.getElementById('address-input').value;
+                    if (address) {
+                        var geocodeUrl =
+                            'https://nominatim.openstreetmap.org/search?format=json&q=' +
+                            encodeURIComponent(address);
+                        fetch(geocodeUrl)
+                            .then(function(response) {
+                                return response.json();
+                            })
+                            .then(function(json) {
+                                if (json && json.length > 0) {
+                                    var latlng = L.latLng(json[0].lat, json[0].lon);
+                                    moveMarker(latlng);
+                                    map.setView(latlng, 16); // Set the map view to the searched location with a zoom level of 16
+                                } else {
+                                    alert('Address not found');
+                                }
+                            });
                     }
-                    });
-                }
-            });
-                        // Update the distance input field whenever the user moves the pin on the map
-                                    function moveMarker(latlng) {
-                            if (marker) {
-                                map.removeLayer(marker);
+                });
+
+                // Update the distance input field whenever the user moves the pin on the map
+                function moveMarker(latlng) {
+                    if (marker) {
+                        map.removeLayer(marker);
+                    }
+                    marker = L.marker(latlng, { icon: redIcon }).addTo(map);
+
+                    var reverseGeocodeUrl =
+                        'https://nominatim.openstreetmap.org/reverse?format=json&lat=' +
+                        latlng.lat +
+                        '&lon=' +
+                        latlng.lng;
+                    fetch(reverseGeocodeUrl)
+                        .then(function(response) {
+                            return response.json();
+                        })
+                        .then(function(json) {
+                            if (json && json.address) {
+                                document.getElementById('address-input').value = json.display_name;
+                                document.getElementById('latitude-input-hidden').value = latlng.lat;
+                                document.getElementById('longitude-input-hidden').value = latlng.lng;
+                                document.getElementById('location-input-hidden').value = json.display_name;
+                            } else {
+                                document.getElementById('address-input').value = '';
+                                document.getElementById('location-input-hidden').value = '';
+
                             }
-                            marker = L.marker(latlng, {icon: redIcon}).addTo(map);
-                            var distance = marker.getLatLng().distanceTo(campusMarker.getLatLng()) / 1000;
-                            document.getElementById('distance-input').value = distance.toFixed(1) + ' km from UiTM';
-                        }
-
-                        map.on('click', function(e) {
-                            moveMarker(e.latlng);
-                        }); 
-                    }
-
-                        function setHiddenInputs() {
-                    var distanceInput = document.getElementById('distance-input');
-                    var hiddenDistanceInput = document.getElementById('distance-input-hidden');
-                    var latitudeInput = document.getElementById('latitude-input-hidden');
-                    var longitudeInput = document.getElementById('longitude-input-hidden');
-                    var distance = distanceInput.value.split(" ")[0];
-                    var latitude = marker.getLatLng().lat;
-                    var longitude = marker.getLatLng().lng;
-                    hiddenDistanceInput.value = distance;
-                    latitudeInput.value = latitude;
-                    longitudeInput.value = longitude;
+                        });
                 }
 
-            </script>
+                map.on('click', function(e) {
+                    moveMarker(e.latlng);
+                });
+            }
+
+            function setHiddenInputs() {
+                var latitudeInput = document.getElementById('latitude-input-hidden');
+                var longitudeInput = document.getElementById('longitude-input-hidden');
+                var distance = distanceInput.value.split(' ')[0];
+                var latitude = marker.getLatLng().lat;
+                var longitude = marker.getLatLng().lng;
+
+                latitudeInput.value = latitude;
+                longitudeInput.value = longitude;
+            }
+        </script>
+
 
     </body>
 </html>

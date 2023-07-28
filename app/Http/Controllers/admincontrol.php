@@ -124,7 +124,7 @@ class admincontrol extends Controller
         $prop->highlights=$request->highlight;
         // Check if a new image was uploaded
         if ($request->hasFile('image')) {
-            $file= $req->file('image');
+            $file= $request->file('image');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('public/Image'), $filename);
             $prop['image']= $filename;

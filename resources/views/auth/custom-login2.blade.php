@@ -21,11 +21,11 @@
         <link href="assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
         <link href="assets/fonts/icon-7-stroke/css/helper.css" rel="stylesheet">
         <link href="assets/css/animate.css" rel="stylesheet" media="screen">
-        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css"> 
+        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/icheck.min_all.css">
         <link rel="stylesheet" href="assets/css/price-range.css">
-        <link rel="stylesheet" href="assets/css/owl.carousel.css">  
+        <link rel="stylesheet" href="assets/css/owl.carousel.css">
         <link rel="stylesheet" href="assets/css/owl.theme.css">
         <link rel="stylesheet" href="assets/css/owl.transitions.css">
         <link rel="stylesheet" href="assets/css/style.css">
@@ -33,7 +33,7 @@
 
 <style>
         body {
-        background-image: url("uitmpic.jpeg");
+        background-image: url("assets/img/slide1/wallpaperkereta.jpeg");
         background-repeat: no-repeat;
         background-size: 100% 100%;
         }
@@ -81,6 +81,9 @@
   cursor: pointer;
   font-size: 18px;
 }
+.button-container {
+        text-align: right;
+    }
 
         </style>
         </head>
@@ -89,13 +92,13 @@
 
 
 <div class="login-form">
-<h2>Student Login</h2>
+<h2>Login</h2>
 <form method="POST"  action="{{ route('custom-login2.post') }}">
     @csrf
 
     <!-- Email Address -->
     <div>
-        <label for="email">UiTM Student Email</label>
+        <label for="email">Email</label>
 
         <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus />
 
@@ -115,12 +118,13 @@
         @enderror
     </div>
 
-    <div>
-        <button type="submit">
-            Login
+    <div class=button-container>
+        <button type="submit"><strong>Login</strong>
+
         </button>
+        <a href="{{ route('renter.register.form') }}" style>Register</a>
     </div>
-    
+
 </form>
 </div>
     </body>

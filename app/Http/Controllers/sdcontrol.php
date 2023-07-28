@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Student;
 use App\Models\house;
 use App\Models\User2;
+use App\Models\Favourite;
 use Illuminate\Support\Facades\Mail;
 
 

@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
+<!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
 <head>
         <meta charset="utf-8">
@@ -25,11 +25,11 @@
         <link href="assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
         <link href="assets/fonts/icon-7-stroke/css/helper.css" rel="stylesheet">
         <link href="assets/css/animate.css" rel="stylesheet" media="screen">
-        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css"> 
+        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/icheck.min_all.css">
         <link rel="stylesheet" href="assets/css/price-range.css">
-        <link rel="stylesheet" href="assets/css/owl.carousel.css">  
+        <link rel="stylesheet" href="assets/css/owl.carousel.css">
         <link rel="stylesheet" href="assets/css/owl.theme.css">
         <link rel="stylesheet" href="assets/css/owl.transitions.css">
         <link rel="stylesheet" href="assets/css/style.css">
@@ -46,44 +46,44 @@
         <div class="slider-area">
             <div class="slider">
                 <div class="bg-slider" class="owl-carousel owl-theme">
- 
-                    <div class="item"><img src="assets/img/slide1/uitm4.jpeg" alt="The Last of us"></div>
-                   
+
+                    <div class="item"><img src="assets/img/slide1/wallpaperkereta3.jpeg" alt="The Last of us"></div>
+
 
                 </div>
             </div>
             <div class="container slider-content" >
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-                        <h2><strong style="color: #9C3AE4 ;text-shadow: 1px 1px #9C3AE4; ; opacity: 1; font-weight:900">UITM Off-Campus Placement Portal</strong></h2>
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 mt-4">
+
                         <p></p>
-                        <p><a href="/stdlistprop" class="btn btn-primary btn-lg">Search House</a></p>
+                        <p><a href="/stdlistprop" class="btn btn-primary btn-lg mt-4" style="margin-top: 200px;">Search Car</a></p>
 
                     </div>
                 </div>
             </div>
         </div>
 
-       
+
 
 
         <!-- property area -->
         <div class="content-area recent-property" style="padding-bottom: 60px; background-color: rgb(252, 252, 252);">
-            <div class="container">   
+            <div class="container">
                 <div class="row">
                     <div class="col-md-12  padding-top-40 properties-page">
-                        <div class="col-md-12 "> 
+                        <div class="col-md-12 ">
                             <div class="col-xs-10 page-subheader sorting pl0">
 
                                <H3> Recent Properties</h3>
                             </div>
 
-                
+
                         </div>
 
-                        <div class="col-md-12 "> 
+                        <div class="col-md-12 ">
                             <div id="list-type" class="proerty-th-list">
-                                
+
 
                                 @php($count=0)
                             @foreach($output as $x)
@@ -103,33 +103,33 @@
                                             <div class="dot-hr"></div>
                                             <span class="pull-left"><b> Name :</b>{{$x['propname']}} </span>
                                             <span class="proerty-price pull-right">RM{{$x['price']}}</span></br>
-                                            
-                                            
+
+
                                             <p style="display: none;"><b>Property Type : </b>{{$x['type']}}<br>
                                             <b>Furnished Type : </b>{{$x['furnish']}}<br>
-                                            <b>Distance to campus : </b>{{$x['distance']}} KM 
+                                            <b>Distance to campus : </b>{{$x['distance']}} KM
                                             <small class="pull-right"><b>Date posted: {{ date('d/m H:i', strtotime($x['created_at'])) }}</b></small> </p>
                                             <div class="property-icon">
                                                 <img src="assets/img/icon/bed.png"> {{$x['bedroom']}} Bedroom|
                                                 <img src="assets/img/icon/shawer.png"> {{$x['bathroom']}} Bathroom|
-                                                <img src="assets/img/icon/cars.png"> {{$x['parking']}} Parking  
+                                                <img src="assets/img/icon/cars.png"> {{$x['parking']}} Parking
                                             </div>
                                         </div>
 
 
                                     </div>
-                                </div> 
+                                </div>
                                 @endforeach
 
-                                
+
 
 
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                         </div>
-                        
-                    </div>  
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -147,7 +147,7 @@
 <script src="assets/js/easypiechart.min.js"></script>
 <script src="assets/js/jquery.easypiechart.min.js"></script>
 
-<script src="assets/js/owl.carousel.min.js"></script>        
+<script src="assets/js/owl.carousel.min.js"></script>
 
 <script src="assets/js/wow.js"></script>
 

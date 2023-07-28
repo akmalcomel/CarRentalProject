@@ -197,7 +197,7 @@
                                             <h5><a href={{"sdvw/".$x['id']}}>{{$x['title']}}</a></h5>
                                             <div class="dot-hr"></div>
                                             <span class="pull-left"><b> Property Name: </b>{{$x['propname']}} </span>
-                                            <span class="proerty-price pull-right">RM{{$x['price']}}</span>
+                                            <span class="proerty-price pull-right">RM{{$x['price']}}</span></br>
 
                                             <p style="display: none;"><b>Property Type : </b>{{$x['type']}}<br>
                                             <b>Furnished Type : </b>{{$x['furnish']}}<br>

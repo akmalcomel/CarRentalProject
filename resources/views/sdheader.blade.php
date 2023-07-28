@@ -1,7 +1,7 @@
 
         <!-- Body content -->
 
-       
+
         <!--End top header -->
 
         <nav class="navbar navbar-default ">
@@ -14,7 +14,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/stdhome"><img src="assets/LogoUiTM.png" alt=""></a>
+                    <a class="navbar-brand" href="/stdhome"><img src="assets/carlogo.jpg" width="200" height="150" alt=""></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling
@@ -54,11 +54,10 @@
                             </ul>
                             @endauth
                         </li>
-                        
+
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
         <!-- End of nav bar -->
 
-       

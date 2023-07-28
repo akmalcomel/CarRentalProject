@@ -14,14 +14,15 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <style>
         body {
-        background-image: url("uitmpic.jpeg");
+        background-image: url("assets/img/slide1/wallpaperkereta.jpeg");
         background-repeat: no-repeat;
         background-size: 100% 100%;
         }
+
         </style>
     </head>
     <body>
-        
+
 
     <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
