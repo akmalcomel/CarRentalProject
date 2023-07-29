@@ -16,4 +16,15 @@ class house extends Model
     return $this->belongsToMany(User2::class, 'favorites', 'house_id', 'user_id')->withTimestamps();
 }
 
+public function bookings()
+{
+    return $this->hasMany(Booking::class, 'car_id');
+}
+
+public function owners()
+{
+    return $this->belongsTo(User::class, 'ownerID');
+}
+
+
 }

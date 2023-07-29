@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
+use App\Models\Booking;
 
 
 
@@ -26,5 +27,10 @@ class User2 extends Model implements Authenticatable
     public function favorites()
     {
         return $this->belongsToMany(house::class, 'favorites', 'user_id', 'house_id')->withTimestamps();
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'renter_id');
     }
 }

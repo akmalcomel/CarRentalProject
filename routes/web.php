@@ -7,6 +7,7 @@ use App\Http\Controllers\admincontrol;
 use App\Http\Controllers\Auth\CustomLoginController;
 use App\Http\Controllers\Auth\CustomLoginController2;
 use App\Http\Controllers\RenterRegistrationController;
+use App\Http\Controllers\BookingController;
 
 
 
@@ -62,6 +63,12 @@ Route::get("/stdhome",[sdcontrol::class,"sdhome"]);
 Route::get("/stdlistprop",[sdcontrol::class,"sdlistprop"])->name('sdlistprop');
 Route::get("/sdvw/{id}",[sdcontrol::class,"sdviewprops"]);
 Route::get("/myfav",[sdcontrol::class,"fav"]);
+
+Route::get('/booking/create/{car}', [BookingController::class,"create"])->name('booking.create');
+Route::post('/booking/store/{car}', [BookingController::class,"store"])->name('booking.store');
+
+Route::get('/booking/success', [BookingController::class,"success"])->name('booking.success');
+
 
 
 

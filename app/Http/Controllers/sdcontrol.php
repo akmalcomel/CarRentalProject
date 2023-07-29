@@ -21,7 +21,7 @@ class sdcontrol extends Controller
     function sdhome(){
     $output=house::orderByDesc('created_at')->get();
     $output2=house::all();
- 
+
     return view ('student.sdhome',compact('output','output2'));
     }
 
@@ -86,7 +86,7 @@ function sdlistprop(Request $request){
    // dd($query->toSql());
     $output = $query->paginate(10);
         $output2=house::all();
-     
+
         return view ('student.sdlistprop',compact('output','output2'));
     }
 
@@ -106,7 +106,7 @@ function sdlistprop(Request $request){
         $output=house::find($id);
         $owner=User::find($output->ownerID);
         $user = Auth::guard('user2')->user();
-     
+
         return view ('student.sdviewprop',compact('output','owner','user'));
     }
 
@@ -114,7 +114,7 @@ function sdlistprop(Request $request){
     public function addFavorite(Request $request, $houseId)
 {
     $user = Auth::guard('user2')->user();
-    
+
     // Check if the user already has the house in favorites
     if (!$user->favorites()->where('house_id', $houseId)->exists()) {
         $user->favorites()->attach($houseId);
@@ -127,7 +127,7 @@ function sdlistprop(Request $request){
 public function removeFavorite(Request $request, $houseId)
 {
     $user = Auth::guard('user2')->user();
-    
+
     // Check if the user has the house in favorites
     if ($user->favorites()->where('house_id', $houseId)->exists()) {
         $user->favorites()->detach($houseId);
@@ -142,6 +142,7 @@ public function logout()
 
     return redirect('/'); // Redirect to your desired page after logout
 }
+
 
 
 

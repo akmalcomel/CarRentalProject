@@ -17,7 +17,7 @@ use App\Models\User2;
 class admincontrol extends Controller
 {
     function adminhome(){
-    
+
         $housesPerOwner = House::selectRaw('ownerID, COUNT(*) as houseCount')
         ->groupBy('ownerID')
         ->get();
@@ -28,14 +28,14 @@ class admincontrol extends Controller
         $usercount = User::where('usertype', '!=', 1)->count();
         $stdcount=User2::count();
         $std=User2::all();
-         
+
             return view ('admin.adminhome',compact('housesPerOwner','output','outputcount','user','usercount','stdcount','std'));
-        
-    
+
+
     }
 
     function adminprop(){
-    
+
         $housesPerOwner = House::selectRaw('ownerID, COUNT(*) as houseCount')
         ->groupBy('ownerID')
         ->get();
@@ -46,13 +46,13 @@ class admincontrol extends Controller
         $usercount = User::where('usertype', '!=', 1)->count();
         $stdcount=User2::count();
         $std=User2::all();
-         
+
             return view ('admin.adminprop',compact('housesPerOwner','output','outputcount','user','usercount','stdcount','std'));
-        
-    
+
+
     }
     function adminstud(){
-    
+
         $housesPerOwner = House::selectRaw('ownerID, COUNT(*) as houseCount')
         ->groupBy('ownerID')
         ->get();
@@ -63,16 +63,16 @@ class admincontrol extends Controller
         $usercount = User::where('usertype', '!=', 1)->count();
         $stdcount=User2::count();
         $std=User2::all();
-         
+
             return view ('admin.adminstud',compact('housesPerOwner','output','outputcount','user','usercount','stdcount','std'));
-        
-    
+
+
     }
 
     function detailprop($id){
         $output=house::find($id);
         $owner=User::find($output->ownerID);
-     
+
         return view ('admin.adviewprop',compact('output','owner'));
     }
 
@@ -89,7 +89,7 @@ class admincontrol extends Controller
 
         $prop->delete();
        session()->flash('success', 'Ad deleted successfully.');
-       
+
 
         return redirect()->action([admincontrol::class, 'adminhome']);
     }
@@ -99,7 +99,7 @@ class admincontrol extends Controller
         $id=$request->id;
         $prop = house::find($id);
 
-        
+
         $prop->propname=$request->propertyname;//belah kanan daripada blade file
         $prop->title=$request->title;
         $prop->price=$request->propertyprice;
@@ -134,13 +134,13 @@ class admincontrol extends Controller
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('public/Image'), $filename);
             $prop['image2']= $filename;
-        } 
+        }
         if ($request->hasFile('image3')) {
             $file= $request->file('image3');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('public/Image'), $filename);
             $prop['image3']= $filename;
-        } 
+        }
         if ($request->hasFile('image4')) {
             $file= $request->file('image4');
             $filename= date('YmdHi').$file->getClientOriginalName();
@@ -151,11 +151,11 @@ class admincontrol extends Controller
         $selectedFacilities = $request->input('facility', []);
         $prop->facilities = implode(',', $selectedFacilities);
         $prop->save();
-    
+
         // Redirect or perform any other actions
         return redirect()->action([admincontrol::class, 'adminhome']);
     }
-    
+
     public function deleteUser($id)
 {
     $user = User::findOrFail($id);

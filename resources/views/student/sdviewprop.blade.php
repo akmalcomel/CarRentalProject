@@ -56,6 +56,24 @@
         text-decoration: none;
         border-radius: 4px;
     }
+
+    .car-status button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: default;
+}
+
+.car-status .btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.car-status .btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
         </style>
     </head>
     <body>
@@ -260,6 +278,8 @@
                                 @else
                                     <span class="property-price pull-right"><strong>RM{{$output['price']}}</strong></span>
                                 @endif
+
+
                             </div>
 
 
@@ -374,6 +394,16 @@
 
                                             </ul>
 
+                                           <div>Status: </div>
+
+                                            <div class="car-status">
+                                                @if ($output->distance == 'available')
+                                                    <button class="btn btn-success">Available</button> <a href="{{ route('booking.create', ['car' => $output->id]) }}" class="book-now-button">Book Now</a>
+                                                @else
+                                                    <button class="btn btn-danger">Not Available</button>
+                                                @endif
+                                            </div>
+
                                         </div>
 
                                     </div>
@@ -387,30 +417,17 @@
                                     @if(Auth::guard('user2')->user()->favorites->contains($output->id))
                                         <form action="{{ route('favorites.remove', $output->id) }}" method="POST">
                                             @csrf
-                                            <button class="btn btn-primary" type="submit">Remove from Favorites</button>
+                                            <button class="btn btn-primary" style="border-radius: 5px" type="submit">Remove from Favorites</button>
                                         </form>
                                     @else
                                         <form action="{{ route('favorites.add', $output->id) }}" method="POST">
                                             @csrf
-                                            <button class="btn btn-primary" type="submit">Add to Favorites</button>
+                                            <button class="btn btn-primary" style="border-radius: 5px" type="submit">Add to Favorites</button>
                                         </form>
                                     @endif
                                 @endauth
 
                                  </div>
-
-
-                            <div class="panel panel-default sidebar-menu wow fadeInRight animated">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"></h3>
-                                </div>
-                                <div class="panel-body recent-property-widget">
-
-
-                                </div>
-                            </div>
-
-
 
                         </aside>
                     </div>
@@ -420,7 +437,7 @@
         </div>
 
 
-          <!-- Footer area-->
+
           <!-- Footer area-->
         <div class="footer-area">
 
@@ -459,9 +476,9 @@
 
                             <ul class="footer-adress">
                                     <li><i class="pe-7s-map-marker strong"> </i>
-Universiti Teknologi MARA (UiTM)
-40450 Shah Alam, Selangor Darul Ehsan
-Malaysia</li>
+                                        Universiti Teknologi MARA (UiTM)
+                                        40450 Shah Alam, Selangor Darul Ehsan
+                                        Malaysia</li>
                                     <li><i class="pe-7s-mail strong"> </i> HRTeam@UiTM.edu.my</li>
                                     <li><i class="pe-7s-call strong"> </i>+603-5544 2000 </li>
                                 </ul>
@@ -527,6 +544,9 @@ Malaysia</li>
                 });
             });
         </script>
+
+
+        <!-- Map area-->
        <script>
         var latitude = {{$output['latitude']}};
         var longitude = {{$output['longitude']}};
@@ -568,6 +588,8 @@ Malaysia</li>
 
         addressBoxControl.addTo(map);
     </script>
+
+
 
     </body>
 </html>
