@@ -364,6 +364,7 @@ class homecontrol extends Controller
 
         return view ('ownerads',compact('output','output2','username'));
     }
+    
 
     function testsubmit2(Request $req){
         $prop= new testdistance;

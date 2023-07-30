@@ -28,6 +28,7 @@
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/stdhome">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="stdlistprop">Properties</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/myfav">My Favourite</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/pending-bookings">My Bookings</a></li>
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a href="index.html"  data-toggle="dropdown" data-hover="dropdown" data-delay="200">Dashboard <b class="caret"></b></a>
                             @auth('user2')

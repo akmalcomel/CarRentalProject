@@ -5,9 +5,11 @@ use App\Models\house;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Models\User2;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\BookingNotification;
+use App\Mail\BookingStatusNotification;
 
 
 
@@ -59,5 +61,56 @@ Mail::to($ownerEmail)->send(new BookingNotification($booking));
     // Logic to display the booking success page
     return view('booking.success'); // Replace 'booking.success' with the actual view name for your success page
 }
+
+
+public function confirmstatus()
+{
+    $ownerId = Auth::id();
+    $bookings = Booking::whereHas('car', function ($query) use ($ownerId) {
+        $query->where('ownerID', $ownerId);
+    })->get();
+
+    return view('confirmstats', compact('bookings'));
+}
+
+
+
+public function acceptBooking(Booking $booking)
+{
+    $booking->status = 'accepted';
+    $booking->save();
+
+    // You can also send an email notification to the renter here (optional).
+    Mail::to($booking->renter->email)->send(new BookingStatusNotification($booking, 'accepted'));
+    return redirect()->route('confirmstats');
+}
+
+public function rejectBooking(Booking $booking)
+{
+    $booking->status = 'rejected';
+    $booking->save();
+
+    // You can also send an email notification to the renter here (optional).
+    Mail::to($booking->renter->email)->send(new BookingStatusNotification($booking, 'rejected'));
+
+
+    return redirect()->route('confirmstats');
+}
+
+
+public function renterBookings()
+{
+    $renterId = Auth::guard('user2')->user()->id;
+    $pendingBookings = Booking::where('renter_id', $renterId)
+                             ->where('status', 'pending')
+                             ->get();
+
+    $bookingHistory = Booking::where('renter_id', $renterId)
+                             ->where('status', '!=', 'pending')
+                             ->get();
+
+    return view('pending_bookings', compact('pendingBookings', 'bookingHistory'));
+}
+
 
 }

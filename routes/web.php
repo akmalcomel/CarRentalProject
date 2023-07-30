@@ -59,15 +59,26 @@ Route::put('/property/{id}/update-status', [homecontrol::class,"updateStatus"])-
 
 
 
+
 Route::get("/stdhome",[sdcontrol::class,"sdhome"]);
 Route::get("/stdlistprop",[sdcontrol::class,"sdlistprop"])->name('sdlistprop');
 Route::get("/sdvw/{id}",[sdcontrol::class,"sdviewprops"]);
 Route::get("/myfav",[sdcontrol::class,"fav"]);
 
+
+
 Route::get('/booking/create/{car}', [BookingController::class,"create"])->name('booking.create');
 Route::post('/booking/store/{car}', [BookingController::class,"store"])->name('booking.store');
 
 Route::get('/booking/success', [BookingController::class,"success"])->name('booking.success');
+Route::get('/bookings', [BookingController::class,"confirmstatus"])->name('confirmstats');
+Route::get('/bookings/{booking}/accept', [BookingController::class,"acceptBooking"])->name('bookings.accept');
+Route::get('/bookings/{booking}/reject', [BookingController::class,"rejectBooking"])->name('bookings.reject');
+
+Route::get('/pending-bookings', [BookingController::class,"renterBookings"])->name('renter.bookings');
+
+
+
 
 
 
