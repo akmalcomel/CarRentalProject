@@ -77,7 +77,8 @@ Route::get('/bookings/{booking}/reject', [BookingController::class,"rejectBookin
 
 Route::get('/pending-bookings', [BookingController::class,"renterBookings"])->name('renter.bookings');
 
-
+Route::patch('/bookings/{booking}/markReturned', [BookingController::class,"markReturned"])->name('bookings.markReturned');
+Route::patch('/bookings/{booking}/rate', [BookingController::class,"rate"])->name('bookings.rate');
 
 
 

@@ -26,5 +26,11 @@ public function owners()
     return $this->belongsTo(User::class, 'ownerID');
 }
 
+public function averageRating()
+{
+    return $this->bookings()->whereNotNull('rate')->avg('rate');
+}
+
+
 
 }

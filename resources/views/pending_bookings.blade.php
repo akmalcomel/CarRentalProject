@@ -117,6 +117,7 @@
                                                                 <th>Start Date</th>
                                                                 <th>Return Date</th>
                                                                 <th>Status</th>
+                                                                <th>Rate</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -127,6 +128,22 @@
                                                                     <td>{{ $booking->start_date }}</td>
                                                                     <td>{{ $booking->return_date }}</td>
                                                                     <td>{{ $booking->status }}</td>
+                                                                    @if ($booking->status === 'complete')
+                                                                    <td>
+                                                                        @if ($booking->rate)
+                                                                            {{ $booking->rate }}/5
+                                                                        @else
+                                                                            <form action="{{ route('bookings.rate', $booking->id) }}" method="post">
+                                                                                @csrf
+                                                                                @method('PATCH')
+                                                                                <input type="number" name="rate" min="1" max="5" required>
+                                                                                <button type="submit">Rate</button>
+                                                                            </form>
+                                                                        @endif
+                                                                    </td>
+                                                                @else
+                                                                    <td>N/A</td>
+                                                                @endif
                                                                 </tr>
                                                             @endforeach
                                                         </tbody>

@@ -109,6 +109,7 @@
                                         <th>Start Date</th>
                                         <th>Return Date</th>
                                         <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -121,6 +122,17 @@
                                                 <td>{{ $booking->start_date }}</td>
                                                 <td>{{ $booking->return_date }}</td>
                                                 <td>{{ $booking->status }}</td>
+                                                <td>
+                                                    @if ($booking->status === 'accepted')
+                                                        <form action="{{ route('bookings.markReturned', $booking->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <button type="submit" class="btn btn-sm btn-primary ">Mark as Returned</button>
+                                                        </form>
+                                                    @elseif ($booking->status === 'complete')
+                                                    Rated: {{ $booking->rate }}/5
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endif
                                     @endforeach

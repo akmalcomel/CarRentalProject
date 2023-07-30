@@ -324,6 +324,11 @@
                                     </li>
 
                                     <li>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Average Rating</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{ $output->averageRating() }}/5</span>
+                                    </li>
+
+                                    <li>
                                         <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Pick Up Area</span>
                                         <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{$output['address']}}</span>
                                     </li>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\house;
+use Illuminate\Support\Facades\DB;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Models\User2;
@@ -50,7 +51,16 @@ class BookingController extends Controller
         $ownerEmail = $booking->car->owners->email;
  // Assuming the car owner's email is stored in the 'email' column of the 'users' table.
 Mail::to($ownerEmail)->send(new BookingNotification($booking));
+$booking->rate = $request->rating;
         $booking->save();
+
+         // Calculate the average rating for the car based on all the ratings from its bookings
+    $averageRating = Booking::where('car_id', $car->id)->whereNotNull('rate')->avg('rate');
+
+    // Update the car's 'rate' column with the newly calculated average rating
+    DB::table('houses')->where('id', $car->id)->update(['rate' => $averageRating]);
+    $car->rate = $averageRating;
+    $car->save();
 
         // Redirect to a success page or display a success message
         return redirect()->route('booking.success')->with('success', 'Booking successful!');
@@ -73,7 +83,15 @@ public function confirmstatus()
     return view('confirmstats', compact('bookings'));
 }
 
+public function markReturned(Booking $booking)
+{
+    $booking->status = 'complete'; // or 'returned', depending on your preference for the status value
+    $booking->save();
 
+    // You can also send an email notification to the renter here (optional).
+
+    return redirect()->route('confirmstats');
+}
 
 public function acceptBooking(Booking $booking)
 {
@@ -111,6 +129,21 @@ public function renterBookings()
 
     return view('pending_bookings', compact('pendingBookings', 'bookingHistory'));
 }
+
+public function rate(Request $request, Booking $booking)
+{
+    // Validate the rate (you can add more validation rules if needed)
+    $request->validate([
+        'rate' => 'required|integer|min:1|max:5',
+    ]);
+
+    // Update the booking's rate
+    $booking->rate = $request->input('rate');
+    $booking->save();
+
+    return redirect()->route('renter.bookings')->with('success', 'Thank you for rating the car!');
+}
+
 
 
 }
