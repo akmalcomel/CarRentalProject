@@ -26,8 +26,8 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
 
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/home">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="listprop">Properties</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/myads">My Property</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="listprop">Cars</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/myads">My Car</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="/bookings">Confirmation</a></li>
 
 

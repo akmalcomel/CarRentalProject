@@ -3,12 +3,12 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
+<!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>UiTM|Property</title>
+        <title>TransMal|Cars</title>
         <meta name="description" content="GARO is a real-estate template">
         <meta name="author" content="Kimarotec">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -28,11 +28,11 @@
         <link href="assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
         <link href="assets/fonts/icon-7-stroke/css/helper.css" rel="stylesheet">
         <link href="assets/css/animate.css" rel="stylesheet" media="screen">
-        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css"> 
+        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/icheck.min_all.css">
         <link rel="stylesheet" href="assets/css/price-range.css">
-        <link rel="stylesheet" href="assets/css/owl.carousel.css">  
+        <link rel="stylesheet" href="assets/css/owl.carousel.css">
         <link rel="stylesheet" href="assets/css/owl.theme.css">
         <link rel="stylesheet" href="assets/css/owl.transitions.css">
         <link rel="stylesheet" href="assets/css/style.css">
@@ -60,11 +60,11 @@
         <!-- Body content -->
     @include('sdheader')
 
-        <div class="page-head"> 
+        <div class="page-head">
             <div class="container">
                 <div class="row">
                     <div class="page-head-content">
-                        <h1 class="page-title">Search Properties</h1>               
+                        <h1 class="page-title">Search Cars</h1>
                     </div>
                 </div>
             </div>
@@ -73,86 +73,77 @@
 
         <!-- property area -->
         <div class="properties-area recent-property" style="background-color: #FFF;">
-            <div class="container"> 
+            <div class="container">
                 <div class="row  pr0 padding-top-40 properties-page">
-                    <div class="col-md-12 padding-bottom-40 large-search"> 
+                    <div class="col-md-12 padding-bottom-40 large-search">
                         <div class="search-form wow pulse">
                             <form action="{{ route('sdlistprop') }}" method="GET" class=" form-inline">
                                 <div class="col-md-12">
                                     <div class="col-md-4">
                                         <input type="text" class="form-control" name="keyword" placeholder="Key word">
                                     </div>
-                                    <div class="col-md-4">                                   
-                                        <select id="lunchBegins" class="selectpicker" name="propertyType" title="Property Type">
-                                            <option>Apartment</option>
-                                            <option>Bungalow</option>
-                                            <option>Room</option>
-                                            <option>Terrace</option>
-                                            <option>Semi-D</option>
-                                            <option>Studio</option>
-                                            <option>ShopLot</option>
+                                    <div class="col-md-4">
+                                        <select id="lunchBegins" class="selectpicker" name="propertyType" title="Transmission">
+                                            <option>Automatic</option>
+                                            <option>Manual</option>
 
                                         </select>
                                     </div>
-                                    <div class="col-md-4">                                     
-                                        <select id="basic" class="selectpicker show-tick form-control" name="furnishedType" title="Furnished type">
-                                           
-                                            <option>Fully Furnished </option>
-                                            <option>Partially Furnished</option>
-                                            <option>Not Furnished</option>  
+                                    <div class="col-md-4">
+                                        <select id="basic" class="selectpicker show-tick form-control" name="furnishedType" title="Vehicle type">
 
+                                            <option>Sedan</option>
+                                            <option>Hatchback</option>
+                                            <option>SUV</option>
+                                            <option>Coupe</option>
+                                            <option>Van</option>
+                                            <option>Limousine</option>
                                         </select>
                                     </div>
 
-                                    
+
                                 </div>
                                     <div class="col-md-12 " style="margin-top: 20px;">
-                                   
 
-                                        <div class="col-md-3" style='z-index: 90;'>       
-                                            <label for="property-geo">Number of bedroom :</label>                                 
-                                            <select id="basic" class="selectpicker show-tick form-control" name="bedrooms" title="bedroom">
-                                               
-                                                <option>1 </option>
-                                                <option>2</option>
-                                                <option>3</option>  
-                                                <option>4</option> 
-                                                <option>5</option> 
 
-                                            </select>
+                                        <div class="col-md-3" style='z-index: 90;'>
+                                            <label for="property-geo">Min Seat :</label>
+
+                                                <input type="text" class="form-control" pattern="[0-9]+" name="bedrooms" placeholder="Minimum Seat">
+
                                         </div>
 
                                         <div class="col-sm-3">
                                             <label for="price-range">Price range (RM):</label>
-                                            <input type="text" class="span2" name="pricerange" value="" data-slider-min="200" 
-                                                   data-slider-max="3000" data-slider-step="100" 
-                                                   data-slider-value="[200,2500]" id="price-range" ><br />
-                                            <b class="pull-left color">RM200</b> 
-                                            <b class="pull-right color">RM3000</b>
+                                            <input type="text" class="span2" name="pricerange" value="" data-slider-min="50"
+                                                   data-slider-max="5000" data-slider-step="100"
+                                                   data-slider-value="[50,4000]" id="price-range" ><br />
+                                            <b class="pull-left color">RM50</b>
+                                            <b class="pull-right color">RM5000</b>
                                         </div>
-                                        <!-- End of  -->  
 
                                         <div class="col-sm-3">
-                                            <label for="property-geo">Max distance from campus(KM) :</label>
-                                            <input type="text" class="span2" name="dist" value="" data-slider-min="0" 
-                                                   data-slider-max="30" data-slider-step="1" 
-                                                   data-slider-value="[0,25]" id="property-geo" ><br />
-                                            <b class="pull-left color">0</b> 
-                                            <b class="pull-right color">30km</b>
+                                            <label for="start-date">Start Date:</label>
+                                            <input type="date" class="form-control" name="start_date" id="start-date" required>
                                         </div>
-                  
+                                        <div class="col-sm-3">
+                                            <label for="end-date">End Date:</label>
+                                            <input type="date" class="form-control" name="end_date" id="end-date" required>
+                                        </div>
+
+
                                     </div>
 
-                                    
+
                                             <div class="center">
                                         <input type="submit" value="Search" class=" btn-lg-sheach">
                                             </div>
-                                </div>                     
+                                </div>
                             </form>
                         </div>
                     </div>
 
-                    <div class="col-md-12  clear"> 
+                    <div class="col-md-12  clear">
                         <div class="col-xs-10 page-subheader sorting pl0">
                             <ul class="sort-by-list">
                             <li class="active">
@@ -170,13 +161,13 @@
                             </li>
                             </ul><!--/ .sort-by-list-->
 
-                           
+
                         </div>
 
-                       
+
                     </div>
 
-                    <div class="col-md-12 clear "> 
+                    <div class="col-md-12 clear ">
                         <div id="list-type" class="proerty-th-list">
 
                         @if ($output->isEmpty())
@@ -196,39 +187,38 @@
                                         <div class="item-entry overflow">
                                             <h5><a href={{"sdvw/".$x['id']}}>{{$x['title']}}</a></h5>
                                             <div class="dot-hr"></div>
-                                            <span class="pull-left"><b> Property Name: </b>{{$x['propname']}} </span>
-                                            <span class="proerty-price pull-right">RM{{$x['price']}}</span></br>
+                                            <span class="pull-left"><b> Car Model: </b>{{$x['propname']}} </span>
+                                            <span class="proerty-price pull-right">RM{{$x['price']}}</span>
+                                            <p style="display: none;"><b>Transmission : </b>{{$x['type']}}<br>
+                                            <b>Vehicle Type : </b>{{$x['furnish']}}<br>
+                                            <b>Pickup Location : </b>{{$x['address']}}  <small class="pull-right"><b>Date posted: {{ date('d/m H:i', strtotime($x['created_at'])) }}</b></small> </p>
 
-                                            <p style="display: none;"><b>Property Type : </b>{{$x['type']}}<br>
-                                            <b>Furnished Type : </b>{{$x['furnish']}}<br>
-                                            <b>Distance to campus : </b>{{$x['distance']}} KM 
-                                            <small class="pull-right"><b>Date posted: {{ date('d/m H:i', strtotime($x['created_at'])) }}</b></small> </p>
                                             <div class="property-icon">
-                                                <img src="assets/img/icon/bed.png"> {{$x['bedroom']}} Bedroom|
-                                                <img src="assets/img/icon/shawer.png"> {{$x['bathroom']}} Bathroom|
-                                                <img src="assets/img/icon/cars.png"> {{$x['parking']}} Parking  
+                                                <img src="assets/img/icon/bed.png"> {{$x['bedroom']}} Door|
+                                                <img src="assets/img/icon/shawer.png"> {{$x['bathroom']}} Seat|
+                                                <img src="assets/img/icon/cars.png"> {{$x['parking']}}
                                             </div>
                                         </div>
 
 
                                     </div>
-                                </div> 
+                                </div>
                                 @endforeach
 
-                            
+
                                 @endif
-                           
+
                         </div>
                     </div>
 
-                    <div class="col-md-12 clear"> 
+                    <div class="col-md-12 clear">
                         <div class="pull-right">
                             <div class="pagination">
                             {{ $output->links() }}
                             </div>
-                        </div>                
+                        </div>
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
 

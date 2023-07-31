@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
-
+use Closure;
 class Authenticate extends Middleware
 {
     /**
@@ -18,4 +19,6 @@ class Authenticate extends Middleware
             return route('/stdhome');
         }
     }
+
+
 }

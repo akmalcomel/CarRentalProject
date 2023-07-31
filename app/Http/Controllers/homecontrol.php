@@ -71,13 +71,13 @@ class homecontrol extends Controller
         $prop = house::find($id);
 
 
-        $prop->propname=$request->carname;//belah kanan daripada blade file
+        $prop->propname=$request->propertyname;//belah kanan daripada blade file
         $prop->title=$request->title;
-        $prop->price=$request->rentalprice;
+        $prop->price=$request->propertyprice;
         $prop->furnish=$request->furnished;
         $prop->type=$request->propertytype;
         //$prop->image="testing value";
-        $prop->description=$request->description;
+        $prop->description=$request->highlight;
         //$prop->facilities=$req->input('facility');
         //$prop->facilities=$req->input('facility');
         $prop->owner=Auth::user()->name;
@@ -88,9 +88,9 @@ class homecontrol extends Controller
         $prop->deposit=$request->rental;
         $prop->parking=$request->parking;
         $prop->address=$request->address;
-        $prop->distance=$request->distance;
-        $prop->latitude=$request->latitude;
-        $prop->longitude=$request->longitude;
+
+        //$prop->latitude=$request->latitude;
+        //$prop->longitude=$request->longitude;
         //$prop->floor=$request->floor;
         //$prop->highlights=$request->highlight;
         // Check if a new image was uploaded
@@ -197,7 +197,6 @@ class homecontrol extends Controller
     $furnishedType = $request->input('furnishedType');
     $bedrooms = $request->input('bedrooms');
     $priceRange = $request->input('pricerange');
-    $distance = $request->input('dist');
 
     $orderBy = $request->query('orderBy');
     $order = $request->query('order');
@@ -222,7 +221,10 @@ class homecontrol extends Controller
     }
 
     if ($bedrooms) {
-        $query->where('bedroom', $bedrooms);
+        $query->where('bathroom', '>=', $bedrooms);
+        $query->orWhere(function ($query) use ($bedrooms) {
+            $query->whereNull('bathroom');
+        });
     }
 
     if ($priceRange) {
@@ -232,13 +234,6 @@ class homecontrol extends Controller
         $query->whereBetween('price', [$minPrice, $maxPrice]);
     }
 
-
-    if ($distance) {
-        $distance = explode(',', $distance);
-        $minDistance = $distance[0];
-        $maxDistance = $distance[1];
-        $query->whereBetween('distance', [$minDistance, $maxDistance]);
-    }
 
     // Apply sorting based on the orderBy and order query parameters
 
@@ -291,9 +286,10 @@ class homecontrol extends Controller
         $prop->deposit=$req->rental;
         $prop->parking=$req->parking;
         $prop->address=$req->address;
-        $prop->distance=$req->distance;
+        $prop->distance="available";
         $prop->latitude=$req->latitude;
         $prop->longitude=$req->longitude;
+        $prop->bank=$req->bank;
        // $prop->floor=$req->floor;
         $prop->highlights=$req->location;
         $selectedFacilities = $req->input('facility', []);
@@ -364,7 +360,7 @@ class homecontrol extends Controller
 
         return view ('ownerads',compact('output','output2','username'));
     }
-    
+
 
     function testsubmit2(Request $req){
         $prop= new testdistance;

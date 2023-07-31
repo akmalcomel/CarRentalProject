@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
+<!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
 <head>
         <meta charset="utf-8">
@@ -25,11 +25,11 @@
         <link href="assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
         <link href="assets/fonts/icon-7-stroke/css/helper.css" rel="stylesheet">
         <link href="assets/css/animate.css" rel="stylesheet" media="screen">
-        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css"> 
+        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/icheck.min_all.css">
         <link rel="stylesheet" href="assets/css/price-range.css">
-        <link rel="stylesheet" href="assets/css/owl.carousel.css">  
+        <link rel="stylesheet" href="assets/css/owl.carousel.css">
         <link rel="stylesheet" href="assets/css/owl.theme.css">
         <link rel="stylesheet" href="assets/css/owl.transitions.css">
         <link rel="stylesheet" href="assets/css/style.css">
@@ -58,7 +58,7 @@
             }
 
             .card .card-body .card-content  {
-          
+
         text-align: center;
         display: flex;
         justify-content: center;
@@ -69,7 +69,7 @@
     }
 
     .card .card-text {
-          
+
           text-align: center;
           display: flex;
           justify-content: center;
@@ -85,7 +85,7 @@
 
     .table {
         width: 100%;
-        
+
     }
     .table-container {
         overflow-x: auto;
@@ -125,7 +125,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-content" style="margin-top: 10px;">
-                            <h5 class="card-title"><strong>Current Property Listed</strong></h5>    
+                            <h5 class="card-title"><strong>Current Property Listed</strong></h5>
                         </div>
                         <div class="card-text">{{$outputcount}}</div>
                     </div>
@@ -169,8 +169,8 @@
                         </tr>
                     </thead>
                     <!--<tbody>
-                        
-                       
+
+
                     </tbody>-->
                     <tbody>
                         <!-- Loop through the data and generate table rows -->
@@ -193,6 +193,14 @@
                                       {{ $houseCount }}
                                 </td>
                                 <td><a href={{"deluser/".$user['id']}} onclick="return confirm('Are you sure you want to delete this user?')" >Delete User</a></td>
+                                <td>
+                                    @if ($user->blocked)
+                                        <a href="{{ route('users.unblock', $user->id) }}">Unblock</a>
+                                    @else
+                                        <a href="{{ route('users.block', $user->id) }}">Block</a>
+                                    @endif
+
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -223,11 +231,10 @@
             }
             }
         }
- 
-       
+
+
         }
         </script>
 </body>
 
 
-       

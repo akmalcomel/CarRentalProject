@@ -7,7 +7,7 @@
 <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>UiTM | Submission page</title>
+        <title>TransMal| Submission page</title>
         <meta name="description" content="GARO is a real-estate template">
         <meta name="author" content="Kimarotec">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -163,7 +163,7 @@
 
                                             <!--<div class="col-sm-4 col-sm-offset-1">-->
                                             <div class="col-lg-6">
-                                                    <h5>Pin Your Property Location</h5>
+                                                    <h5>Pin Your Pick up Location</h5>
                                                     <div id="mapid"></div>
                                                     <button id="go-button" type="button">Go</button>
                                                     <input type="hidden" name="location" id="location-input-hidden">
@@ -184,6 +184,15 @@
                                                 <div class="form-group">
                                                     <label>Ad Title<small> Make it interesting!!</small></label>
                                                     <input name="title" type="text" class="form-control" placeholder="TITLE" maxlength="58" required>
+                                                </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Bank Details <small>Bank & Account Number</small></label>
+                                                    <input name="bank" type="text" class="form-control" placeholder="CIMB 12345432145" maxlength="58" required>
                                                 </div>
                                                 </div>
                                             </div>
@@ -209,19 +218,7 @@
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Seats :</label>
-                                                        <select name="bathroom" id="bathroom" class="selectpicker" title="Seats" required>
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
-                                                            <option>8</option>
-                                                            <option>9</option>
-                                                            <option>10</option>
-
-                                                        </select>
+                                                        <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="bathroom" type="text" class="form-control" placeholder="Seats" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">

@@ -86,8 +86,11 @@
                                                 <td>{{ $booking->return_date }}</td>
                                                 <td>{{ $booking->status }}</td>
                                                 <td>
-                                                    <a href="{{ route('bookings.accept', $booking->id) }}">Accept</a>
+                                                    <a href="{{ route('bookings.accept', $booking->id) }}">Accept / </a>
                                                     <a href="{{ route('bookings.reject', $booking->id) }}">Reject</a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ url('public/receipts/'.$booking->receipt_path) }}" target="_blank">View Receipt</a>
                                                 </td>
                                             </tr>
                                         @endif

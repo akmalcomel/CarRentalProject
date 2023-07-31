@@ -13,6 +13,7 @@ use App\Models\house;
 use App\Models\User2;
 use App\Models\Favourite;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Carbon;
 
 
 
@@ -33,7 +34,8 @@ function sdlistprop(Request $request){
     $furnishedType = $request->input('furnishedType');
     $bedrooms = $request->input('bedrooms');
     $priceRange = $request->input('pricerange');
-    $distance = $request->input('dist');
+    $startDate = $request->input('start_date');
+    $endDate = $request->input('end_date');
 
     $orderBy = $request->query('orderBy');
     $order = $request->query('order');
@@ -58,7 +60,10 @@ function sdlistprop(Request $request){
     }
 
     if ($bedrooms) {
-        $query->where('bedroom', $bedrooms);
+        $query->where('bathroom', '>=', $bedrooms);
+        $query->orWhere(function ($query) use ($bedrooms) {
+            $query->whereNull('bathroom');
+        });
     }
 
     if ($priceRange) {
@@ -68,13 +73,26 @@ function sdlistprop(Request $request){
         $query->whereBetween('price', [$minPrice, $maxPrice]);
     }
 
+    if ($startDate && $endDate) {
+        // Convert input dates to Carbon objects for easy comparison
+        $startDate = Carbon::createFromFormat('Y-m-d', $startDate);
+        $endDate = Carbon::createFromFormat('Y-m-d', $endDate);
 
-    if ($distance) {
-        $distance = explode(',', $distance);
-        $minDistance = $distance[0];
-        $maxDistance = $distance[1];
-        $query->whereBetween('distance', [$minDistance, $maxDistance]);
+        // Query to find available cars based on date range and status
+        $query->whereDoesntHave('bookings', function ($subQuery) use ($startDate, $endDate) {
+            $subQuery->where(function ($q) use ($startDate, $endDate) {
+                $q->whereBetween('start_date', [$startDate, $endDate])
+                  ->orWhereBetween('return_date', [$startDate, $endDate])
+                  ->orWhere(function ($q2) use ($startDate, $endDate) {
+                      $q2->where('start_date', '<=', $startDate)
+                         ->where('return_date', '>=', $endDate);
+                  });
+            })
+            ->whereIn('status', ['accepted', 'complete']);
+        });
     }
+
+
 
     // Apply sorting based on the orderBy and order query parameters
 

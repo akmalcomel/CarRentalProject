@@ -79,7 +79,7 @@ Route::get('/pending-bookings', [BookingController::class,"renterBookings"])->na
 
 Route::patch('/bookings/{booking}/markReturned', [BookingController::class,"markReturned"])->name('bookings.markReturned');
 Route::patch('/bookings/{booking}/rate', [BookingController::class,"rate"])->name('bookings.rate');
-
+Route::post('/booking/{car}/confirm-date', [BookingController::class, 'confirmDate'])->name('booking.confirmDate');
 
 
 
@@ -125,3 +125,12 @@ Route::get("/addeleteprop/{id}",[admincontrol::class,"deleteads"]);
 Route::get("/adeditprop/{id}",[admincontrol::class,"editads"]);
 Route::POST("/adedit",[admincontrol::class,"update"]);
 Route::get("/deluser/{id}",[admincontrol::class,"deleteUser"]);
+Route::prefix('users')->group(function () {
+    Route::get('{user}/block', [admincontrol::class, 'blockUser'])->name('users.block');
+    Route::get('{user}/unblock', [admincontrol::class, 'unblockUser'])->name('users.unblock');
+});
+
+Route::get('/blocked-user', function () {
+    return view('blocked_user');
+})->name('blockedUser');
+

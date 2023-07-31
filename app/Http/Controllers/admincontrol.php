@@ -168,4 +168,26 @@ class admincontrol extends Controller
 
     return redirect()->back()->with('success', 'User and associated houses have been deleted.');
 }
+public function blockUser($id)
+{
+    $user = User::findOrFail($id);
+
+    // Set the 'blocked' attribute to true
+    $user->blocked = true;
+    $user->save();
+
+    return redirect()->back()->with('success', 'User has been blocked.');
+}
+
+public function unblockUser($id)
+{
+    $user = User::findOrFail($id);
+
+    // Set the 'blocked' attribute to false
+    $user->blocked = false;
+    $user->save();
+
+    return redirect()->back()->with('success', 'User has been unblocked.');
+}
+
 }

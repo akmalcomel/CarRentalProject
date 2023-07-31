@@ -3,12 +3,12 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
+<!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>UiTM Property| Properties  page</title>
+        <title>TransMal| My Car page</title>
         <meta name="description" content="GARO is a real-estate template">
         <meta name="author" content="Kimarotec">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -26,11 +26,11 @@
         <link href="assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
         <link href="assets/fonts/icon-7-stroke/css/helper.css" rel="stylesheet">
         <link href="assets/css/animate.css" rel="stylesheet" media="screen">
-        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css"> 
+        <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/icheck.min_all.css">
         <link rel="stylesheet" href="assets/css/price-range.css">
-        <link rel="stylesheet" href="assets/css/owl.carousel.css">  
+        <link rel="stylesheet" href="assets/css/owl.carousel.css">
         <link rel="stylesheet" href="assets/css/owl.theme.css">
         <link rel="stylesheet" href="assets/css/owl.transitions.css">
         <link rel="stylesheet" href="assets/css/style.css">
@@ -44,11 +44,11 @@
         <!-- Body content -->
     @include('header')
 
-        <div class="page-head"> 
+        <div class="page-head">
             <div class="container">
                 <div class="row">
                     <div class="page-head-content">
-                        <h1 class="page-title">My Properties</h1>               
+                        <h1 class="page-title">My Car</h1>
                     </div>
                 </div>
             </div>
@@ -57,12 +57,12 @@
 
         <!-- property area -->
         <div class="properties-area recent-property" style="background-color: #FFF;">
-            <div class="container"> 
+            <div class="container">
                 <div class="row  pr0 padding-top-40 properties-page">
-                   
-                   
 
-                    <div class="col-md-12 clear "> 
+
+
+                    <div class="col-md-12 clear ">
                         <div id="list-type" class="proerty-th-list">
                         @php($count=0)
                             @foreach($output as $x)
@@ -78,30 +78,31 @@
                                         <div class="item-entry overflow">
                                             <h5><a href={{"vw/".$x['id']}}>{{$x['title']}}</a></h5>
                                             <div class="dot-hr"></div>
-                                            <span class="pull-left"><b> Property Name: </b>{{$x['propname']}} </span>
+                                            <span class="pull-left"><b> Car Model: </b>{{$x['propname']}} </span>
                                             <span class="proerty-price pull-right">RM{{$x['price']}}</span>
-                                            <p style="display: none;"><b>Property Type : </b>{{$x['type']}}<br>
-                                            <b>Furnished Type : </b>{{$x['furnish']}}<br>
-                                            <b>Distance to campus : </b>{{$x['distance']}} KM <small class="pull-right"><b>Date posted: {{ date('d/m H:i', strtotime($x['created_at'])) }}</b></small> </p>
+                                            <p style="display: none;"><b>Transmission : </b>{{$x['type']}}<br>
+                                            <b>Vehicle Type : </b>{{$x['furnish']}}<br>
+                                            <b>Pickup Location : </b>{{$x['address']}}  <small class="pull-right"><b>Date posted: {{ date('d/m H:i', strtotime($x['created_at'])) }}</b></small> </p>
+
                                             <div class="property-icon">
-                                                <img src="assets/img/icon/bed.png"> {{$x['bedroom']}} Bedroom|
-                                                <img src="assets/img/icon/shawer.png"> {{$x['bathroom']}} Bathroom|
-                                                <img src="assets/img/icon/cars.png"> {{$x['parking']}} Parking  
+                                                <img src="assets/img/icon/bed.png"> {{$x['bedroom']}} Door|
+                                                <img src="assets/img/icon/shawer.png"> {{$x['bathroom']}} Seat|
+                                                <img src="assets/img/icon/cars.png"> {{$x['parking']}}
                                             </div>
                                         </div>
 
 
                                     </div>
-                                </div> 
+                                </div>
                                 @endif
                             @endforeach
 
-                           
+
                         </div>
                     </div>
 
-                    
-                </div>                
+
+                </div>
             </div>
         </div>
 

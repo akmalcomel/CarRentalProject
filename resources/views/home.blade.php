@@ -7,7 +7,7 @@
 <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>UiTM | Home page</title>
+        <title>TransMal | Home page</title>
         <meta name="description" content="GARO is a real-estate template">
         <meta name="author" content="Kimarotec">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -75,7 +75,7 @@
                         <div class="col-md-12 ">
                             <div class="col-xs-10 page-subheader sorting pl0">
 
-                               <H3>RECENtLY POSTED</H3>
+                               <H3>RECENTLY POSTED</H3>
                             </div>
 
 

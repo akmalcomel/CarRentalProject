@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\BookingNotification;
 use App\Mail\BookingStatusNotification;
+use Illuminate\Support\Carbon;
 
 
 
@@ -22,6 +23,42 @@ class BookingController extends Controller
         return view('booking.create', compact('car'));
     }
 
+    public function confirmDate(Request $request, house $car)
+{
+    // Validate the form data
+    $request->validate([
+        'start_date' => 'required|date',
+        'return_date' => 'required|date|after:start_date',
+    ]);
+
+    $startDate = Carbon::createFromFormat('Y-m-d', $request->input('start_date'));
+    $returnDate = Carbon::createFromFormat('Y-m-d', $request->input('return_date'));
+
+    // Query to check availability based on the selected dates
+    $isAvailable = Booking::where('car_id', $car->id)
+        ->where(function ($query) use ($startDate, $returnDate) {
+            $query->whereBetween('start_date', [$startDate, $returnDate])
+                ->orWhereBetween('return_date', [$startDate, $returnDate])
+                ->orWhere(function ($q) use ($startDate, $returnDate) {
+                    $q->where('start_date', '<=', $startDate)
+                        ->where('return_date', '>=', $returnDate);
+                });
+        })
+        ->whereIn('status', ['accepted', 'complete'])
+        ->doesntExist();
+
+    if ($isAvailable) {
+        // Calculate the total price based on the car's price and booking duration
+        $totalPrice = $car->price * (strtotime($returnDate) - strtotime($startDate)) / (60 * 60 * 24);
+
+
+        // Pass the calculated price and selected dates back to the view
+        return view('booking.create', compact('car', 'totalPrice', 'startDate', 'returnDate'));
+    } else {
+        return redirect()->back()->with('error', 'The selected dates are not available.');
+    }
+}
+
     public function store(Request $request, house $car)
     {
         // Validate the form data
@@ -31,8 +68,6 @@ class BookingController extends Controller
             'receipt' => 'required|file|mimes:jpeg,png,pdf|max:2048',
         ]);
 
-        // Calculate the total price based on the car's price and booking duration
-        $totalPrice = $car->price * (strtotime($request->return_date) - strtotime($request->start_date)) / (60 * 60 * 24);
 
         // Create the booking record
         $booking = new Booking();
@@ -40,13 +75,18 @@ class BookingController extends Controller
         $booking->renter_id = Auth::guard('user2')->user()->id;
         $booking->start_date = $request->start_date;
         $booking->return_date = $request->return_date;
-        $booking->total_price = $totalPrice;
+        $booking->total_price =  $request->total_price;
 
         // Save the receipt file
-        if ($request->hasFile('receipt')) {
-            $receiptPath = $request->file('receipt')->store('receipts', 'public');
-            $booking->receipt_path = $receiptPath;
+
+        if($request->hasFile('receipt')){
+            $file= $request->file('receipt');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/receipts'), $filename);
+            $booking['receipt_path']= $filename;
         }
+
+
 
         $ownerEmail = $booking->car->owners->email;
  // Assuming the car owner's email is stored in the 'email' column of the 'users' table.

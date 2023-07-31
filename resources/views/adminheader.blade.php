@@ -8,7 +8,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/stdhome"><img src="assets/LogoUiTM.png" alt=""></a>
+                    <a class="navbar-brand" href="/stdhome"><img src="assets/LogoUiTM.png" width="200" height="150" alt=""></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling
@@ -31,13 +31,13 @@
                                     <li> <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
                                     @endif
                                 @endauth
-                          
-                    
+
+
                             </div>
-                        @endif 
+                        @endif
                         </li>
-                       
-                        
+
+
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
+<!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
@@ -25,15 +25,15 @@
         <link href="{{URL::asset('assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css')}}" rel="stylesheet">
         <link href="{{URL::asset('assets/fonts/icon-7-stroke/css/helper.css')}}" rel="stylesheet">
         <link href="{{URL::asset('assets/css/animate.css')}}" rel="stylesheet" media="screen">
-        <link rel="stylesheet" href="{{URL::asset('assets/css/bootstrap-select.min.css')}}"> 
+        <link rel="stylesheet" href="{{URL::asset('assets/css/bootstrap-select.min.css')}}">
         <link rel="stylesheet" href="{{URL::asset('bootstrap/css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/icheck.min_all.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/price-range.css')}}">
-        <link rel="stylesheet" href="{{URL::asset('assets/css/owl.carousel.css')}}">  
+        <link rel="stylesheet" href="{{URL::asset('assets/css/owl.carousel.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/owl.theme.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/owl.transitions.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/lightslider.min.css')}}">
-        <link rel="stylesheet" href="{{URL::asset('assets/css/wizard.css')}}"> 
+        <link rel="stylesheet" href="{{URL::asset('assets/css/wizard.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/style.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/responsive.css')}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
@@ -60,7 +60,7 @@
         .distance-input {
             z-index: 9000;
         }
-        
+
 </style>
 
     </head>
@@ -90,9 +90,9 @@
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/home">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/listprop">Properties</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/myads">My Property</a></li>
-                        
 
-                        
+
+
                         <li class="wow fadeInDown" data-wow-delay="0.1s"> @if (Route::has('login'))
                             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                                 @auth
@@ -105,23 +105,23 @@
                                     @endif
                                 @endauth
                                 <li><button class="navbar-btn nav-button wow fadeInRight" onclick="window.location.href = 'http://localhost:8000/submitp';" data-wow-delay="0.5s">Submit</button></li>
-                    
+
                             </div>
-                        @endif 
+                        @endif
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-    
+
         <!-- Body content -->
 
 
-        <div class="page-head"> 
+        <div class="page-head">
             <div class="container">
                 <div class="row">
                     <div class="page-head-content">
-                        <h1 class="page-title">Edit My Property</h1>               
+                        <h1 class="page-title">Edit My Car</h1>
                     </div>
                 </div>
             </div>
@@ -131,15 +131,15 @@
         <!-- property area -->
         <div class="content-area submit-property" style="background-color: #FCFCFC;">&nbsp;
             <div class="container">
-                <div class="clearfix" > 
-                    <div class="wizard-container"> 
+                <div class="clearfix" >
+                    <div class="wizard-container">
 
                         <div class="wizard-card ct-wizard-orange" id="wizardProperty">
                         <form id="contact" action="/edit" method="post" enctype="multipart/form-data">
-                            @csrf                       
+                            @csrf
                                 <div class="wizard-header">
                                     <h3>
-                                        <b>EDIT</b> MY PROPERTY <br>
+                                        <b>EDIT</b> MY CAR <br>
                                         <small></small>
                                     </h3>
                                 </div>
@@ -152,107 +152,100 @@
                                 </ul>
 
                                 <div class="tab-content">
-                                
+
 
                                     <div class="tab-pane" id="step1">
                                         <div class="row p-b-15  ">
                                             <h4 class="info-text"> Let's start with the basic information (with validation)</h4>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label>Property name <small>(Residential Name)</small></label>
+                                                    <label>Car Model <small>(Brand & Model)</small></label>
                                                     <input name="propertyname" value="{{$output->propname}}" type="text" class="form-control" placeholder="Super villa ..." required>
                                                 </div>
                                                 <input type="hidden" name="id" id="record-id" value="{{$output->id}}">
 
 
                                                 <div class="form-group">
-                                                    <label>Property price <small></small></label>
+                                                    <label>Rental Price (RM) <small>Per Day</small></label>
                                                     <input oninput="this.value = this.value.replace(/[^0-9]/g, '')"  name="propertyprice" value="{{$output->price}}" type="text" class="form-control" placeholder="3330000" required>
-                                                </div> 
+                                                </div>
                                                 <div class="form-group">
-                                                    <label>Property Type:</label>
+                                                    <label>Transmission:</label>
                                                     <select name="propertytype" class="selectpicker" title="Property type" required>
-                                                        <option value="Apartment" {{ $output->type == 'Apartment' ? 'selected' : '' }}>Apartment</option>
-                                                        <option value="Bungalow" {{ $output->type == 'Bungalow' ? 'selected' : '' }}>Bungalow</option>
-                                                        <option value="Room" {{ $output->type == 'Room' ? 'selected' : '' }}>Room</option>
-                                                        <option value="Terrace" {{ $output->type == 'Terrace' ? 'selected' : '' }}>Terrace</option>
-                                                        <option value="Semi-D" {{ $output->type == 'Semi-D' ? 'selected' : '' }}>Semi-D</option>
-                                                        <option value="Studio" {{ $output->type == 'Studio' ? 'selected' : '' }}>Studio</option>
-                                                        <option value="ShopLot" {{ $output->type == 'ShopLot' ? 'selected' : '' }}>ShopLot</option>
+                                                        <option value="Automatic" {{ $output->type == 'Automatic' ? 'selected' : '' }}>Automatic</option>
+                                                        <option value="Manual" {{ $output->type == 'Manual' ? 'selected' : '' }}>Manual</option>
+
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label>Address <small>(Roadname)</small></label>
+                                                    <label>Pickup Area</label>
                                                     <input name="address" type="text" value="{{$output->address}}" class="form-control" placeholder="" required>
                                                 </div>
                                             </div>
 
                                             <!--<div class="col-sm-4 col-sm-offset-1">-->
                                             <div class="col-lg-6">
-                                                    <h5>Pin Your Property Location</h5>
+                                                    <h5>Pin Your Pickup Location</h5>
                                                     <div id="mapid"></div>
                                                     <button id="go-button" type="button">Go</button>
                                                     <input type="hidden" name="distance"  id="distance-input-hidden">
                                                     <input type="hidden" name="latitude" id="latitude-input-hidden">
                                                     <input type="hidden" name="longitude" id="longitude-input-hidden">
                                                     <!--<input type="submit" value="Submit" onclick="setHiddenInputs()">-->
-                                                
+
                                             </div>
                                         </div>
                                     </div>
                                     <!--  End step 1 -->
 
                                     <div class="tab-pane" id="step2">
-                                        <h4 class="info-text"> Make your property ads as detail as possible!! </h4>
+                                        <h4 class="info-text"> Advertise Your Car </h4>
                                         <div class="row">
-                                        <div class="col-sm-12"> 
-                                                <div class="col-sm-12"> 
+                                        <div class="col-sm-12">
+                                                <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label>Ad Title<small></small></label>
                                                     <input name="title" value="{{$output->title}}" type="text" class="form-control" placeholder="TITLE" maxlength="58" required>
-                                                </div> 
-                                                </div> 
+                                                </div>
+                                                </div>
                                             </div>
 
-                                            <div class="col-sm-12"> 
-                                                <div class="col-sm-12"> 
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-12">
                                                     <div class="form-group">
-                                                        <label>Property Description :</label>
-                                                        <textarea name="description" class="form-control" required>{{$output->description}}</textarea>
+                                                        <label>Bank Details <small>Bank & Account Number</small></label>
+                                                        <input name="bank" value="{{$output->bank}}" type="text" class="form-control" placeholder="CIMB 12345432145" maxlength="58" required>
 
-                                                    </div> 
-                                                </div> 
+                                                    </div>
+                                                </div>
                                             </div>
 
-                                          
+
                                             <div class="col-sm-12">
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label>Furnished:</label>
+                                                        <label>Car Type:</label>
                                                         <select name="furnished" id="furnished" class="selectpicker" title="Furnished type" required>
-                                                            <option value="Fully Furnished" @if($output->furnish == "Fully Furnished") selected @endif>Fully Furnished</option>
-                                                            <option value="Partially Furnished" @if($output->furnish == "Partially Furnished") selected @endif>Partially Furnished</option>
-                                                            <option value="Not Furnished" @if($output->furnish == "Not Furnished") selected @endif>Not Furnished</option>
+                                                            <option value="Sedan" @if($output->furnish == "Sedan") selected @endif>Sedan</option>
+                                                            <option value="Hatchback" @if($output->furnish == "Hatchback") selected @endif>Hatchback</option>
+                                                            <option value="SUV" @if($output->furnish == "SUV") selected @endif>SUV</option>
+                                                            <option value="Coupe" @if($output->furnish == "Coupe") selected @endif>Coupe</option>
+                                                            <option value="Van" @if($output->furnish == "Van") selected @endif>Van</option>
+                                                            <option value="Limousine" @if($output->furnish == "Limousine") selected @endif>Limousine</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label>Bathroom :</label>
-                                                        <select name="bathroom" id="bathroom" class="selectpicker" title="Bathroom" required>
-                                                            <option @if($output->bathroom == "1") selected @endif>1</option>
-                                                            <option @if($output->bathroom == "2") selected @endif>2</option>
-                                                            <option @if($output->bathroom == "3") selected @endif>3</option>
-                                                            <option @if($output->bathroom == "4") selected @endif>4</option>
-                                                            <option @if($output->bathroom == "5") selected @endif>5</option>
-                                                          
-                                                        </select>
+                                                        <label>Seats :</label>
+                                                        <input name="bathroom" oninput="this.value = this.value.replace(/[^0-9]/g, '')" value="{{$output->bathroom}}" type="text" class="form-control"  maxlength="58" required>
+
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label>Bedroom :</label>
+                                                        <label>Door :</label>
                                                         <select name="bedroom" id="bedroom" class="selectpicker" title="Bedroom" required>
                                                             <option @if($output->bedroom == "1") selected @endif>1</option>
                                                             <option @if($output->bedroom == "2") selected @endif>2</option>
@@ -260,83 +253,71 @@
                                                             <option @if($output->bedroom == "4") selected @endif>4</option>
                                                             <option @if($output->bedroom == "5") selected @endif>5</option>
                                                             <option @if($output->bedroom == "6") selected @endif>6</option>
-                                                           
+
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label>Property Size :</label>
-                                                        <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="size" type="text" value="{{$output->size}}" class="form-control" placeholder="sq.ft." required>
+                                                        <label>Years Built :</label>
+                                                        <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="size" type="text" value="{{$output->size}}" class="form-control" placeholder="" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Parking :</label>
                                                         <select name="parking" id="parking" class="selectpicker show-tick form-control" required>
-                                                            <option @if($output->parking == "0") selected @endif>0</option>
-                                                            <option @if($output->parking == "1") selected @endif>1</option>
-                                                            <option @if($output->parking == "2") selected @endif>2</option>
-                                                            <option @if($output->parking == "3") selected @endif>3</option>
-                                                            <option @if($output->parking == "4") selected @endif>4</option>
-                                                        </select>
+                                                            <option value="Petrol" @if($output->parking == "Petrol") selected @endif>Petrol</option>
+                                                            <option value="Diesel" @if($output->parking == "Diesel") selected @endif>Diesel</option>
+
+                                                           </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Rental Deposit (RM) :</label>
                                                         <input oninput="this.value = this.value.replace(/[^0-9]/g, '')"  name="rental" type="text" value="{{$output->deposit}}" class="form-control" placeholder="RM" required>
-                                                       
-                                                
+
+
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <label>Floor :</label>
-                                                        <select name="floor" id="floor" class="selectpicker" title="Floor" required>
-                                                            <option @if($output->floor == "1") selected @endif>1</option>
-                                                            <option @if($output->floor == "2") selected @endif>2</option>
-                                                            <option @if($output->floor == "3") selected @endif>3</option>
-                                                            <option @if($output->floor == "4") selected @endif>4</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+
                                             </div>
 
 
-                                            
 
-                                              
 
-                                            
 
-                                            <div class="col-sm-12"> 
-                                                <div class="col-sm-12"> 
+
+
+
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-12">
                                                     <div class="form-group">
-                                                        <label>Nearby Highlights :</label>
+                                                        <label>Car Description :</label>
                                                         <textarea name="highlight"  class="form-control" placeholder="MRT, KFC, Easy to find food" required>{{$output->highlights}}"</textarea>
-                                                    </div> 
-                                                </div> 
+                                                    </div>
+                                                </div>
                                             </div>
 
-                                            
-                                          
+
+
 
                                             <div class="col-sm-12 padding-top-6">
                                             <div class="col-sm-3">
                                                     <div class="form-group">
-                                                       
+
                                                             <label>
-                                                               Facilities:
+                                                               Features:
                                                             </label>
-                                                        
+
                                                     </div>
-                                                </div> 
+                                                </div>
                                             </div>
-                                            
-                                        
+
+
                                             <div class="col-sm-12 padding-top-10">
-    @foreach(['swimming pool', 'tennis court', 'air cond', '24 hours security'] as $facility)
+    @foreach(['Air Conditioning', 'Reverse Camera', 'Apple CarPlay', 'Hybrid/Electric'] as $facility)
         <div class="col-sm-3">
             <div class="form-group">
                 <div class="checkbox">
@@ -351,7 +332,7 @@
 </div>
 
 <div class="col-sm-12 padding-bottom-15">
-    @foreach(['washing machine', 'water heater', 'free wifi', 'cooking allowed'] as $facility)
+    @foreach(['Child Safety Seats(Upon Request)', 'Parking Sensor', 'Cruise Control', 'Keyless Entry'] as $facility)
         <div class="col-sm-3">
             <div class="form-group">
                 <div class="checkbox">
@@ -366,18 +347,18 @@
 </div>
 
                                             <fieldset>
-                                
+
                               </fieldset>
                                             <br>
                                         </div>
                                     </div>
                                     <!-- End step 2 -->
 
-                                    <div class="tab-pane" id="step3">                                        
-                                        <h4 class="info-text">Add images of your beautiful property</h4>
-                                        <div class="row">  
-    
-                                            <div class="col-sm-6"> 
+                                    <div class="tab-pane" id="step3">
+                                        <h4 class="info-text">Add images of your Car</h4>
+                                        <div class="row">
+
+                                            <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="property-images">Additional Image 1:</label>
                                                 <input class="form-control" type="file" id="property-images" name="image" value="{{ url('public/Image/'.$output->image) }}" >
@@ -409,7 +390,7 @@
                                                 <label>Current Image:</label>
                                                 <img src="{{ url('public/Image/'.$output->image4) }}" alt="Current Image" width="200px">
                                             </div>
-                                           
+
 
                                             </div>
                                         </div>
@@ -417,23 +398,23 @@
                                     <!--  End step 3 -->
 
 
-                                    <div class="tab-pane" id="step4">                                        
+                                    <div class="tab-pane" id="step4">
                                         <h4 class="info-text"> Save and Publish </h4>
-                                        <div class="row">  
+                                        <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="">
                                                     <p>Make sure all the details that been edited is correct and in proper manner.
-                                                    
+
                                                     </p>
 
                                                     <fieldset>
                                 <button type="submit" id="form-submit" class="btn btn-primary" onclick="setHiddenInputs()">Save</button>
                               </fieldset>
 
-                                                </div> 
+                                                </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                     <!--  End step 4 -->
 
@@ -443,18 +424,18 @@
                                     <div class="pull-right">
                                         <input type='button' class='btn btn-next btn-primary' name='next' value='Next' />
                                         <!--<input type='button' class='btn btn-finish btn-primary ' name='finish' value='Finish' />-->
-                                        
+
                                     </div>
 
                                     <div class="pull-left">
                                         <input type='button' class='btn btn-previous btn-default' name='previous' value='Previous' />
                                     </div>
-                                    <div class="clearfix"></div>                                            
-                                </div>	
+                                    <div class="clearfix"></div>
+                                </div>
                             </form>
                         </div>
                         <!-- End submit form -->
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -473,15 +454,15 @@
 <script src="{{URL::asset('assets/js/wow.js')}}"></script>
 <script src="{{URL::asset('assets/js/icheck.min.js')}}"></script>
 
-<script src="{{URL::asset('assets/js/price-range.js')}}"></script> 
+<script src="{{URL::asset('assets/js/price-range.js')}}"></script>
 <script src="{{URL::asset('assets/js/jquery.bootstrap.wizard.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('assets/js/jquery.validate.min.js')}}"></script>
 <script src="{{URL::asset('assets/js/wizard.js')}}"></script>
 
 <script src="{{URL::asset('assets/js/main.js')}}"></script>
 
-       
-      
+
+
 <script>
     var map;
     var campusMarker;
@@ -497,7 +478,7 @@
         }).addTo(map);
 
         // Add the campus marker
-        campusMarker = L.marker([3.06818, 101.499]).bindPopup("UiTM").addTo(map);
+
 
         // Add the red icon for markers
         var redIcon = L.icon({
@@ -510,21 +491,7 @@
         });
 
         // Create the distance input field
-        distanceInput = L.DomUtil.create('input', 'distance-input');
-        distanceInput.type = 'text';
-        distanceInput.id = 'distance-input';
-        distanceInput.placeholder = 'Distance to campus (km)';
-        distanceInput.style.position = 'absolute';
-        distanceInput.style.top = '10px';
-        distanceInput.style.left = '50%';
-        distanceInput.style.transform = 'translateX(-50%)';
-        distanceInput.style.backgroundColor = 'lightblue';
-        distanceInput.style.height = '30px';
-        distanceInput.style.width = '200px';
-        distanceInput.style.marginBottom = '80px';
-        distanceInput.style.fontFamily = 'Arial';
-        distanceInput.style.fontSize = '12px';
-        map.getContainer().appendChild(distanceInput);
+
 
         // Create the address input field
         addressInput = L.DomUtil.create('input', 'address-input');
@@ -587,20 +554,18 @@
         // Move the location marker when the user clicks anywhere on the map
         map.on('click', function(e) {
             locationMarker.setLatLng(e.latlng);
-            var distance = locationMarker.getLatLng().distanceTo(campusMarker.getLatLng()) / 1000;
-            distanceInput.value = distance.toFixed(1) + ' km from UiTM';
+
         });
     }
 
     // Function to save the location marker's position in the hidden inputs
     function setHiddenInputs() {
-        var hiddenDistanceInput = document.getElementById('distance-input-hidden');
+
         var latitudeInput = document.getElementById('latitude-input-hidden');
         var longitudeInput = document.getElementById('longitude-input-hidden');
         var distance = distanceInput.value.split(" ")[0];
         var latitude = locationMarker.getLatLng().lat;
         var longitude = locationMarker.getLatLng().lng;
-        hiddenDistanceInput.value = distance;
         latitudeInput.value = latitude;
         longitudeInput.value = longitude;
     }
