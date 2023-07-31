@@ -43,7 +43,11 @@
                         <h4>Car Model: {{ $car->propname }}</h4>
                         <p><strong>Start Date:</strong> {{ \Carbon\Carbon::parse($startDate)->format('Y-m-d') }}</p>
                         <p><strong>Return Date:</strong> {{ \Carbon\Carbon::parse($returnDate)->format('Y-m-d') }}</p>
-                        <p><strong>Price Per Day (After Discount):</strong> RM {{ $car->price }}</p>
+                        @php
+                            $priceWithDiscount = $car->price * (100 - $car->floor) / 100;
+                        @endphp
+
+                        <p><strong>Price Per Day (After Discount):</strong> RM {{ $priceWithDiscount }}</p>
                 <hr><p><strong>Total Price:</strong> RM {{ $totalPrice }}</p><hr>
 
                         <form action="{{ route('booking.store', $car->id) }}" method="post" enctype="multipart/form-data">

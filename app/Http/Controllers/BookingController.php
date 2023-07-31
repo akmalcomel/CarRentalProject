@@ -49,7 +49,7 @@ class BookingController extends Controller
 
     if ($isAvailable) {
         // Calculate the total price based on the car's price and booking duration
-        $totalPrice = $car->price * (strtotime($returnDate) - strtotime($startDate)) / (60 * 60 * 24);
+        $totalPrice = ($car->price - ($car->price * $car->floor / 100)) * (strtotime($returnDate) - strtotime($startDate)) / (60 * 60 * 24);
 
 
         // Pass the calculated price and selected dates back to the view
