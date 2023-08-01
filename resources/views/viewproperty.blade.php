@@ -37,6 +37,9 @@
         <link rel="stylesheet" href="{{URL::asset('assets/css/style.css')}}">
         <link rel="stylesheet" href="{{URL::asset('assets/css/responsive.css')}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
+        <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.css' rel='stylesheet' />
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.js'></script>
+
 
         <style>
             #mapid {
@@ -303,6 +306,15 @@
                                 </div>
                             </div>
 
+
+                             <!-- Calender area -->
+                            <div class="section">
+                                <h4 class="s-property-title">Car Calender</h4>
+                                <div class="s-property-content">
+                                    <div id="calendar"></div>
+                                </div>
+                            </div>
+
                             <div class="section property-features">
 
                                 <h4 class="s-property-title">Features</h4>
@@ -509,7 +521,7 @@
         var distanceInput = L.DomUtil.create('input', 'distance-input');
                         distanceInput.type = 'text';
                         distanceInput.id = 'distance-input';
-                        distanceInput.value = "{{$output->highlights}}";
+                        distanceInput.value = '{!! html_entity_decode(json_encode($output->highlights)) !!}';
                         distanceInput.style.position = 'absolute';
                         distanceInput.style.top = '10px';
                         distanceInput.style.left = '50%';
@@ -526,5 +538,23 @@
 
         addressBoxControl.addTo(map);
     </script>
+
+    <script>
+        // Use the PHP variable to initialize FullCalendar
+        var events = {!! $eventsJson !!};
+
+        // Initialize FullCalendar
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth', // Set the initial view
+                events: events, // Pass the events data to FullCalendar
+                // Add other FullCalendar options as needed
+            });
+            calendar.render();
+        });
+    </script>
+
+
     </body>
 </html>

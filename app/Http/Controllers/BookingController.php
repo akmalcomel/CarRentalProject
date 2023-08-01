@@ -35,17 +35,10 @@ class BookingController extends Controller
     $returnDate = Carbon::createFromFormat('Y-m-d', $request->input('return_date'));
 
     // Query to check availability based on the selected dates
-    $isAvailable = Booking::where('car_id', $car->id)
-        ->where(function ($query) use ($startDate, $returnDate) {
-            $query->whereBetween('start_date', [$startDate, $returnDate])
-                ->orWhereBetween('return_date', [$startDate, $returnDate])
-                ->orWhere(function ($q) use ($startDate, $returnDate) {
-                    $q->where('start_date', '<=', $startDate)
-                        ->where('return_date', '>=', $returnDate);
-                });
-        })
-        ->whereIn('status', ['accepted', 'complete'])
-        ->doesntExist();
+    $isAvailable = !Booking::where('car_id', $car->id)
+    ->where('return_date', '>=', $startDate->subDay()) // Check for return dates after (>=) the start date minus 1 day
+    ->whereIn('status', ['accepted', 'complete'])
+    ->exists();
 
     if ($isAvailable) {
         // Calculate the total price based on the car's price and booking duration

@@ -75,7 +75,7 @@
                         <div class="col-md-12 ">
                             <div class="col-xs-10 page-subheader sorting pl0">
 
-                               <H3> Recent Properties</h3>
+                               <H3> Recent Cars</h3>
                             </div>
 
 
@@ -101,18 +101,18 @@
                                         <div class="item-entry overflow">
                                             <h5><a href={{"sdvw/".$x['id']}}>{{$x['title']}}</a></h5>
                                             <div class="dot-hr"></div>
-                                            <span class="pull-left"><b> Name :</b>{{$x['propname']}} </span>
+                                            <span class="pull-left"><b> Car Model :</b>{{$x['propname']}} </span>
                                             <span class="proerty-price pull-right">RM{{$x['price']}}</span></br>
 
 
-                                            <p style="display: none;"><b>Property Type : </b>{{$x['type']}}<br>
-                                            <b>Furnished Type : </b>{{$x['furnish']}}<br>
-                                            <b>Distance to campus : </b>{{$x['distance']}} KM
+                                            <p style="display: none;"><b>Pickup Location : </b>{{$x['address']}}<br>
+                                            <b>Transmission : </b>{{$x['type']}}<br>
+                                            <b>Vehicle Type : </b>{{$x['furnish']}} KM
                                             <small class="pull-right"><b>Date posted: {{ date('d/m H:i', strtotime($x['created_at'])) }}</b></small> </p>
                                             <div class="property-icon">
-                                                <img src="assets/img/icon/bed.png"> {{$x['bedroom']}} Bedroom|
-                                                <img src="assets/img/icon/shawer.png"> {{$x['bathroom']}} Bathroom|
-                                                <img src="assets/img/icon/cars.png"> {{$x['parking']}} Parking
+                                                <img src="assets/img/icon/bed.png"> {{$x['bedroom']}} Door|
+                                                <img src="assets/img/icon/shawer.png"> {{$x['bathroom']}} Seats|
+                                                <img src="assets/img/icon/cars.png"> {{$x['parking']}}
                                             </div>
                                         </div>
 

@@ -486,7 +486,11 @@
        <script>
         var latitude = {{$output['latitude']}};
         var longitude = {{$output['longitude']}};
-        var campusMarker = L.marker([latitude, longitude]).bindPopup("UiTM Shah Alam");
+        var campusMarker = L.marker([latitude, longitude]).bindPopup( '<a href="https://www.google.com/maps/search/?api=1&query=' +
+    latitude +
+    ',' +
+    longitude +
+    '" target="_blank">See Location on Google Maps</a>');
         var redIcon = L.icon({
             iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -507,7 +511,7 @@
         var distanceInput = L.DomUtil.create('input', 'distance-input');
                         distanceInput.type = 'text';
                         distanceInput.id = 'distance-input';
-                        distanceInput.value = "{{$output->highlights}}";
+                        distanceInput.value = {!! html_entity_decode(json_encode($output->highlights)) !!};
                         distanceInput.style.position = 'absolute';
                         distanceInput.style.top = '10px';
                         distanceInput.style.left = '50%';

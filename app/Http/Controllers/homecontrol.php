@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Student;
 use App\Models\house;
+use App\Models\Booking;
 use App\Models\testdistance;
 use Geocoder\Geocoder;
 use Geocoder\Model\Coordinates;
@@ -43,8 +44,34 @@ class homecontrol extends Controller
         $output=house::find($id);
         $owner=User::find($output->ownerID);
         $username=Auth::user()->id;
+        $bookings = Booking::where('car_id', $id)->get();
 
-        return view ('viewproperty',compact('output','owner','username'));
+    // Convert the booking data to the required format for FullCalendar
+    $events = [];
+    foreach ($bookings as $booking) {
+        // Calculate the duration of the booking
+        $startDate = $booking->start_date;
+        $endDate = $booking->return_date;
+
+        // Create an event object for each day of the booking duration
+        while ($startDate <= $endDate) {
+            $event = [
+                'title' => 'Booking ID: ' . $booking->id,
+                'start' => $startDate,
+                'end' => $startDate, // Assuming the booking is for a single day
+                // Add other optional properties here, e.g., 'color' for custom event colors
+            ];
+            $events[] = $event;
+
+            // Increment the start date to the next day
+            $startDate = date('Y-m-d', strtotime($startDate . ' +1 day'));
+        }
+    }
+
+    // Convert the $events array to JSON to be used in the FullCalendar JavaScript code
+    $eventsJson = json_encode($events);
+
+        return view ('viewproperty',compact('output','owner','username','eventsJson'));
     }
 
     function editads($id){
@@ -77,7 +104,7 @@ class homecontrol extends Controller
         $prop->furnish=$request->furnished;
         $prop->type=$request->propertytype;
         //$prop->image="testing value";
-        $prop->description=$request->highlight;
+        $prop->description=$request->description;
         //$prop->facilities=$req->input('facility');
         //$prop->facilities=$req->input('facility');
         $prop->owner=Auth::user()->name;
@@ -89,10 +116,10 @@ class homecontrol extends Controller
         $prop->parking=$request->parking;
         $prop->address=$request->address;
 
-        //$prop->latitude=$request->latitude;
-        //$prop->longitude=$request->longitude;
+        $prop->latitude=$request->latitude;
+        $prop->longitude=$request->longitude;
         //$prop->floor=$request->floor;
-        //$prop->highlights=$request->highlight;
+        $prop->highlights=$request->location;
         // Check if a new image was uploaded
         if ($request->hasFile('image')) {
             $file= $request->file('image');

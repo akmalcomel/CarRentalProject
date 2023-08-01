@@ -33,7 +33,7 @@
 
 <style>
         body {
-        background-image: url("uitmpic.jpeg");
+        background-image: url("assets/img/slide1/wallpaperkereta.jpeg");
         background-repeat: no-repeat;
         background-size: 100% 100%;
         }

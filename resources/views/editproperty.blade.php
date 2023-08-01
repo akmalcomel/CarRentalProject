@@ -76,7 +76,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="http://localhost:8000/home"><img src="{{ url('assets/LogoUiTM.png')}}" alt=""></a>
+                    <a class="navbar-brand" href="http://localhost:8000/home"><img src="{{ url('assets/LogoUiTM.png')}}" width="200" height="150" alt=""></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling
@@ -88,8 +88,8 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
 
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/home">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/listprop">Properties</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/myads">My Property</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/listprop">Cars</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="http://localhost:8000/myads">My Cars  </a></li>
 
 
 
@@ -189,7 +189,7 @@
                                                     <h5>Pin Your Pickup Location</h5>
                                                     <div id="mapid"></div>
                                                     <button id="go-button" type="button">Go</button>
-                                                    <input type="hidden" name="distance"  id="distance-input-hidden">
+                                                    <input type="hidden" name="location" id="location-input-hidden">
                                                     <input type="hidden" name="latitude" id="latitude-input-hidden">
                                                     <input type="hidden" name="longitude" id="longitude-input-hidden">
                                                     <!--<input type="submit" value="Submit" onclick="setHiddenInputs()">-->
@@ -295,7 +295,7 @@
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label>Car Description :</label>
-                                                        <textarea name="highlight"  class="form-control" placeholder="MRT, KFC, Easy to find food" required>{{$output->highlights}}"</textarea>
+                                                        <textarea name="description"  class="form-control" placeholder="MRT, KFC, Easy to find food" required>{{$output->description}}"</textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -464,75 +464,57 @@
 
 
 <script>
-    var map;
-    var campusMarker;
-    var locationMarker;
-    var distanceInput;
-    var addressInput;
+    var marker;
 
     window.onload = function() {
-        map = L.map('mapid').setView([3.06818, 101.499], 11); // Set the initial map center and zoom level
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { // Add the OpenStreetMap tile layer
-            attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+        var map = L.map('mapid').setView([{{$output->latitude}}, {{$output->longitude}}], 11); // Set the initial map center and zoom level
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            // Add the OpenStreetMap tile layer
+            attribution:
+                '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
             maxZoom: 18,
         }).addTo(map);
 
-        // Add the campus marker
-
-
-        // Add the red icon for markers
         var redIcon = L.icon({
             iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
             iconSize: [25, 41],
             iconAnchor: [12, 41],
             popupAnchor: [1, -34],
-            shadowSize: [41, 41]
+            shadowSize: [41, 41],
         });
 
-        // Create the distance input field
+        marker = L.marker([{{$output->latitude}}, {{$output->longitude}}], { icon: redIcon, draggable: true }).addTo(map);
 
-
-        // Create the address input field
-        addressInput = L.DomUtil.create('input', 'address-input');
+        var addressInput = L.DomUtil.create('input', 'address-input');
         addressInput.type = 'text';
         addressInput.id = 'address-input';
-        addressInput.placeholder = 'Enter an address';
+        addressInput.placeholder = 'Search Property Area (if needed)';
         addressInput.style.position = 'absolute';
-        addressInput.style.top = '40px';
+        addressInput.style.top = '20px';
         addressInput.style.left = '50%';
         addressInput.style.transform = 'translateX(-50%)';
         addressInput.style.zIndex = '1000';
         addressInput.style.height = '30px';
         addressInput.style.width = '200px';
         addressInput.style.marginTop = '7px';
+        addressInput.value = {!! html_entity_decode(json_encode($output->highlights)) !!};
         addressInput.style.fontFamily = 'Arial';
         addressInput.style.fontSize = '12px';
-        map.getContainer().appendChild(addressInput);
 
-        // Retrieve the location marker coordinates from the database
-        var locationLatitude = {{$output['latitude']}};
-        var locationLongitude = {{$output['longitude']}};
-
-        // Add the location marker
-        locationMarker = L.marker([locationLatitude, locationLongitude], {icon: redIcon, draggable: true}).addTo(map);
-
-        // Calculate the initial distance from the location marker to the campus marker
-        var distance = locationMarker.getLatLng().distanceTo(campusMarker.getLatLng()) / 1000;
-        distanceInput.value = distance.toFixed(1) + ' km from UiTM';
-
-        // Update the distance input field whenever the user moves the location marker on the map
-        locationMarker.on('dragend', function(e) {
-            var distance = locationMarker.getLatLng().distanceTo(campusMarker.getLatLng()) / 1000;
-            distanceInput.value = distance.toFixed(1) + ' km from UiTM';
+        addressInput.addEventListener('click', function(event) {
+            // Stop propagating the click event to the map to prevent the pin from moving
+            event.stopPropagation();
         });
 
-        // Update the location marker when the user enters an address and clicks the Go button
-        var goButton = document.getElementById('go-button');
-        goButton.addEventListener('click', function() {
-            var address = addressInput.value;
+        map.getContainer().appendChild(addressInput);
+
+        document.getElementById('go-button').addEventListener('click', function() {
+            var address = document.getElementById('address-input').value;
             if (address) {
-                var geocodeUrl = 'https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(address);
+                var geocodeUrl =
+                    'https://nominatim.openstreetmap.org/search?format=json&q=' +
+                    encodeURIComponent(address);
                 fetch(geocodeUrl)
                     .then(function(response) {
                         return response.json();
@@ -540,10 +522,8 @@
                     .then(function(json) {
                         if (json && json.length > 0) {
                             var latlng = L.latLng(json[0].lat, json[0].lon);
-                            locationMarker.setLatLng(latlng);
-                            map.panTo(latlng);
-                            var distance = locationMarker.getLatLng().distanceTo(campusMarker.getLatLng()) / 1000;
-                            distanceInput.value = distance.toFixed(1) + ' km from UiTM';
+                            moveMarker(latlng);
+                            map.setView(latlng, 16); // Set the map view to the searched location with a zoom level of 16
                         } else {
                             alert('Address not found');
                         }
@@ -551,21 +531,48 @@
             }
         });
 
-        // Move the location marker when the user clicks anywhere on the map
-        map.on('click', function(e) {
-            locationMarker.setLatLng(e.latlng);
+        // Update the distance input field whenever the user moves the pin on the map
+        function moveMarker(latlng) {
+            if (marker) {
+                map.removeLayer(marker);
+            }
+            marker = L.marker(latlng, { icon: redIcon }).addTo(map);
 
+            var reverseGeocodeUrl =
+                'https://nominatim.openstreetmap.org/reverse?format=json&lat=' +
+                latlng.lat +
+                '&lon=' +
+                latlng.lng;
+            fetch(reverseGeocodeUrl)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(json) {
+                    if (json && json.address) {
+                        document.getElementById('address-input').value = json.display_name;
+                        document.getElementById('latitude-input-hidden').value = latlng.lat;
+                        document.getElementById('longitude-input-hidden').value = latlng.lng;
+                        document.getElementById('location-input-hidden').value = json.display_name;
+                    } else {
+                        document.getElementById('address-input').value = '';
+                        document.getElementById('location-input-hidden').value = '';
+
+                    }
+                });
+        }
+
+        map.on('click', function(e) {
+            moveMarker(e.latlng);
         });
     }
 
-    // Function to save the location marker's position in the hidden inputs
     function setHiddenInputs() {
-
         var latitudeInput = document.getElementById('latitude-input-hidden');
         var longitudeInput = document.getElementById('longitude-input-hidden');
-        var distance = distanceInput.value.split(" ")[0];
-        var latitude = locationMarker.getLatLng().lat;
-        var longitude = locationMarker.getLatLng().lng;
+        var distance = distanceInput.value.split(' ')[0];
+        var latitude = marker.getLatLng().lat;
+        var longitude = marker.getLatLng().lng;
+
         latitudeInput.value = latitude;
         longitudeInput.value = longitude;
     }

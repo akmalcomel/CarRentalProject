@@ -67,7 +67,7 @@
                                 <thead>
                                     <tr>
                                         <th>Booking ID</th>
-                                        <th>Renter Name</th>
+                                        <th>Renter Email</th>
                                         <th>Car Model</th>
                                         <th>Start Date</th>
                                         <th>Return Date</th>
